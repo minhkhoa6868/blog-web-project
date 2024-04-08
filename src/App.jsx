@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Navigation from "./components/Navigation"
 import Notification from "./components/Notification"
+import Home from "./components/Home";
 
 function App() {
   const [isActive, setIsActive] = useState('home');
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <Navigation isSelected={isActive} onSelect={handleActive} />
+      {isActive === 'home' && <Home />}
       {isActive === 'notification' && <Notification />}
     </>
   )
