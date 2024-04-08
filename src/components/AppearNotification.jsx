@@ -6,7 +6,7 @@ export default function AppearNotification() {
       <a
         href="#"
         className="flex justify-between hover:bg-gray-200 hover:text-black px-3 py-2 border border-transparent
-                rounded-lg transition-all ease-out duration-300 h-[100px]"
+                rounded-lg transition-all ease-out duration-300 h-[100px] dark:bg-gray-700 dark:hover:bg-gray-200"
         id="status-notification"
       >
         <div className="flex gap-4">

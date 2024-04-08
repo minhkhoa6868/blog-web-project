@@ -127,7 +127,7 @@ export default function Navigation({ isSelected, onSelect }) {
               placeholder="Search..."
               className="w-[200px] h-[36px] pl-[8px] md:w-[260px] lg:w-[320px]
                         focus:border-violet-400 hover:border-violet-400 outline-none 
-                        rounded-xl border-[3px] border-gray-300 dark:border-gray-500 
+                        rounded-xl border-[3px] border-gray-300 dark:border-gray-400 
                         dark:text-black dark:focus:border-violet-400 dark:hover:border-violet-400
                         translate-y-[8px] transition-all ease duration-200"
             />
