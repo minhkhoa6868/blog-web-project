@@ -2,13 +2,13 @@ import ThemeSwitcher from "./ThemeSwitcher.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
-    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg";
+    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:flex";
   const hoverActive =
-    "flex transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full";
+    "hidden transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full mid:flex";
   const hoverAccountNotActive =
-    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg opacity-70";
+    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg mid:flex";
   const hoverAccountActive =
-    "flex transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full opacity-100";
+    "hidden transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 mid:flex";
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function Navigation({ isSelected, onSelect }) {
             ></path>
           </svg>
         </button>
-        <div className="flex gap-5 lg:gap-8 text-sm transition-all ease duration-300">
+        <div className="flex gap-1 sm:gap-3 md:gap-5 xl:gap-8 text-sm transition-all ease duration-300">
           <button
             className={isSelected === "home" ? hoverActive : hoverNotActive}
             onClick={() => onSelect("home")}
@@ -125,7 +125,7 @@ export default function Navigation({ isSelected, onSelect }) {
             <input
               type="text"
               placeholder="Search..."
-              className="w-[200px] h-[36px] pl-[8px] md:w-[260px] lg:w-[320px]
+              className="w-[200px] h-[36px] pl-[8px] md:w-[260px] xl:w-[320px]
                         focus:border-violet-400 hover:border-violet-400 outline-none 
                         rounded-xl border-[3px] border-gray-300 dark:border-gray-400 
                         dark:text-black dark:focus:border-violet-400 dark:hover:border-violet-400
@@ -134,7 +134,7 @@ export default function Navigation({ isSelected, onSelect }) {
             <button
               className="flex absolute transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 
                         w-[28px] h-[28px] justify-center rounded-full translate-y-[-24px] translate-x-[165px]
-                        md:translate-x-[225px] lg:translate-x-[285px]"
+                        md:translate-x-[225px] xl:translate-x-[285px]"
               onClick={() => onSelect("search")}
               key="account"
             >
