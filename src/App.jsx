@@ -14,8 +14,9 @@ function App() {
   return (
     <>
       <Navigation isSelected={isActive} onSelect={handleActive} />
-      {isActive === 'home' && <Home />}
+      {isActive === 'home' && <Home onSelect={handleActive} />}
       {isActive === 'notification' && <Notification />}
+      {isActive === 'account' && <Notification />}
     </>
   )
 }
