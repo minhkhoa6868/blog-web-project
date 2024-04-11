@@ -46,7 +46,7 @@ export default function BlogContentFooter() {
       <div className="flex items-center gap-5">
           <button onClick={() => onSelect('account')}>
             <img
-              src="account.jpg"
+              src="account.gif"
               alt="account-img"
               className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
             />

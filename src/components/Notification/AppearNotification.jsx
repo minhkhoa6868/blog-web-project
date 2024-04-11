@@ -12,7 +12,7 @@ export default function AppearNotification() {
         <div className="flex gap-4">
           <img
             id="image-account"
-            src="account.jpg"
+            src="account.gif"
             alt="account"
             className="rounded-full border border-gray-300 w-[80px] h-[80px] object-cover"
           />
