@@ -1,12 +1,12 @@
-export default function BlogContentHeader({ onSelect }) {
+export default function BlogContentHeader({ onSelect, accountImage }) {
   return (
     <div className="flex flex-col gap-3 px-[20px]">
       <div className="flex gap-3">
         <button>
           <img
-            src="account.jpg"
+            src={accountImage}
             alt="account-img"
-            className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300"
+            className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300 bg-white"
             onClick={() => onSelect('account')}
           />
         </button>

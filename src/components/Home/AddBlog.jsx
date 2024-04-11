@@ -9,7 +9,7 @@ export default function AddBlog({ onSelect }) {
         <div className="flex items-center gap-5">
           <button onClick={() => onSelect('account')}>
             <img
-              src="account.jpg"
+              src="account.gif"
               alt="account-img"
               className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300"
             />

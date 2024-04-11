@@ -4,11 +4,11 @@ export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
     "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:flex";
   const hoverActive =
-    "hidden transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full mid:flex";
+    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full mid:flex";
   const hoverAccountNotActive =
     "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg mid:flex";
   const hoverAccountActive =
-    "hidden transition ease-out duration-200 bg-gradient-to-tr from-blue-400 to-fuchsia-500 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 mid:flex";
+    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 mid:flex";
 
   return (
     <>
@@ -115,7 +115,7 @@ export default function Navigation({ isSelected, onSelect }) {
             id="account"
           >
             <img
-              src="account.jpg"
+              src="account.gif"
               alt="account"
               id="account-img"
               className="rounded-full w-[40px] h-[40px] object-cover m-auto border-[3px] border-gray-400"
