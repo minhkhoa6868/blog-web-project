@@ -1,4 +1,4 @@
-import AppearNotification from "./AppearNotification";
+import AppearNotification from "../components/Notification/AppearNotification";
 
 export default function Notification() {
   return (
