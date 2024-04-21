@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
@@ -9,6 +10,16 @@ export default function Navigation({ isSelected, onSelect }) {
     "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg mid:flex";
   const hoverAccountActive =
     "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 mid:flex";
+  const hoverMenuNotActive =
+    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:hidden";
+  const hoverMenuActive =
+    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full mid:hidden";
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleOpen() {
+    setIsOpen((prevState) => !prevState);
+  }
 
   return (
     <>
@@ -120,6 +131,32 @@ export default function Navigation({ isSelected, onSelect }) {
               id="account-img"
               className="rounded-full w-[40px] h-[40px] object-cover m-auto border-[3px] border-gray-400"
             />
+          </button>
+          <button
+            className={isOpen ? hoverMenuActive : hoverMenuNotActive}
+            onClick={() => {
+              handleOpen();
+            }}
+          >
+            {!isOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                height="50"
+                width="20"
+              >
+                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"
+                height="50"
+                width="16"
+              >
+                <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+              </svg>
+            )}
           </button>
           <div>
             <input

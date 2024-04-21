@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation/Navigation"
 import Notification from "./page/Notification"
 import Home from "./page/Home";
 import Account from "./page/Account";
+import Friend from "./page/Friend";
 
 function App() {
   const [isActive, setIsActive] = useState('home');
@@ -18,6 +19,7 @@ function App() {
       {isActive === 'home' && <Home onSelect={handleActive} />}
       {isActive === 'notification' && <Notification />}
       {isActive === 'account' && <Account onSelect={handleActive} />}
+      {isActive === 'friend' && <Friend />}
     </>
   )
 }

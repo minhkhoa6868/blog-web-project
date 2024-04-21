@@ -1,4 +1,4 @@
-export default function BlogContentHeader({ onSelect, accountImage }) {
+export default function BlogContentHeader({ onSelect, accountImage, name }) {
   return (
     <div className="flex flex-col gap-3 px-[20px]">
       <div className="flex gap-3">
@@ -10,9 +10,9 @@ export default function BlogContentHeader({ onSelect, accountImage }) {
             onClick={() => onSelect('account')}
           />
         </button>
-        <div className="flex flex-col">
+        <div>
           <button className="font-semibold" onClick={() => onSelect('account')}>
-            <span>Trần Khoa</span>
+            <span>{name}</span>
           </button>
           <div className="flex gap-2 text-gray-400 text-[0.85rem] fill-sky-400">
             <span>1 hour</span>
