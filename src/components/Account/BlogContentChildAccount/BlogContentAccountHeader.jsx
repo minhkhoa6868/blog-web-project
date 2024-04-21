@@ -10,7 +10,7 @@ export default function BlogContentAccountHeader({ onSelect }) {
             onClick={() => onSelect('account')}
           />
         </button>
-        <div className="flex flex-col">
+        <div>
           <button className="font-semibold" onClick={() => onSelect('account')}>
             <span>Trần Khoa</span>
           </button>
