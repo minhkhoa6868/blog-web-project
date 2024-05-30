@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
@@ -27,7 +28,7 @@ export default function Navigation({ isSelected, onSelect }) {
         className="py-2 flex justify-between w-full h-fit bg-transparent backdrop-blur-[12px] shadow-lg
                 top-0 sticky z-[1]"
       >
-        <button className="px-6">
+        <Link to="/" className="px-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -69,9 +70,10 @@ export default function Navigation({ isSelected, onSelect }) {
               d="M43,29h-1c-1.11,0-2-0.9-2-2c0-4.4-3.6-8-8-8h-5c-4.4,0-8,3.6-8,8v10c0,4.4,3.6,8,8,8h10 c4.4,0,8-3.6,8-8v-6C45,29.9,44.1,29,43,29z M27,25h5c1.1,0,2,0.9,2,2c0,1.1-0.9,2-2,2h-5c-1.1,0-2-0.9-2-2C25,25.9,25.9,25,27,25z M37,39H27c-1.1,0-2-0.9-2-2c0-1.1,0.9-2,2-2h10c1.1,0,2,0.9,2,2C39,38.1,38.1,39,37,39z"
             ></path>
           </svg>
-        </button>
+        </Link>
         <div className="flex gap-1 sm:gap-3 md:gap-5 xl:gap-8 text-sm transition-all ease duration-300">
-          <button
+          <Link
+            to="/"
             className={isSelected === "home" ? hoverActive : hoverNotActive}
             onClick={() => onSelect("home")}
             key="home"
@@ -84,8 +86,9 @@ export default function Navigation({ isSelected, onSelect }) {
             >
               <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
             </svg>
-          </button>
-          <button
+          </Link>
+          <Link
+            to="/friend"
             className={isSelected === "friend" ? hoverActive : hoverNotActive}
             onClick={() => onSelect("friend")}
             key="friend"
@@ -98,8 +101,9 @@ export default function Navigation({ isSelected, onSelect }) {
             >
               <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM609.3 512H471.4c5.4-9.4 8.6-20.3 8.6-32v-8c0-60.7-27.1-115.2-69.8-151.8c2.4-.1 4.7-.2 7.1-.2h61.4C567.8 320 640 392.2 640 481.3c0 17-13.8 30.7-30.7 30.7zM432 256c-31 0-59-12.6-79.3-32.9C372.4 196.5 384 163.6 384 128c0-26.8-6.6-52.1-18.3-74.3C384.3 40.1 407.2 32 432 32c61.9 0 112 50.1 112 112s-50.1 112-112 112z" />
             </svg>
-          </button>
-          <button
+          </Link>
+          <Link
+            to="/notification"
             className={
               isSelected === "notification" ? hoverActive : hoverNotActive
             }
@@ -114,8 +118,9 @@ export default function Navigation({ isSelected, onSelect }) {
             >
               <path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
             </svg>
-          </button>
-          <button
+          </Link>
+          <Link
+            to="/account"
             className={
               isSelected === "account"
                 ? hoverAccountActive
@@ -131,7 +136,7 @@ export default function Navigation({ isSelected, onSelect }) {
               id="account-img"
               className="rounded-full w-[40px] h-[40px] object-cover m-auto border-[3px] border-gray-400"
             />
-          </button>
+          </Link>
           <button
             className={isOpen ? hoverMenuActive : hoverMenuNotActive}
             onClick={() => {
@@ -191,6 +196,7 @@ export default function Navigation({ isSelected, onSelect }) {
           <ThemeSwitcher />
         </div>
       </nav>
+      <Outlet />
     </>
   );
 }
