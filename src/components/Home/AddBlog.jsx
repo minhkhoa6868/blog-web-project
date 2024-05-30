@@ -1,3 +1,5 @@
+import { Outlet, Link } from "react-router-dom";
+
 export default function AddBlog({ onSelect }) {
   return (
     <>
@@ -7,13 +9,16 @@ export default function AddBlog({ onSelect }) {
         dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300"
       >
         <div className="flex items-center gap-5">
-          <button onClick={() => onSelect('account')}>
+          <Link 
+            to="/account"
+            onClick={() => onSelect('account')}
+          >
             <img
               src="account.gif"
               alt="account-img"
               className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300"
             />
-          </button>
+          </Link>
           <button
             className="bg-gray-200 text-gray-400 w-[320px] h-[40px] rounded-2xl 
             text-left px-[15px] hover:bg-gray-300 dark:hover:border-violet-400 
@@ -37,6 +42,7 @@ export default function AddBlog({ onSelect }) {
           </svg>
         </button>
       </div>
+      <Outlet />
     </>
   );
 }
