@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,12 +12,16 @@ import Notification from "./page/Notification";
 import Home from "./page/Home";
 import Account from "./page/Account";
 import Friend from "./page/Friend";
+import NewBlog from "./page/NewBlog";
 
 function App() {
-  const [isActive, setIsActive] = useState("home");
+  const [isActive, setIsActive] = useState(localStorage.getItem('isActive'));
+
+  console.log(window.location.pathname);
 
   function handleActive(buttonActive) {
     setIsActive(buttonActive);
+    localStorage.setItem("isActive", buttonActive);
   }
 
   const router = createBrowserRouter(
@@ -35,21 +39,11 @@ function App() {
           </>
         }
       >
-        <Route
-          index
-          element={isActive === "home" && <Home onSelect={handleActive} />}
-        />
-        <Route
-          path="/notification"
-          element={isActive === "notification" && <Notification />}
-        />
-        <Route
-          path="/account"
-          element={
-            isActive === "account" && <Account onSelect={handleActive} />
-          }
-        />
-        <Route path="/friend" element={isActive === "friend" && <Friend />} />
+        <Route index element={<Home onSelect={handleActive} />} />
+        <Route path="/notification" element={<Notification />} />
+        <Route path="/account" element={<Account onSelect={handleActive} />} />
+        <Route path="/friend" element={<Friend />} />
+        <Route path="/newBlog" element={<NewBlog />} />
       </Route>
     )
   );

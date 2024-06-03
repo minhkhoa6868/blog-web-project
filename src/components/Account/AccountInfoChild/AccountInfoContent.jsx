@@ -1,5 +1,6 @@
 import Statistic from "./Statistic";
 import ButtonEdit from "./ButtonEdit";
+import ButtonNewBlog from "./ButtonNewBlog";
 
 export default function AccountInfoContent() {
     return (
@@ -12,8 +13,8 @@ export default function AccountInfoContent() {
                 <Statistic number="100" content="Following" />
             </div>
             <div className="flex justify-center gap-7">
-                <ButtonEdit children="Edit Profile" />
-                <ButtonEdit children="Add New Blog" />
+                <ButtonEdit />
+                <ButtonNewBlog />
             </div>
         </div>
     );
