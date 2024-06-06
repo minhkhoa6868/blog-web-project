@@ -4,7 +4,7 @@ export default function BlogContentAccountImage({ image }) {
             <img 
                 src={image} 
                 alt="image post" 
-                className="w-[450px] h-[550px] object-cover rounded-xl"
+                className="w-[450px] object-cover rounded-xl"
             />
         </div>
     )

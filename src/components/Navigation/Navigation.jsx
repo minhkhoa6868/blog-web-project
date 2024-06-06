@@ -10,23 +10,23 @@ export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
     "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:flex";
   const hoverActive =
-    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full mid:flex";
+    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:flex";
   const hoverAccountNotActive =
     "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg mid:flex";
   const hoverAccountActive =
-    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 mid:flex";
+    "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 hover:from-blue-500 hover:to-fuchsia-500 mid:flex";
   const hoverMenuNotActive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:hidden cursor-pointer";
   const hoverMenuActive =
-    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full mid:hidden cursor-pointer";
+    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:hidden cursor-pointer";
   const hoverNotActiveResponsive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:hidden";
   const hoverActiveResponsive =
-    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full mid:hidden";
+    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:hidden";
   const hoverAccountNotActiveResponsive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg mid:hidden";
   const hoverAccountActiveResponsive =
-    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full opacity-100 mid:hidden";
+    "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full opacity-100 hover:from-blue-500 hover:to-fuchsia-500 mid:hidden";
 
   const [isOpen, setIsOpen] = useState(false);
 

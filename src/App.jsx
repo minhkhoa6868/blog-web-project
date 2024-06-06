@@ -15,9 +15,10 @@ import Friend from "./page/Friend";
 import NewBlog from "./page/NewBlog";
 
 function App() {
-  const [isActive, setIsActive] = useState(localStorage.getItem('isActive'));
+  const [isActive, setIsActive] = useState(window.location.pathname == '/' ? 'home' : localStorage.getItem('isActive'));
 
   console.log(window.location.pathname);
+  console.log(isActive);
 
   function handleActive(buttonActive) {
     setIsActive(buttonActive);
