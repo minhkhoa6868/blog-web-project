@@ -13,6 +13,7 @@ import Home from "./page/Home";
 import Account from "./page/Account";
 import Friend from "./page/Friend";
 import NewBlog from "./page/NewBlog";
+import EditProfile from "./page/EditProfile";
 
 function App() {
   const [isActive, setIsActive] = useState(window.location.pathname == '/' ? 'home' : localStorage.getItem('isActive'));
@@ -45,6 +46,7 @@ function App() {
         <Route path="/account" element={<Account onSelect={handleActive} />} />
         <Route path="/friend" element={<Friend />} />
         <Route path="/newBlog" element={<NewBlog />} />
+        <Route path="/editProfile" element={<EditProfile />} />
       </Route>
     )
   );

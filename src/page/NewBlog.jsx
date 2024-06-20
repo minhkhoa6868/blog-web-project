@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function NewBlog() {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("image-upload.png");
 
   function handleChange(e) {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
@@ -50,24 +49,24 @@ export default function NewBlog() {
           </select>
         </div>
       </div>
-      <div 
+      <div
         className="ml-[20px] w-fit cursor-pointer px-[15px] py-[5px] rounded-[16px]
         bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white text-[0.9rem]
         hover:from-blue-500 hover:to-fuchsia-500"
       >
-        <input 
-            type="file" 
-            id="inputFile" 
-            onChange={handleChange} 
-            className="hidden"
+        <input
+          type="file"
+          id="inputFile"
+          onChange={handleChange}
+          className="hidden"
         />
         <label htmlFor="inputFile" className="cursor-pointer">
-            {file ? 'Change image' : 'Choose image'}
+          {file != "image-upload.png" ? "Change image" : "Choose image"}
         </label>
       </div>
       <div className="flex gap-3 px-[10px]">
         <div className="flex justify-center items-center">
-            <img src={file} className="w-[350px] object-cover" />
+          <img src={file} className="w-[350px] object-cover" />
         </div>
         <textarea
           name="post"
@@ -79,11 +78,11 @@ export default function NewBlog() {
         ></textarea>
       </div>
       <div className="flex justify-end mr-[20px] mb-[20px]">
-        <button 
-            className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
+        <button
+          className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
             hover:from-blue-500 hover:to-fuchsia-500 rounded-[20px]"
         >
-            Post
+          Post
         </button>
       </div>
     </div>

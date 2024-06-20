@@ -2,7 +2,7 @@ import AccountFriend from "./AccountFriend";
 
 export default function FriendCategory({ category, status }) {
   return (
-    <div className="w-[500px] md:w-[730px] xl:w-[970px] border rounded-lg shadow-lg 
+    <div className="w-[500px] md:w-[730px] xl:w-[970px] border rounded-xl shadow-lg 
     py-[20px] dark:bg-gray-800 dark:border-gray-700 transition-all ease duration-300">
         <h1 className="pl-[20px] pb-[20px] font-bold text-2xl">{category}</h1>
       <div
