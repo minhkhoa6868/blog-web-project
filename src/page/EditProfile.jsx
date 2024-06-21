@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import checkWordLength from "../utils/checkWordLength";
+import checkValidNickName from "../utils/checkValidNickName";
+import checkValidPassword from "../utils/checkValidPassword";
+import checkValidAgain from "../utils/checkValidAgain";
+import PasswordSection from "../components/EditProfile/PasswordSection";
 
 export default function EditProfile() {
   const [changeBtn, isChangeBtn] = useState(false);
@@ -8,32 +13,27 @@ export default function EditProfile() {
   const [countCaption, setCountCaption] = useState(0);
   const [countPassword, setCountPassword] = useState(0);
   const [countPasswordAgain, setCountPasswordAgain] = useState(0);
-  
 
   useEffect(() => {
     const nickname = document.getElementById("nickname");
     const caption = document.getElementById("caption");
     const password = document.getElementById("password");
     const passwordAgain = document.getElementById("password-again");
-    nickname.addEventListener("keyup", () => {
-      setCountNickName(nickname.value.length);
-    });
-    caption.addEventListener("keyup", () => {
-      setCountCaption(caption.value.length);
-    });
-    if (changeBtn) {
-      password.addEventListener("keyup", () => {
-        setCountPassword(password.value.length);
-      });
-      passwordAgain.addEventListener("keyup", () => {
-        setCountPasswordAgain(passwordAgain.value.length);
-      });
-    }
+    checkWordLength(
+      changeBtn,
+      nickname,
+      caption,
+      password,
+      passwordAgain,
+      setCountNickName,
+      setCountCaption,
+      setCountPassword,
+      setCountPasswordAgain
+    );
+    checkValidNickName(nickname);
+    checkValidPassword(changeBtn);
+    checkValidAgain(changeBtn);
   });
-
-  function changeBtnHandler() {
-    isChangeBtn((prevState) => !prevState);
-  }
 
   function changeImageAccount(e) {
     setImageAccount(URL.createObjectURL(e.target.files[0]));
@@ -41,6 +41,10 @@ export default function EditProfile() {
 
   function changePrivateGender(stateGender) {
     isPrivateGender(stateGender);
+  }
+
+  function changeBtnHandler() {
+    isChangeBtn((prevState) => !prevState);
   }
 
   return (
@@ -85,15 +89,18 @@ export default function EditProfile() {
           id="nickname"
           type="text"
           placeholder="Change your nickname..."
-          maxLength={100}
+          maxLength={50}
           className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
                 outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
                 rounded-[10px]"
         ></input>
         <div className="flex justify-end mr-[5px]">
           <p className="text-[0.8rem] text-gray-600 dark:text-gray-300">
-            {countNickName}/100
+            {countNickName}/50
           </p>
+        </div>
+        <div className="hidden justify-end mr-[5px]" id="container-valid">
+          <p id="check-valid" className="text-[0.8rem]"></p>
         </div>
       </div>
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
@@ -151,59 +158,12 @@ export default function EditProfile() {
         )}
       </div>
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      {!changeBtn && (
-        <button
-          onClick={changeBtnHandler}
-          className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
-          hover:from-blue-500 hover:to-fuchsia-500 rounded-[20px] font-semibold text-[0.9rem]"
-        >
-          Change Password
-        </button>
-      )}
-      {changeBtn && (
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="font-semibold">
-              Change password
-            </label>
-            <input
-              name="password"
-              id="password"
-              type="password"
-              placeholder="Enter your new password..."
-              maxLength={25}
-              className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
-              outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
-              rounded-[10px]"
-            />
-            <div className="flex justify-end mr-[5px]">
-              <p className="text-[0.8rem] text-gray-600 dark:text-gray-300">
-                {countPassword}/25
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password-again" className="font-semibold">
-              Type again
-            </label>
-            <input
-              name="password-again"
-              id="password-again"
-              type="password"
-              placeholder="Type again..."
-              maxLength={25}
-              className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
-              outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
-              rounded-[10px]"
-            />
-            <div className="flex justify-end mr-[5px]">
-              <p className="text-[0.8rem] text-gray-600 dark:text-gray-300">
-                {countPasswordAgain}/25
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+      <PasswordSection 
+        changeBtn={changeBtn}
+        changeBtnHandler={changeBtnHandler}
+        countPassword={countPassword}
+        countPasswordAgain={countPasswordAgain} 
+      />
       <div className="flex justify-end mt-[15px]">
         <button
           className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
