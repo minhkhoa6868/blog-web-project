@@ -86,7 +86,7 @@ export default function NewBlog() {
             outline-none dark:border-gray-500 dark:focus:border-gray-400 transition-all ease duration-300
             bg-transparent resize-none sm:h-[400px]"
           ></textarea>
-          <p className="text-end mr-[5px] text-[0.8rem] text-gray-400">{countPost}/300</p>
+          <p className="text-end mr-[5px] text-[0.8rem] text-gray-600 dark:text-gray-300">{countPost}/300</p>
         </div>
       </div>
       <div className="flex justify-end mr-[20px] mb-[20px]">
