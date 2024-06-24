@@ -1,6 +1,6 @@
 import "./appearNotification.css";
 
-export default function AppearNotification() {
+export default function AppearNotification({content}) {
   return (
     <div className="px-3 pb-3">
       <a
@@ -21,7 +21,7 @@ export default function AppearNotification() {
             className="w-[250px] md:w-[300px] lg:w-[350px] text-wrap 
                         translate-y-[15px] md:translate-y-[20px] lg:translate-y-[25px]"
           >
-            Khoa have uploaded a blog! Check out here!
+            {content}
           </p>
         </div>
         <button

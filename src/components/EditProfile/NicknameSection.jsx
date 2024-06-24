@@ -9,14 +9,14 @@ export default function NicknameSection({countNickName}) {
         id="nickname"
         type="text"
         placeholder="Change your nickname..."
-        maxLength={50}
+        maxLength={40}
         className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
                 outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
                 rounded-[10px]"
       ></input>
       <div className="flex justify-end mr-[5px]">
         <p className="text-[0.8rem] text-gray-600 dark:text-gray-300">
-          {countNickName}/50
+          {countNickName}/40
         </p>
       </div>
       <div className="hidden justify-end mr-[5px]" id="container-valid">

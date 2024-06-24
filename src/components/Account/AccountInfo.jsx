@@ -1,7 +1,7 @@
 import AccountInfoHeader from "./AccountInfoChild/AccountInfoHeader";
 import AccountInfoContent from "./AccountInfoChild/AccountInfoContent";
 
-export default function AccountInfo() {
+export default function AccountInfo({openBlogType}) {
     return(
         <div className="flex justify-center mt-5">
             <div 
@@ -14,7 +14,7 @@ export default function AccountInfo() {
                 >
                 </div>
                 <div className="flex flex-col xl:flex-row xl:justify-between">
-                    <AccountInfoHeader />
+                    <AccountInfoHeader openBlogType={openBlogType} />
                     <AccountInfoContent />
                 </div>
             </div>

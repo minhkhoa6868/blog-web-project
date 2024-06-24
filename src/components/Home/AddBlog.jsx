@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AddBlog({ onSelect }) {
   return (
@@ -43,7 +43,6 @@ export default function AddBlog({ onSelect }) {
           </svg>
         </Link>
       </div>
-      <Outlet />
     </>
   );
 }

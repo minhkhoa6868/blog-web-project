@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ButtonEdit() {
   return (
@@ -11,7 +11,6 @@ export default function ButtonEdit() {
       >
         Edit Profile
       </Link>
-      <Outlet />
     </>
   );
 }
