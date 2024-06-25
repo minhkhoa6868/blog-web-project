@@ -1,4 +1,4 @@
-export default function BlogContentFooter() {
+export default function BlogContentFooter({ openLike, openComment }) {
   return (
     <div className="flex flex-col gap-3 px-[20px] sm:px-[30px]">
       <div className="flex gap-5 transition-all ease duration-300">
@@ -15,6 +15,7 @@ export default function BlogContentFooter() {
         <button
           className="fill-gray-700 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-500
                 transition-all ease duration-300"
+          onClick={openComment}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,28 +38,33 @@ export default function BlogContentFooter() {
         </button>
       </div>
       <div className="flex justify-between text-[15px] text-gray-600 dark:text-gray-300 font-semibold">
-        <button className="hover:underline">2.000 likes</button>
+        <button className="hover:underline" onClick={openLike}>
+          2.000 likes
+        </button>
         <div className="flex gap-3">
-            <button className="hover:underline">100 Comments</button>
-            <button className="hover:underline">100 Shares</button>
+          <button className="hover:underline" onClick={openComment}>
+            100 Comments
+          </button>
+          <button className="hover:underline">100 Shares</button>
         </div>
       </div>
       <div className="flex items-center gap-5">
-          <button onClick={() => onSelect('account')}>
-            <img
-              src="account.gif"
-              alt="account-img"
-              className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
-            />
-          </button>
-          <button
-            className="bg-gray-200 text-gray-400 w-[400px] h-[35px] rounded-2xl text-left 
+        <button onClick={() => onSelect("account")}>
+          <img
+            src="account.gif"
+            alt="account-img"
+            className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
+          />
+        </button>
+        <button
+          className="bg-gray-200 text-gray-400 w-[400px] h-[35px] rounded-2xl text-left 
             px-[15px] hover:bg-gray-300 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-400 
             transition-all ease-out duration-300 sm:w-[460px] md:w-[550px] xl:w-[600px] text-[15px]"
-          >
-            Add your comment here!
-          </button>
-        </div>
+          onClick={openComment}
+        >
+          Add your comment here!
+        </button>
+      </div>
     </div>
   );
 }

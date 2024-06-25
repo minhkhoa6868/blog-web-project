@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import ChooseType from "../components/NewBlog/ChooseType";
+import ChooseVisibility from "../components/NewBlog/ChooseVisibility";
+import ButtonUpload from "../components/NewBlog/ButtonUpload";
+import UploadImage from "../components/NewBlog/UploadImage";
+import UploadPost from "../components/NewBlog/UploadPost";
 
 export default function NewBlog() {
   const [file, setFile] = useState("image-upload.png");
@@ -31,63 +36,14 @@ export default function NewBlog() {
           <span className="font-semibold">Trần Khoa</span>
         </div>
         <div className="flex flex-row gap-3 mt-[15px]">
-          <select
-            name="type"
-            id="type-blog"
-            className="h-[40px] border px-[5px] border-gray-300 rounded-[10px] focus:outline-none
-                        text-[0.9rem] bg-transparent"
-          >
-            <option value="">Choose type</option>
-            <option value="Sport">Sport</option>
-            <option value="Travel">Travel</option>
-            <option value="Nature">Nature</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Life">Life</option>
-          </select>
-          <select
-            name="visibility"
-            id="type-visibility"
-            className="h-[40px] border px-[5px] border-gray-300 rounded-[10px] focus:outline-none
-                        text-[0.9rem] bg-transparent"
-          >
-            <option value="">Choose the visibility</option>
-            <option value="Public">Public</option>
-            <option value="Private">Private</option>
-          </select>
+          <ChooseType />
+          <ChooseVisibility />
         </div>
       </div>
-      <div
-        className="ml-[20px] w-fit cursor-pointer px-[15px] py-[5px] rounded-[16px]
-        bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white text-[0.9rem]
-        hover:from-blue-500 hover:to-fuchsia-500"
-      >
-        <input
-          type="file"
-          id="inputFile"
-          onChange={handleChange}
-          className="hidden"
-        />
-        <label htmlFor="inputFile" className="cursor-pointer">
-          {file != "image-upload.png" ? "Change image" : "Choose image"}
-        </label>
-      </div>
+      <ButtonUpload file={file} handleChange={handleChange} />
       <div className="flex flex-col gap-3 px-[10px] sm:flex-row">
-        <div className="flex justify-center items-center">
-          <img src={file} className="w-[350px] object-cover" />
-        </div>
-        <div className="w-full">
-          <textarea
-            name="post"
-            id="post"
-            placeholder="Enter your content..."
-            maxLength={300}
-            className="w-full h-[320px] p-[10px] border border-gray-300 focus:border-gray-400 rounded-[10px] 
-            outline-none dark:border-gray-500 dark:focus:border-gray-400 transition-all ease duration-300
-            bg-transparent resize-none sm:h-[400px]"
-          ></textarea>
-          <p className="text-end mr-[5px] text-[0.8rem] text-gray-600 dark:text-gray-300">{countPost}/300</p>
-        </div>
+        <UploadImage file={file} />
+        <UploadPost countPost={countPost} />
       </div>
       <div className="flex justify-end mr-[20px] mb-[20px]">
         <button
