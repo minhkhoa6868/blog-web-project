@@ -1,6 +1,6 @@
 import LikeAccount from "./ShowLike/LikeAccount";
 
-export default function ShowLike({ showLike, openLike }) {
+export default function ShowLike({ showLike, openLike, likes }) {
   return (
     <div
       className={
@@ -15,14 +15,9 @@ export default function ShowLike({ showLike, openLike }) {
       >
         <h2 className="font-semibold">Likes</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
-            <LikeAccount imageAccount='/account.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account2.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account3.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account4.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account2.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account3.gif' nameAccount='David' />
-            <LikeAccount imageAccount='/account4.gif' nameAccount='David' />
+            {likes.map((like) => (
+                <LikeAccount key={like.id} imageAccount={like.imageAccount} nameAccount={like.nameAccount} />
+            ))}
         </div>
         <button 
             className="absolute right-[25px] top-[8px] fill-black dark:fill-white"

@@ -3,13 +3,16 @@ import AddBlog from "../components/Home/AddBlog";
 import BlogContent from "../components/Home/BlogContent";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
+import post from "../utils/homePost";
 
 export default function Home({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
+  const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
 
-  function openLike() {
+  function openLike(likes) {
     setShowLike((prevState) => !prevState);
+    setCurrentLike(likes);
   }
 
   function openComment() {
@@ -19,43 +22,23 @@ export default function Home({ onSelect }) {
   return (
     <div className="flex flex-col gap-6">
       <AddBlog onSelect={onSelect} />
-      <BlogContent
-        onSelect={onSelect}
-        openLike={openLike}
-        openComment={openComment}
-        image="image-post.gif"
-        accountImage="account.gif"
-        name="Trần Khoa"
-        time="1"
+      {post.map((item) => (
+        <BlogContent
+          key={item.id}
+          onSelect={onSelect}
+          openLike={() => openLike(item.likes)}
+          openComment={openComment}
+          image={item.image}
+          accountImage={item.accountImage}
+          name={item.name}
+          time={item.time}
+        />
+      ))}
+      <ShowLike
+        showLike={showLike}
+        openLike={() => openLike(currentLike)}
+        likes={currentLike}
       />
-      <BlogContent
-        onSelect={onSelect}
-        openLike={openLike}
-        openComment={openComment}
-        image="account2.gif"
-        accountImage="account2.gif"
-        name="Steven"
-        time="2"
-      />
-      <BlogContent
-        onSelect={onSelect}
-        openLike={openLike}
-        openComment={openComment}
-        image="image-post2.gif"
-        accountImage="account3.gif"
-        name="David"
-        time="1"
-      />
-      <BlogContent
-        onSelect={onSelect}
-        openLike={openLike}
-        openComment={openComment}
-        image="image-post3.gif"
-        accountImage="account4.gif"
-        name="buffalo"
-        time="2"
-      />
-      <ShowLike showLike={showLike} openLike={openLike} />
       <ShowComment showComment={showComment} openComment={openComment} />
     </div>
   );
