@@ -9,14 +9,17 @@ export default function Home({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
+  const [currentComment, setCurrentComment] = useState([]);
 
   function openLike(likes) {
     setShowLike((prevState) => !prevState);
     setCurrentLike(likes);
   }
 
-  function openComment() {
+  function openComment(comments) {
     setShowComment((prevState) => !prevState);
+    setCurrentComment(comments);
+    console.log(comments);
   }
 
   return (
@@ -27,7 +30,7 @@ export default function Home({ onSelect }) {
           key={item.id}
           onSelect={onSelect}
           openLike={() => openLike(item.likes)}
-          openComment={openComment}
+          openComment={() => openComment(item.comments)}
           image={item.image}
           accountImage={item.accountImage}
           name={item.name}
@@ -39,7 +42,11 @@ export default function Home({ onSelect }) {
         openLike={() => openLike(currentLike)}
         likes={currentLike}
       />
-      <ShowComment showComment={showComment} openComment={openComment} />
+      <ShowComment
+        showComment={showComment}
+        openComment={() => openComment(currentComment)}
+        comments={currentComment}
+      />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import CommentSection from "./ShowComment/CommentSection";
+import ParentComment from "./ShowComment/ParentComment";
+import PostButton from "./ShowComment/PostButton";
 
-export default function ShowComment({ showComment, openComment }) {
+export default function ShowComment({ showComment, openComment, comments }) {
   return (
     <div
       className={
@@ -10,76 +12,20 @@ export default function ShowComment({ showComment, openComment }) {
       }
     >
       <div
-        className="flex flex-col relative justify-center items-center gap-3 w-[400px] h-[450px] bg-white
-        rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500 sm:w-[470px] md:w-[550px]
-        xl:w-[620px] transition-all ease duration-300"
+        className="flex flex-col relative items-center gap-2 w-full h-[500px] bg-white
+        rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500
+        transition-all ease duration-300 mx-[20px] md:w-[742px]"
       >
-        <h2 className="font-semibold">Comments</h2>
-        <div className="flex flex-col gap-4 overflow-scroll w-full">
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor. fjd mn kdjhs  dkfhisd vdkjf"
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor. fjd mn kdjhs  dkfhisd vdkjf"
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
-          <CommentSection
-            imageAccountParent="/account.gif"
-            nameAccountParent="David"
-            commentParent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-            imageAccountChild="/account.gif"
-            nameAccountChild="David"
-            commentChild="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, dolor."
-          />
+        <div className="flex flex-col gap-3 h-[390px] w-full">
+          <h2 className="font-semibold text-center">Comments</h2>
+          {comments.length > 0 && (
+            <div className="flex flex-col gap-4 overflow-scroll">
+              {comments[0].items?.length > 0 &&
+                comments[0].items.map((cmt) => (
+                  <ParentComment key={cmt.id} comment={cmt} />
+                ))}
+            </div>
+          )}
         </div>
         <div className="flex items-center justify-between w-full border-t dark:border-gray-500 pt-[10px]">
           <button onClick={() => onSelect("account")}>
@@ -91,28 +37,15 @@ export default function ShowComment({ showComment, openComment }) {
           </button>
           <textarea
             placeholder="Write your comment"
-            className="w-[270px] h-fit border border-gray-300 rounded-[15px] outline-none
+            className="w-4/5 h-fit border border-gray-300 rounded-[15px] outline-none
             resize-none pl-[10px] pt-[5px] focus:border-gray-400 transition-all ease duration-300
-            sm:w-[330px] md:w-[420px] xl:w-[480px] bg-transparent dark:border-gray-500
-            dark:focus:border-gray-400"
+            bg-transparent dark:border-gray-500 dark:focus:border-gray-400"
           />
-          <button 
-            className="p-[8px] rounded-full bg-gradient-to-tr from-blue-400 to-fuchsia-400 
-            hover:from-blue-500 hover:to-fuchsia-500 fill-white"
-          >
-            <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 320 512"
-                width='15'
-                height='15'
-            >
-              <path d="M318 177.5c3.8-8.8 2-19-4.6-26l-136-144C172.9 2.7 166.6 0 160 0s-12.9 2.7-17.4 7.5l-136 144c-6.6 7-8.4 17.2-4.6 26S14.4 192 24 192H96l0 288c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32l0-288h72c9.6 0 18.2-5.7 22-14.5z" />
-            </svg>
-          </button>
+          <PostButton />
         </div>
         <button
           className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-          onClick={openComment}
+          onClick={() => openComment([])}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

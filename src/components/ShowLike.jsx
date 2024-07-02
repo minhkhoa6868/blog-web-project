@@ -21,7 +21,7 @@ export default function ShowLike({ showLike, openLike, likes }) {
         </div>
         <button 
             className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-            onClick={openLike}
+            onClick={() => openLike([])}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

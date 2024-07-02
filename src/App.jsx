@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -6,14 +6,14 @@ import {
   createRoutesFromElements,
   ScrollRestoration,
 } from "react-router-dom";
-
 import Navigation from "./components/Navigation/Navigation";
-import Notification from "./page/Notification";
-import Home from "./page/Home";
-import Account from "./page/Account";
-import Friend from "./page/Friend";
-import NewBlog from "./page/NewBlog";
-import EditProfile from "./page/EditProfile";
+
+const Home = lazy(() => import('./page/Home'));
+const Friend = lazy(() => import('./page/Friend'));
+const Notification = lazy(() => import('./page/Notification'));
+const Account = lazy(() => import('./page/Account'));
+const NewBlog = lazy(() => import('./page/NewBlog'));
+const EditProfile = lazy(() => import('./page/EditProfile'));
 
 function App() {
   const [isActive, setIsActive] = useState(window.location.pathname == '/' ? 'home' : localStorage.getItem('isActive'));
@@ -41,12 +41,54 @@ function App() {
           </>
         }
       >
-        <Route index element={<Home onSelect={handleActive} />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/account" element={<Account onSelect={handleActive} />} />
-        <Route path="/friend" element={<Friend />} />
-        <Route path="/newBlog" element={<NewBlog />} />
-        <Route path="/editProfile" element={<EditProfile />} />
+        <Route 
+          index 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home onSelect={handleActive} />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/notification" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Notification />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/account" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Account onSelect={handleActive} />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/friend" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Friend />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/newBlog" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <NewBlog />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/editProfile" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <EditProfile />
+            </Suspense>
+          } 
+        />
       </Route>
     )
   );
