@@ -1,4 +1,7 @@
-export default function BlogContentFooter({ openLike, openComment }) {
+import ShowNumber from "./ShowNumber";
+import AddCommentSection from "./AddCommentSection";
+
+export default function BlogContentFooter({ numberLikes, openLike, openComment }) {
   return (
     <div className="flex flex-col gap-3 px-[20px] sm:px-[30px]">
       <div className="flex gap-5 transition-all ease duration-300">
@@ -38,33 +41,13 @@ export default function BlogContentFooter({ openLike, openComment }) {
         </button>
       </div>
       <div className="flex justify-between text-[15px] text-gray-600 dark:text-gray-300 font-semibold">
-        <button className="hover:underline" onClick={openLike}>
-          2.000 likes
-        </button>
+        <ShowNumber number={numberLikes} status='likes' handleClick={openLike} />
         <div className="flex gap-3">
-          <button className="hover:underline" onClick={openComment}>
-            100 Comments
-          </button>
-          <button className="hover:underline">100 Shares</button>
+          <ShowNumber number='100' status='comments' handleClick={openComment} />
+          <ShowNumber number='100' status='shares' />
         </div>
       </div>
-      <div className="flex items-center gap-5">
-        <button onClick={() => onSelect("account")}>
-          <img
-            src="account.gif"
-            alt="account-img"
-            className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
-          />
-        </button>
-        <button
-          className="bg-gray-200 text-gray-400 w-[400px] h-[35px] rounded-2xl text-left 
-            px-[15px] hover:bg-gray-300 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-400 
-            transition-all ease-out duration-300 sm:w-[460px] md:w-[550px] xl:w-[600px] text-[15px]"
-          onClick={openComment}
-        >
-          Add your comment here!
-        </button>
-      </div>
+      <AddCommentSection openComment={openComment} />
     </div>
   );
 }

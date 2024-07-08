@@ -13,10 +13,10 @@ export default function ParentComment({ comment }) {
           <img
             src={comment.imageAccount}
             alt="image-account"
-            className="w-[45px] h-[45px] rounded-full object-cover border border-gray-300 bg-white"
+            className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300 bg-white"
           />
         </button>
-        <div className="text-[0.9rem] w-5/6 break-words">
+        <div className="text-[0.8rem] w-5/6 break-words">
           <button className="font-semibold">{comment.nameAccount}</button>
           {editMode ? (
             <>

@@ -1,6 +1,6 @@
 import BlogType from "./BlogType";
 
-export default function AccountInfoHeader({openBlogType}) {
+export default function AccountInfoHeader({ openBlogType }) {
   return (
     <div 
         className="flex flex-col items-center gap-3 translate-y-[-90px] 

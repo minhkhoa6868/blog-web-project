@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AddBlog from "../components/Home/AddBlog";
-import BlogContent from "../components/Home/BlogContent";
+import BlogContent from "../components/BlogContent";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import post from "../utils/homePost";
@@ -35,6 +35,7 @@ export default function Home({ onSelect }) {
           accountImage={item.accountImage}
           name={item.name}
           time={item.time}
+          numberLikes={item.likes.length}
         />
       ))}
       <ShowLike

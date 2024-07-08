@@ -1,4 +1,3 @@
-import CommentSection from "./ShowComment/CommentSection";
 import ParentComment from "./ShowComment/ParentComment";
 import PostButton from "./ShowComment/PostButton";
 
@@ -30,12 +29,14 @@ export default function ShowComment({ showComment, openComment, comments }) {
         <div className="flex items-center justify-between w-full border-t dark:border-gray-500 pt-[10px]">
           <button onClick={() => onSelect("account")}>
             <img
+              id="image-account"
               src="account.gif"
               alt="account-img"
               className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
             />
           </button>
           <textarea
+            id="comment"
             placeholder="Write your comment"
             className="w-4/5 h-fit border border-gray-300 rounded-[15px] outline-none
             resize-none pl-[10px] pt-[5px] focus:border-gray-400 transition-all ease duration-300

@@ -7,9 +7,9 @@ export default function Reply({ handleClick }) {
       <img
         src="./account.gif"
         alt="image-account"
-        className="w-[45px] h-[45px] rounded-full object-cover border border-gray-300 bg-white"
+        className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300 bg-white"
       />
-      <div className="text-[0.9rem] w-5/6">
+      <div className="text-[0.8rem] w-5/6">
         <textarea
           type="text"
           placeholder="Add comment"

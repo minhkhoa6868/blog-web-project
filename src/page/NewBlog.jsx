@@ -22,7 +22,7 @@ export default function NewBlog() {
 
   return (
     <div
-      className="flex flex-col gap-5 w-[500px] h-fit sm:w-[650px] sm:h-fit md:w-[720px] xl:w-[800px] border
+      className="flex flex-col gap-5 w-[500px] h-fit sm:w-[600px] md:w-[720px] xl:w-[800px] border
             mx-auto my-[20px] shadow-xl transition-all ease duration-300 dark:border-gray-500 dark:bg-gray-700
             rounded-xl"
     >
@@ -41,7 +41,7 @@ export default function NewBlog() {
         </div>
       </div>
       <ButtonUpload file={file} handleChange={handleChange} />
-      <div className="flex flex-col gap-3 px-[10px] sm:flex-row">
+      <div className="flex flex-col gap-3 px-[10px]">
         <UploadImage file={file} />
         <UploadPost countPost={countPost} />
       </div>
