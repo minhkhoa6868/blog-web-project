@@ -6,6 +6,7 @@ export default function BlogContentHeader({
   accountImage,
   name,
   time,
+  deletePost,
 }) {
   return (
     <div className="flex flex-col gap-3 px-[20px]">
@@ -42,7 +43,7 @@ export default function BlogContentHeader({
             </div>
           </div>
         </div>
-        <DeleteButton />
+        <DeleteButton deletePost={deletePost} />
       </div>
       <p className="text-justify text-[15px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam

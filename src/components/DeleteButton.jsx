@@ -1,10 +1,11 @@
-const DeleteButton = ({ handleClick }) => {
+const DeleteButton = ({ deletePost }) => {
   return (
     <button
       className="flex justify-center items-center rounded-full hover:bg-gray-300 hover:fill-black 
                     w-[35px] h-[35px] transition ease duration-300 text-[30px] 
                     dark:fill-white dark:hover:fill-black"
       id="status-checked"
+      onClick={deletePost}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

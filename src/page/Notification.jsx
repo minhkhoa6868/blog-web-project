@@ -1,7 +1,15 @@
+import { useState } from "react";
 import AppearNotification from "../components/Notification/AppearNotification";
+import DeleteWarning from "../components/DeleteWarning";
 import notification from "../utils/notification";
 
 export default function Notification() {
+  const [deleteWarning, setDeleteWarning] = useState(false);
+
+  const deletePost = () => {
+    setDeleteWarning((prevState) => !prevState);
+  };
+
   return (
     <div
       className="border dark:border-gray-700 rounded-xl w-[500px] sm:w-[580px] md:w-[700px] xl:w-[800px] mx-auto my-[20px]
@@ -9,8 +17,9 @@ export default function Notification() {
     >
       <h1 className="font-bold text-2xl pl-6 py-4">Notification</h1>
       {notification.map((noti) => (
-        <AppearNotification key={noti.id} noti={noti} />
+        <AppearNotification key={noti.id} noti={noti} handleClick={deletePost} />
       ))}
+      <DeleteWarning warning="Do you want to delete this notifications?" deleteWarning={deleteWarning} deletePost={deletePost} />
     </div>
   );
 }

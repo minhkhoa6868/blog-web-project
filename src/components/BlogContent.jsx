@@ -11,6 +11,7 @@ export default function BlogContent({
   name,
   time,
   numberLikes,
+  deletePost,
 }) {
   return (
     <div
@@ -23,6 +24,7 @@ export default function BlogContent({
         accountImage={accountImage}
         name={name}
         time={time}
+        deletePost={deletePost}
       />
       <BlogContentImage image={image} />
       <BlogContentFooter numberLikes={numberLikes} openLike={openLike} openComment={openComment} />

@@ -1,6 +1,6 @@
 import "./appearNotification.css";
 
-export default function AppearNotification({ noti }) {
+export default function AppearNotification({ noti, handleClick }) {
   return (
     <div className="px-3 pb-3">
       <a
@@ -24,6 +24,7 @@ export default function AppearNotification({ noti }) {
           </p>
         </div>
         <button
+          onClick={handleClick}
           className="flex justify-center items-center rounded-full hover:bg-gray-300 hover:fill-black 
                     w-[30px] h-[30px] transition ease duration-300 text-[30px] 
                     dark:fill-white dark:hover:fill-black"

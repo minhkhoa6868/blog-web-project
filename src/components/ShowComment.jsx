@@ -13,7 +13,7 @@ export default function ShowComment({ showComment, openComment, comments }) {
       <div
         className="flex flex-col relative items-center gap-2 w-full h-[500px] bg-white
         rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500
-        transition-all ease duration-300 mx-[20px] md:w-[742px]"
+        transition-all ease duration-300 md:w-[742px]"
       >
         <div className="flex flex-col gap-3 h-[390px] w-full">
           <h2 className="font-semibold text-center">Comments</h2>

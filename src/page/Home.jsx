@@ -3,6 +3,7 @@ import AddBlog from "../components/Home/AddBlog";
 import BlogContent from "../components/BlogContent";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
+import DeleteWarning from "../components/DeleteWarning";
 import post from "../utils/homePost";
 
 export default function Home({ onSelect }) {
@@ -10,6 +11,7 @@ export default function Home({ onSelect }) {
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
   const [currentComment, setCurrentComment] = useState([]);
+  const [deleteWarning, setDeleteWarning] = useState(false);
 
   function openLike(likes) {
     setShowLike((prevState) => !prevState);
@@ -19,8 +21,11 @@ export default function Home({ onSelect }) {
   function openComment(comments) {
     setShowComment((prevState) => !prevState);
     setCurrentComment(comments);
-    console.log(comments);
   }
+
+  const deletePost = () => {
+    setDeleteWarning((prevState) => !prevState);
+  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -36,6 +41,7 @@ export default function Home({ onSelect }) {
           name={item.name}
           time={item.time}
           numberLikes={item.likes.length}
+          deletePost={deletePost}
         />
       ))}
       <ShowLike
@@ -48,6 +54,7 @@ export default function Home({ onSelect }) {
         openComment={() => openComment(currentComment)}
         comments={currentComment}
       />
+      <DeleteWarning warning="Do you want to delete this post?" deleteWarning={deleteWarning} deletePost={deletePost} />
     </div>
   );
 }
