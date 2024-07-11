@@ -5,6 +5,7 @@ import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import DeleteWarning from "../components/DeleteWarning";
 import post from "../utils/homePost";
+import countComments from "../utils/countComments";
 
 export default function Home({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -41,6 +42,7 @@ export default function Home({ onSelect }) {
           name={item.name}
           time={item.time}
           numberLikes={item.likes.length}
+          numberComments={countComments(item.comments)}
           deletePost={deletePost}
         />
       ))}

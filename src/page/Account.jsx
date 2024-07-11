@@ -7,6 +7,7 @@ import ShowComment from "../components/ShowComment";
 import DeleteWarning from "../components/DeleteWarning";
 import Follow from "./Account/Follow.jsx";
 import accountPost from "../utils/accountPost.js";
+import countComments from "../utils/countComments.js";
 import followers from "../utils/follower.js";
 import followings from "../utils/following.js";
 
@@ -51,6 +52,8 @@ export default function Account({ onSelect }) {
     <div className="flex flex-col gap-6">
       <AccountInfo
         numberBlogs={accountPost.length}
+        numberFollowers={followers.length}
+        numberFollowings={followings.length}
         openBlogType={openBlogType}
         openFollowers={openFollowers}
         openFollowings={openFollowings}
@@ -68,6 +71,7 @@ export default function Account({ onSelect }) {
           name={item.name}
           time={item.time}
           numberLikes={item.likes.length}
+          numberComments={countComments(item.comments)}
           deletePost={deletePost}
         />
       ))}

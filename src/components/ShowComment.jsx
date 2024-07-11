@@ -17,14 +17,10 @@ export default function ShowComment({ showComment, openComment, comments }) {
       >
         <div className="flex flex-col gap-3 h-[390px] w-full">
           <h2 className="font-semibold text-center">Comments</h2>
-          {comments.length > 0 && (
-            <div className="flex flex-col gap-4 overflow-scroll">
-              {comments[0].items?.length > 0 &&
-                comments[0].items.map((cmt) => (
-                  <ParentComment key={cmt.id} comment={cmt} />
-                ))}
-            </div>
-          )}
+          <div className="flex flex-col gap-4 overflow-scroll">
+            {comments.length > 0 &&
+              comments.map((cmt) => <ParentComment key={cmt.id} comment={cmt} />)}
+          </div>
         </div>
         <div className="flex items-center justify-between w-full border-t dark:border-gray-500 pt-[10px]">
           <button onClick={() => onSelect("account")}>
