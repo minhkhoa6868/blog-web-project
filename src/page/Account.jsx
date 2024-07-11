@@ -5,7 +5,10 @@ import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import DeleteWarning from "../components/DeleteWarning";
+import Follow from "./Account/Follow.jsx";
 import accountPost from "../utils/accountPost.js";
+import followers from "../utils/follower.js";
+import followings from "../utils/following.js";
 
 export default function Account({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -14,6 +17,8 @@ export default function Account({ onSelect }) {
   const [currentComment, setCurrentComment] = useState([]);
   const [showBlogType, setShowBlogType] = useState(false);
   const [deleteWarning, setDeleteWarning] = useState(false);
+  const [showFollowers, setShowFollowers] = useState(false);
+  const [showFollowings, setShowFollowings] = useState(false);
 
   function openBlogType() {
     setShowBlogType((prevState) => !prevState);
@@ -34,12 +39,24 @@ export default function Account({ onSelect }) {
     setDeleteWarning((prevState) => !prevState);
   };
 
+  const openFollowers = () => {
+    setShowFollowers((prevState) => !prevState);
+  };
+
+  const openFollowings = () => {
+    setShowFollowings((prevState) => !prevState);
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <AccountInfo
         numberBlogs={accountPost.length}
         openBlogType={openBlogType}
+        openFollowers={openFollowers}
+        openFollowings={openFollowings}
       />
+      <Follow follow={followers} status="Followers" showFollow={showFollowers} openFollow={openFollowers} />
+      <Follow follow={followings} status="Followings" showFollow={showFollowings} openFollow={openFollowings} />
       {accountPost.map((item) => (
         <BlogContent
           key={item.id}

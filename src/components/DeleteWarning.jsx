@@ -3,7 +3,7 @@ import ActionButton from "./DeleteWarning/ActionButton";
 const DeleteWarning = ({ warning, deleteWarning, deletePost }) => {
   return (
     <div
-    className={
+      className={
         deleteWarning
           ? "flex justify-center items-center fixed top-0 left-0 h-[100vh] w-full bg-black bg-opacity-50 z-[1000]"
           : "hidden"
@@ -16,8 +16,8 @@ const DeleteWarning = ({ warning, deleteWarning, deletePost }) => {
       >
         <p>{warning}</p>
         <div className="flex gap-4">
-            <ActionButton status="Delete" handleClick={deletePost} />
-            <ActionButton status="Cancel" handleClick={deletePost} />
+          <ActionButton status="Delete" handleClick={deletePost} />
+          <ActionButton status="Cancel" handleClick={deletePost} />
         </div>
       </div>
     </div>

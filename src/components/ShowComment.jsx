@@ -6,7 +6,7 @@ export default function ShowComment({ showComment, openComment, comments }) {
     <div
       className={
         showComment
-          ? "flex justify-center items-center fixed top-0 left-0 h-[100vh] w-full bg-black bg-opacity-50 z-[1000]"
+          ? "flex justify-center items-center fixed inset-0 bg-black bg-opacity-60 z-[1000]"
           : "hidden"
       }
     >
