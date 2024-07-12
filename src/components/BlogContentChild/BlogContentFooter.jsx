@@ -1,7 +1,7 @@
 import ShowNumber from "./ShowNumber";
 import AddCommentSection from "./AddCommentSection";
 
-export default function BlogContentFooter({ numberLikes, numberComments, openLike, openComment }) {
+export default function BlogContentFooter({ numberLikes, numberComments, numberShares, openLike, openComment, openShare }) {
   return (
     <div className="flex flex-col gap-3 px-[20px] sm:px-[30px]">
       <div className="flex gap-5 transition-all ease duration-300">
@@ -44,7 +44,7 @@ export default function BlogContentFooter({ numberLikes, numberComments, openLik
         <ShowNumber number={numberLikes} status='likes' handleClick={openLike} />
         <div className="flex gap-3">
           <ShowNumber number={numberComments} status='comments' handleClick={openComment} />
-          <ShowNumber number='100' status='shares' />
+          <ShowNumber number={numberShares} status='shares' handleClick={openShare} />
         </div>
       </div>
       <AddCommentSection openComment={openComment} />

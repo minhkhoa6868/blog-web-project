@@ -4,6 +4,7 @@ import BlogContent from "../components/BlogContent.jsx";
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
+import ShowShare from "../components/ShowShare.jsx";
 import DeleteWarning from "../components/DeleteWarning";
 import Follow from "./Account/Follow.jsx";
 import accountPost from "../utils/accountPost.js";
@@ -16,24 +17,30 @@ export default function Account({ onSelect }) {
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
   const [currentComment, setCurrentComment] = useState([]);
+  const [showShare, setShowShare] = useState(false);
+  const [currentShare, setCurrentShare] = useState([]);
   const [showBlogType, setShowBlogType] = useState(false);
   const [deleteWarning, setDeleteWarning] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
-  function openBlogType() {
+  const openBlogType = () => {
     setShowBlogType((prevState) => !prevState);
   }
 
-  function openLike(likes) {
+  const openLike = (likes) => {
     setShowLike((prevState) => !prevState);
     setCurrentLike(likes);
   }
 
-  function openComment(comments) {
+  const openComment = (comments) => {
     setShowComment((prevState) => !prevState);
     setCurrentComment(comments);
-    console.log(comments);
+  }
+
+  const openShare = (comments) => {
+    setShowShare((prevState) => !prevState);
+    setCurrentShare(comments);
   }
 
   const deletePost = () => {
@@ -66,12 +73,14 @@ export default function Account({ onSelect }) {
           onSelect={onSelect}
           openLike={() => openLike(item.likes)}
           openComment={() => openComment(item.comments)}
+          openShare={() => openShare(item.shares)}
           image={item.image}
           accountImage={item.accountImage}
           name={item.name}
           time={item.time}
           numberLikes={item.likes.length}
           numberComments={countComments(item.comments)}
+          numberShares={item.shares.length}
           deletePost={deletePost}
         />
       ))}
@@ -85,6 +94,11 @@ export default function Account({ onSelect }) {
         showComment={showComment}
         openComment={() => openComment(currentComment)}
         comments={currentComment}
+      />
+      <ShowShare
+        showShare={showShare}
+        openShare={() => openShare(currentLike)}
+        shares={currentShare}
       />
       <DeleteWarning warning="Do you want to delete this post?" deleteWarning={deleteWarning} deletePost={deletePost} />
     </div>

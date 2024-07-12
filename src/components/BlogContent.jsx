@@ -6,12 +6,14 @@ export default function BlogContent({
   onSelect,
   openLike,
   openComment,
+  openShare,
   image,
   accountImage,
   name,
   time,
   numberLikes,
   numberComments,
+  numberShares,
   deletePost,
 }) {
   return (
@@ -31,8 +33,10 @@ export default function BlogContent({
       <BlogContentFooter
         numberLikes={numberLikes}
         numberComments={numberComments}
+        numberShares={numberShares}
         openLike={openLike}
         openComment={openComment}
+        openShare={openShare}
       />
     </div>
   );
