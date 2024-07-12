@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LazyLoad from "react-lazyload";
 import AccountInfo from "../components/Account/AccountInfo.jsx";
 import BlogContent from "../components/BlogContent.jsx";
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
@@ -26,22 +27,22 @@ export default function Account({ onSelect }) {
 
   const openBlogType = () => {
     setShowBlogType((prevState) => !prevState);
-  }
+  };
 
   const openLike = (likes) => {
     setShowLike((prevState) => !prevState);
     setCurrentLike(likes);
-  }
+  };
 
   const openComment = (comments) => {
     setShowComment((prevState) => !prevState);
     setCurrentComment(comments);
-  }
+  };
 
   const openShare = (comments) => {
     setShowShare((prevState) => !prevState);
     setCurrentShare(comments);
-  }
+  };
 
   const deletePost = () => {
     setDeleteWarning((prevState) => !prevState);
@@ -56,7 +57,7 @@ export default function Account({ onSelect }) {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 mb-[20px] h-[100vh] overflow-y-scroll">
       <AccountInfo
         numberBlogs={accountPost.length}
         numberFollowers={followers.length}
@@ -65,24 +66,40 @@ export default function Account({ onSelect }) {
         openFollowers={openFollowers}
         openFollowings={openFollowings}
       />
-      <Follow follow={followers} status="Followers" showFollow={showFollowers} openFollow={openFollowers} />
-      <Follow follow={followings} status="Followings" showFollow={showFollowings} openFollow={openFollowings} />
+      <Follow
+        follow={followers}
+        status="Followers"
+        showFollow={showFollowers}
+        openFollow={openFollowers}
+      />
+      <Follow
+        follow={followings}
+        status="Followings"
+        showFollow={showFollowings}
+        openFollow={openFollowings}
+      />
       {accountPost.map((item) => (
-        <BlogContent
+        <LazyLoad
           key={item.id}
-          onSelect={onSelect}
-          openLike={() => openLike(item.likes)}
-          openComment={() => openComment(item.comments)}
-          openShare={() => openShare(item.shares)}
-          image={item.image}
-          accountImage={item.accountImage}
-          name={item.name}
-          time={item.time}
-          numberLikes={item.likes.length}
-          numberComments={countComments(item.comments)}
-          numberShares={item.shares.length}
-          deletePost={deletePost}
-        />
+          once={true}
+          placeholder={<div>Loading...</div>}
+        >
+          <BlogContent
+            key={item.id}
+            onSelect={onSelect}
+            openLike={() => openLike(item.likes)}
+            openComment={() => openComment(item.comments)}
+            openShare={() => openShare(item.shares)}
+            image={item.image}
+            accountImage={item.accountImage}
+            name={item.name}
+            time={item.time}
+            numberLikes={item.likes.length}
+            numberComments={countComments(item.comments)}
+            numberShares={item.shares.length}
+            deletePost={deletePost}
+          />
+        </LazyLoad>
       ))}
       <ShowBlogType showBlogType={showBlogType} openBlogType={openBlogType} />
       <ShowLike
@@ -100,7 +117,11 @@ export default function Account({ onSelect }) {
         openShare={() => openShare(currentLike)}
         shares={currentShare}
       />
-      <DeleteWarning warning="Do you want to delete this post?" deleteWarning={deleteWarning} deletePost={deletePost} />
+      <DeleteWarning
+        warning="Do you want to delete this post?"
+        deleteWarning={deleteWarning}
+        deletePost={deletePost}
+      />
     </div>
   );
 }
