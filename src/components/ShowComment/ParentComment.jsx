@@ -14,6 +14,7 @@ export default function ParentComment({ comment }) {
             src={comment.imageAccount}
             alt="image-account"
             className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300 bg-white"
+            loading="lazy"
           />
         </button>
         <div className="text-[0.8rem] w-5/6 break-words">

@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazyload";
 import ShareAccount from "./ShowShare/ShareAccount";
 
 const ShowShare = ({ showShare, openShare, shares }) => {
@@ -15,13 +16,23 @@ const ShowShare = ({ showShare, openShare, shares }) => {
       >
         <h2 className="font-semibold">Shares</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
-            {shares.map((share) => (
-                <ShareAccount key={share.id} imageAccount={share.imageAccount} nameAccount={share.nameAccount} />
-            ))}
+          {shares.map((share) => (
+            <LazyLoad
+                key={share.id}
+                once={true}
+                placeholder={<div>Loading...</div>}
+            >
+              <ShareAccount
+                key={share.id}
+                imageAccount={share.imageAccount}
+                nameAccount={share.nameAccount}
+              />
+            </LazyLoad>
+          ))}
         </div>
-        <button 
-            className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-            onClick={() => openShare([])}
+        <button
+          className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
+          onClick={() => openShare([])}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +46,6 @@ const ShowShare = ({ showShare, openShare, shares }) => {
       </div>
     </div>
   );
-}
+};
 
 export default ShowShare;

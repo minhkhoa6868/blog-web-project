@@ -76,6 +76,28 @@ const post = [
         ],
       },
     ],
+    shares: [
+      {
+        id: 1437892343,
+        imageAccount: "/account4.gif",
+        nameAccount: "buffalo",
+      },
+      {
+        id: 14237489327,
+        imageAccount: "/account3.gif",
+        nameAccount: "David",
+      },
+      {
+        id: 1784239432,
+        imageAccount: "/account2.gif",
+        nameAccount: "Steven",
+      },
+      {
+        id: 1784239433,
+        imageAccount: "/account.gif",
+        nameAccount: "Trần Khoa",
+      },
+    ],
   },
   {
     id: 2,
@@ -123,6 +145,28 @@ const post = [
             items: [],
           },
         ],
+      },
+    ],
+    shares: [
+      {
+        id: 1437892343,
+        imageAccount: "/account4.gif",
+        nameAccount: "buffalo",
+      },
+      {
+        id: 14237489327,
+        imageAccount: "/account3.gif",
+        nameAccount: "David",
+      },
+      {
+        id: 1784239432,
+        imageAccount: "/account2.gif",
+        nameAccount: "Steven",
+      },
+      {
+        id: 1784239433,
+        imageAccount: "/account.gif",
+        nameAccount: "Trần Khoa",
       },
     ],
   },
@@ -174,6 +218,28 @@ const post = [
         ],
       },
     ],
+    shares: [
+      {
+        id: 1437892343,
+        imageAccount: "/account4.gif",
+        nameAccount: "buffalo",
+      },
+      {
+        id: 14237489327,
+        imageAccount: "/account3.gif",
+        nameAccount: "David",
+      },
+      {
+        id: 1784239432,
+        imageAccount: "/account2.gif",
+        nameAccount: "Steven",
+      },
+      {
+        id: 1784239433,
+        imageAccount: "/account.gif",
+        nameAccount: "Trần Khoa",
+      },
+    ],
   },
   {
     id: 4,
@@ -221,6 +287,28 @@ const post = [
             items: [],
           },
         ],
+      },
+    ],
+    shares: [
+      {
+        id: 1437892343,
+        imageAccount: "/account4.gif",
+        nameAccount: "buffalo",
+      },
+      {
+        id: 14237489327,
+        imageAccount: "/account3.gif",
+        nameAccount: "David",
+      },
+      {
+        id: 1784239432,
+        imageAccount: "/account2.gif",
+        nameAccount: "Steven",
+      },
+      {
+        id: 1784239433,
+        imageAccount: "/account.gif",
+        nameAccount: "Trần Khoa",
       },
     ],
   },

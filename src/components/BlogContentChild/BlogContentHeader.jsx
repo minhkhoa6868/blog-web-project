@@ -17,6 +17,7 @@ export default function BlogContentHeader({
               src={accountImage}
               alt="account-img"
               className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300 bg-white"
+              loading="lazy"
             />
           </Link>
           <div>

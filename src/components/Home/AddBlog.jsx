@@ -17,6 +17,7 @@ export default function AddBlog({ onSelect }) {
               src="account.gif"
               alt="account-img"
               className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300"
+              loading="lazy"
             />
           </Link>
           <Link

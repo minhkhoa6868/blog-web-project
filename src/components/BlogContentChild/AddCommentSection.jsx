@@ -6,6 +6,7 @@ const AddCommentSection = ({ openComment }) => {
           src="account.gif"
           alt="account-img"
           className="w-[40px] h-[40px] rounded-full object-cover border border-gray-300"
+          loading="lazy"
         />
       </button>
       <button

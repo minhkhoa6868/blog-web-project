@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazyload";
 import ParentComment from "./ShowComment/ParentComment";
 import PostButton from "./ShowComment/PostButton";
 
@@ -19,7 +20,15 @@ export default function ShowComment({ showComment, openComment, comments }) {
           <h2 className="font-semibold text-center">Comments</h2>
           <div className="flex flex-col gap-4 overflow-scroll">
             {comments.length > 0 &&
-              comments.map((cmt) => <ParentComment key={cmt.id} comment={cmt} />)}
+              comments.map((cmt) => (
+                <LazyLoad
+                  key={cmt.id}
+                  once={true}
+                  placeholder={<div>Loading...</div>}
+                >
+                  <ParentComment key={cmt.id} comment={cmt} />
+                </LazyLoad>
+              ))}
           </div>
         </div>
         <div className="flex items-center justify-between w-full border-t dark:border-gray-500 pt-[10px]">

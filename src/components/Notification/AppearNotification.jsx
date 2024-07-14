@@ -15,6 +15,7 @@ export default function AppearNotification({ noti, handleClick }) {
             src={noti.imageAccount}
             alt="account"
             className="rounded-full border border-gray-300 w-[80px] h-[80px] object-cover bg-white"
+            loading="lazy"
           />
           <p id="status" className="w-5/6 text-wrap">
             {noti.type === "accept"

@@ -1,38 +1,33 @@
 import LazyLoad from "react-lazyload";
-import LikeAccount from "./ShowLike/LikeAccount";
+import AccountRequest from "./FriendRequest/AccountRequest";
 
-export default function ShowLike({ showLike, openLike, likes }) {
+const FriendRequest = ({ showRequest, handleClick, statusFriends, status, statusAction }) => {
   return (
     <div
       className={
-        showLike
+        showRequest
           ? "flex justify-center items-center fixed inset-0 bg-black bg-opacity-60 z-[1000]"
           : "hidden"
       }
     >
       <div
-        className="flex flex-col relative items-center gap-3 w-[300px] h-[400px] bg-white
+        className="flex flex-col relative items-center gap-3 w-[350px] h-[400px] bg-white
         rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500"
       >
-        <h2 className="font-semibold">Likes</h2>
+        <h2 className="font-semibold">{status}</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
-          {likes.map((like) => (
-            <LazyLoad
-              key={like.id}
-              once={true}
-              placeholder={<div>Loading...</div>}
-            >
-              <LikeAccount
-                key={like.id}
-                imageAccount={like.imageAccount}
-                nameAccount={like.nameAccount}
-              />
-            </LazyLoad>
+          {statusFriends.map((child) => (
+            <AccountRequest
+              key={child.id}
+              imageAccount={child.imageAccount}
+              nameAccount={child.nameAccount}
+              statusAction={statusAction}
+            />
           ))}
         </div>
         <button
           className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-          onClick={() => openLike([])}
+          onClick={handleClick}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,4 +41,6 @@ export default function ShowLike({ showLike, openLike, likes }) {
       </div>
     </div>
   );
-}
+};
+
+export default FriendRequest;

@@ -12,6 +12,7 @@ export default function AccountInfoHeader({ openBlogType }) {
         id="account-image"
         className="w-[150px] h-[150px] rounded-full object-cover border-[5px] border-white
                         dark:border-gray-700"
+        loading="lazy"
       />
       <p className="font-semibold text-[1.5rem]">Trần Khoa</p>
       <p className="text-sm" id="account-nickname">__mkhoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>

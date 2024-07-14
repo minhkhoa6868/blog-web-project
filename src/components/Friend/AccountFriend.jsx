@@ -9,6 +9,7 @@ export default function AccountFriend({ image, name, status }) {
                     src={image} 
                     alt="image account" 
                     className="w-[220px] h-[270px] object-cover rounded-t-xl bg-white"
+                    loading="lazy"
                 />
             </button>
             <button className="font-semibold">{name}</button>

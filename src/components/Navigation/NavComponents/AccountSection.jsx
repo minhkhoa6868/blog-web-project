@@ -21,6 +21,7 @@ export default function HomeSection({
         alt="account"
         id="account-img"
         className="rounded-full w-[40px] h-[40px] object-cover m-auto border-[3px] border-gray-400"
+        loading="lazy"
       />
     </Link>
   );

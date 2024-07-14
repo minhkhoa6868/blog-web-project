@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LazyLoad from "react-lazyload";
 import AppearNotification from "../components/Notification/AppearNotification";
 import DeleteWarning from "../components/DeleteWarning";
 import notification from "../utils/notification";
@@ -17,7 +18,13 @@ export default function Notification() {
     >
       <h1 className="font-bold text-2xl pl-6 py-4">Notification</h1>
       {notification.map((noti) => (
-        <AppearNotification key={noti.id} noti={noti} handleClick={deletePost} />
+        <LazyLoad 
+          key={noti.id}
+          once={true}
+          placeholder={<div>Loading...</div>}
+        >
+         <AppearNotification key={noti.id} noti={noti} handleClick={deletePost} />
+        </LazyLoad>
       ))}
       <DeleteWarning warning="Do you want to delete this notifications?" deleteWarning={deleteWarning} deletePost={deletePost} />
     </div>

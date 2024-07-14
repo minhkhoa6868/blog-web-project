@@ -7,7 +7,7 @@ import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import ShowShare from "../components/ShowShare.jsx";
 import DeleteWarning from "../components/DeleteWarning";
-import Follow from "./Account/Follow.jsx";
+import Follow from "../components/Account/Follow.jsx";
 import accountPost from "../utils/accountPost.js";
 import countComments from "../utils/countComments.js";
 import followers from "../utils/follower.js";
@@ -39,9 +39,9 @@ export default function Account({ onSelect }) {
     setCurrentComment(comments);
   };
 
-  const openShare = (comments) => {
+  const openShare = (shares) => {
     setShowShare((prevState) => !prevState);
-    setCurrentShare(comments);
+    setCurrentShare(shares);
   };
 
   const deletePost = () => {
@@ -57,7 +57,7 @@ export default function Account({ onSelect }) {
   };
 
   return (
-    <div className="flex flex-col gap-6 mb-[20px] h-[100vh] overflow-y-scroll">
+    <div className="flex flex-col gap-6">
       <AccountInfo
         numberBlogs={accountPost.length}
         numberFollowers={followers.length}
@@ -114,7 +114,7 @@ export default function Account({ onSelect }) {
       />
       <ShowShare
         showShare={showShare}
-        openShare={() => openShare(currentLike)}
+        openShare={() => openShare(currentShare)}
         shares={currentShare}
       />
       <DeleteWarning
