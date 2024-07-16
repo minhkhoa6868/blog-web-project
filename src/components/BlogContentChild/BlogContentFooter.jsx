@@ -1,11 +1,31 @@
+import { useState } from "react";
 import ShowNumber from "./ShowNumber";
 import AddCommentSection from "./AddCommentSection";
 
-export default function BlogContentFooter({ numberLikes, numberComments, numberShares, openLike, openComment, openShare }) {
+export default function BlogContentFooter({
+  numberLikes,
+  numberComments,
+  numberShares,
+  openLike,
+  openComment,
+  openShare,
+}) {
+  const [like, setLike] = useState(false);
+
+  const likeHandler = () => {
+    setLike((prevState) => !prevState);
+  };
+
   return (
     <div className="flex flex-col gap-3 px-[20px] sm:px-[30px]">
       <div className="flex gap-5 transition-all ease duration-300">
-        <button className="fill-red-400 hover:fill-red-500 transition-all ease duration-300">
+        <button 
+          onClick={likeHandler}
+          className={like ? 
+            "fill-red-400 hover:fill-red-500 transition-all ease duration-300": 
+            "fill-gray-300 hover:fill-gray-400 dark:fill-gray-400 dark:hover:fill-gray-300 transition-all ease duration-300"
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -16,7 +36,7 @@ export default function BlogContentFooter({ numberLikes, numberComments, numberS
           </svg>
         </button>
         <button
-          className="fill-gray-700 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-500
+          className="fill-gray-700 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-300
                 transition-all ease duration-300"
           onClick={openComment}
         >
@@ -41,10 +61,22 @@ export default function BlogContentFooter({ numberLikes, numberComments, numberS
         </button>
       </div>
       <div className="flex justify-between text-[15px] text-gray-600 dark:text-gray-300 font-semibold">
-        <ShowNumber number={numberLikes} status='likes' handleClick={openLike} />
+        <ShowNumber
+          number={numberLikes}
+          status="likes"
+          handleClick={openLike}
+        />
         <div className="flex gap-3">
-          <ShowNumber number={numberComments} status='comments' handleClick={openComment} />
-          <ShowNumber number={numberShares} status='shares' handleClick={openShare} />
+          <ShowNumber
+            number={numberComments}
+            status="comments"
+            handleClick={openComment}
+          />
+          <ShowNumber
+            number={numberShares}
+            status="shares"
+            handleClick={openShare}
+          />
         </div>
       </div>
       <AddCommentSection openComment={openComment} />

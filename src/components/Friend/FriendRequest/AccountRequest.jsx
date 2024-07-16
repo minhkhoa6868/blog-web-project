@@ -2,7 +2,7 @@ import "./buttonStyle.css";
 
 const AccountRequest = ({ imageAccount, nameAccount, statusAction }) => {
     return (
-        <button 
+        <a 
             className="flex items-center gap-2 p-[5px] hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-400
             rounded-[12px] transition-all ease duration-300"
             id="account-request"
@@ -31,7 +31,7 @@ const AccountRequest = ({ imageAccount, nameAccount, statusAction }) => {
                     </button>
                 </div>
             </div>
-        </button>
+        </a>
     );
 }
 
