@@ -1,13 +1,13 @@
-import { useState } from "react";
-import LazyLoad from "react-lazyload";
+import { useState, lazy, Suspense } from "react";
 import AddBlog from "../components/Home/AddBlog";
-import BlogContent from "../components/BlogContent";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import ShowShare from "../components/ShowShare.jsx";
 import DeleteWarning from "../components/DeleteWarning";
 import post from "../utils/homePost";
 import countComments from "../utils/countComments";
+
+const BlogContent = lazy(() => import("../components/BlogContent"));
 
 export default function Home({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -41,10 +41,9 @@ export default function Home({ onSelect }) {
     <div className="flex flex-col gap-6">
       <AddBlog onSelect={onSelect} />
       {post.map((item) => (
-        <LazyLoad 
-          key={item.id} 
-          once={true}
-          placeholder={<div>Loading...</div>}
+        <Suspense
+          key={item.id}
+          fallback={<div>Loading...</div>}
         >
           <BlogContent
             key={item.id}
@@ -61,14 +60,13 @@ export default function Home({ onSelect }) {
             numberShares={item.shares.length}
             deletePost={deletePost}
           />
-        </LazyLoad>
+        </Suspense>
       ))}
       <ShowLike
         showLike={showLike}
         openLike={() => openLike(currentLike)}
         likes={currentLike}
       />
-
       <ShowComment
         showComment={showComment}
         openComment={() => openComment(currentComment)}
@@ -82,7 +80,7 @@ export default function Home({ onSelect }) {
       <DeleteWarning
         warning="Do you want to delete this post?"
         deleteWarning={deleteWarning}
-        deletePost={deletePost}
+        handleDelete={deletePost}
       />
     </div>
   );

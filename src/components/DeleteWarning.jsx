@@ -1,6 +1,6 @@
 import ActionButton from "./DeleteWarning/ActionButton";
 
-const DeleteWarning = ({ warning, deleteWarning, deletePost }) => {
+const DeleteWarning = ({ warning, deleteWarning, handleDelete }) => {
   return (
     <div
       className={
@@ -16,8 +16,8 @@ const DeleteWarning = ({ warning, deleteWarning, deletePost }) => {
       >
         <p>{warning}</p>
         <div className="flex gap-4">
-          <ActionButton status="Delete" handleClick={deletePost} />
-          <ActionButton status="Cancel" handleClick={deletePost} />
+          <ActionButton status="Delete" handleClick={handleDelete} />
+          <ActionButton status="Cancel" handleClick={handleDelete} />
         </div>
       </div>
     </div>

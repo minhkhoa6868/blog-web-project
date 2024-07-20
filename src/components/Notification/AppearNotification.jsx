@@ -18,10 +18,7 @@ export default function AppearNotification({ noti, handleClick }) {
             loading="lazy"
           />
           <p id="status" className="w-5/6 text-wrap">
-            {noti.type === "accept"
-              ? `${noti.nameAccount} ${noti.title1} ${noti.nameAccount} ${noti.title2}`
-              : `${noti.nameAccount} ${noti.title}`
-            }
+            {`${noti.nameAccount} ${noti.title}`}
           </p>
         </div>
         <button

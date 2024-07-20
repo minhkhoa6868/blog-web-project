@@ -1,5 +1,6 @@
-import LazyLoad from "react-lazyload";
-import LikeAccount from "./ShowLike/LikeAccount";
+import { lazy, Suspense } from "react";
+
+const LikeAccount = lazy(() => import("./ShowLike/LikeAccount"));
 
 export default function ShowLike({ showLike, openLike, likes }) {
   return (
@@ -17,17 +18,16 @@ export default function ShowLike({ showLike, openLike, likes }) {
         <h2 className="font-semibold">Likes</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
           {likes.map((like) => (
-            <LazyLoad
+            <Suspense
               key={like.id}
-              once={true}
-              placeholder={<div>Loading...</div>}
+              fallback={<div>Loading...</div>}
             >
               <LikeAccount
                 key={like.id}
                 imageAccount={like.imageAccount}
                 nameAccount={like.nameAccount}
               />
-            </LazyLoad>
+            </Suspense>
           ))}
         </div>
         <button

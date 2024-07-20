@@ -1,7 +1,4 @@
-import { useState } from "react";
-import LazyLoad from "react-lazyload";
-import AccountInfo from "../components/Account/AccountInfo.jsx";
-import BlogContent from "../components/BlogContent.jsx";
+import { useState, lazy, Suspense } from "react";
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
@@ -12,6 +9,9 @@ import accountPost from "../utils/accountPost.js";
 import countComments from "../utils/countComments.js";
 import followers from "../utils/follower.js";
 import followings from "../utils/following.js";
+
+const AccountInfo = lazy(() => import("../components/Account/AccountInfo.jsx"));
+const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
 export default function Account({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -58,14 +58,16 @@ export default function Account({ onSelect }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <AccountInfo
-        numberBlogs={accountPost.length}
-        numberFollowers={followers.length}
-        numberFollowings={followings.length}
-        openBlogType={openBlogType}
-        openFollowers={openFollowers}
-        openFollowings={openFollowings}
-      />
+      <Suspense fallback={<div className="text-center">Loading...</div>}>
+        <AccountInfo
+          numberBlogs={accountPost.length}
+          numberFollowers={followers.length}
+          numberFollowings={followings.length}
+          openBlogType={openBlogType}
+          openFollowers={openFollowers}
+          openFollowings={openFollowings}
+        />
+      </Suspense>
       <Follow
         follow={followers}
         status="Followers"
@@ -79,11 +81,7 @@ export default function Account({ onSelect }) {
         openFollow={openFollowings}
       />
       {accountPost.map((item) => (
-        <LazyLoad
-          key={item.id}
-          once={true}
-          placeholder={<div>Loading...</div>}
-        >
+        <Suspense key={item.id} fallback={<div>Loading...</div>}>
           <BlogContent
             key={item.id}
             onSelect={onSelect}
@@ -99,7 +97,7 @@ export default function Account({ onSelect }) {
             numberShares={item.shares.length}
             deletePost={deletePost}
           />
-        </LazyLoad>
+        </Suspense>
       ))}
       <ShowBlogType showBlogType={showBlogType} openBlogType={openBlogType} />
       <ShowLike
@@ -120,7 +118,7 @@ export default function Account({ onSelect }) {
       <DeleteWarning
         warning="Do you want to delete this post?"
         deleteWarning={deleteWarning}
-        deletePost={deletePost}
+        handleDelete={deletePost}
       />
     </div>
   );

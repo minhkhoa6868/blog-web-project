@@ -32,6 +32,7 @@ export default function NewBlog() {
             src="account.gif"
             alt="account"
             className="w-[50px] h-[50px] rounded-full object-cover border border-gray-300"
+            loading="lazy"
           />
           <span className="font-semibold">Trần Khoa</span>
         </div>

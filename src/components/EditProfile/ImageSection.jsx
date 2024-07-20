@@ -14,6 +14,7 @@ export default function ImageSection() {
         alt="image-account"
         className="w-[120px] h-[120px] rounded-[50%] object-cover border-[6px] border-gray-300
           dark:border-gray-500"
+        loading="lazy"
       />
       <div
         className="w-fit cursor-pointer px-[20px] py-[5px] rounded-[20px] bg-gradient-to-tr 

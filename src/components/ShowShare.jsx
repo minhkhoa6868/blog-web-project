@@ -1,5 +1,6 @@
-import LazyLoad from "react-lazyload";
-import ShareAccount from "./ShowShare/ShareAccount";
+import { lazy, Suspense } from "react";
+
+const ShareAccount = lazy(() => import("./ShowShare/ShareAccount"));
 
 const ShowShare = ({ showShare, openShare, shares }) => {
   return (
@@ -17,17 +18,16 @@ const ShowShare = ({ showShare, openShare, shares }) => {
         <h2 className="font-semibold">Shares</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
           {shares.map((share) => (
-            <LazyLoad
-                key={share.id}
-                once={true}
-                placeholder={<div>Loading...</div>}
+            <Suspense
+              key={share.id}
+              fallback={<div>Loading...</div>}
             >
               <ShareAccount
                 key={share.id}
                 imageAccount={share.imageAccount}
                 nameAccount={share.nameAccount}
               />
-            </LazyLoad>
+            </Suspense>
           ))}
         </div>
         <button

@@ -1,6 +1,8 @@
-import LazyLoad from "react-lazyload";
-import ParentComment from "./ShowComment/ParentComment";
+import { lazy, Suspense } from "react";
 import PostButton from "./ShowComment/PostButton";
+
+const ParentComment = lazy(() =>
+  import("./ShowComment/ParentComment"));
 
 export default function ShowComment({ showComment, openComment, comments }) {
   return (
@@ -21,13 +23,12 @@ export default function ShowComment({ showComment, openComment, comments }) {
           <div className="flex flex-col gap-4 overflow-scroll">
             {comments.length > 0 &&
               comments.map((cmt) => (
-                <LazyLoad
+                <Suspense
                   key={cmt.id}
-                  once={true}
-                  placeholder={<div>Loading...</div>}
+                  fallback={<div>Loading...</div>}
                 >
                   <ParentComment key={cmt.id} comment={cmt} />
-                </LazyLoad>
+                </Suspense>
               ))}
           </div>
         </div>

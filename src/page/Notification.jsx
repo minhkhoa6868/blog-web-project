@@ -1,13 +1,13 @@
-import { useState } from "react";
-import LazyLoad from "react-lazyload";
-import AppearNotification from "../components/Notification/AppearNotification";
+import { useState, lazy, Suspense } from "react";
 import DeleteWarning from "../components/DeleteWarning";
 import notification from "../utils/notification";
+
+const AppearNotification = lazy(() => import("../components/Notification/AppearNotification"));
 
 export default function Notification() {
   const [deleteWarning, setDeleteWarning] = useState(false);
 
-  const deletePost = () => {
+  const deleteNotification = () => {
     setDeleteWarning((prevState) => !prevState);
   };
 
@@ -18,15 +18,22 @@ export default function Notification() {
     >
       <h1 className="font-bold text-2xl pl-6 py-4">Notification</h1>
       {notification.map((noti) => (
-        <LazyLoad 
+        <Suspense
           key={noti.id}
-          once={true}
-          placeholder={<div>Loading...</div>}
+          fallback={<div>Loading...</div>}
         >
-         <AppearNotification key={noti.id} noti={noti} handleClick={deletePost} />
-        </LazyLoad>
+          <AppearNotification
+            key={noti.id}
+            noti={noti}
+            handleClick={deleteNotification}
+          />
+        </Suspense>
       ))}
-      <DeleteWarning warning="Do you want to delete this notifications?" deleteWarning={deleteWarning} deletePost={deletePost} />
+      <DeleteWarning
+        warning="Do you want to delete this notifications?"
+        deleteWarning={deleteWarning}
+        handleDelete={deleteNotification}
+      />
     </div>
   );
 }

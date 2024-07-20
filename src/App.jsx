@@ -40,7 +40,7 @@ function App() {
         path="/"
         element={
           <>
-            <ScrollRestoration
+            <ScrollRestoration 
               getKey={(location, matches) => {
                 return location.pathname;
               }}

@@ -1,7 +1,4 @@
-import { useState } from "react";
-import LazyLoad from "react-lazyload";
-import OtherAccountInfo from "../components/OtherAccount/OtherAccountInfo.jsx";
-import BlogContent from "../components/BlogContent.jsx";
+import { useState, lazy, Suspense } from "react";
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
@@ -12,6 +9,11 @@ import otherAccountPost from "../utils/otherAccountPost.js";
 import countComments from "../utils/countComments.js";
 import followers from "../utils/follower.js";
 import followings from "../utils/following.js";
+
+const OtherAccountInfo = lazy(
+  () => import("../components/OtherAccount/OtherAccountInfo.jsx")
+);
+const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
 export default function OtherAccount({ onSelect, status, handleFollow }) {
   const [showLike, setShowLike] = useState(false);
@@ -58,16 +60,18 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <OtherAccountInfo
-        numberBlogs={otherAccountPost.length}
-        numberFollowers={followers.length}
-        numberFollowings={followings.length}
-        openBlogType={openBlogType}
-        openFollowers={openFollowers}
-        openFollowings={openFollowings}
-        status={status}
-        handleFollow={handleFollow}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherAccountInfo
+          numberBlogs={otherAccountPost.length}
+          numberFollowers={followers.length}
+          numberFollowings={followings.length}
+          openBlogType={openBlogType}
+          openFollowers={openFollowers}
+          openFollowings={openFollowings}
+          status={status}
+          handleFollow={handleFollow}
+        />
+      </Suspense>
       <Follow
         follow={followers}
         status="Followers"
@@ -81,11 +85,7 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
         openFollow={openFollowings}
       />
       {otherAccountPost.map((item) => (
-        <LazyLoad
-          key={item.id}
-          once={true}
-          placeholder={<div>Loading...</div>}
-        >
+        <Suspense key={item.id} fallback={<div>Loading...</div>}>
           <BlogContent
             key={item.id}
             onSelect={onSelect}
@@ -101,7 +101,7 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
             numberShares={item.shares.length}
             deletePost={deletePost}
           />
-        </LazyLoad>
+        </Suspense>
       ))}
       <ShowBlogType showBlogType={showBlogType} openBlogType={openBlogType} />
       <ShowLike

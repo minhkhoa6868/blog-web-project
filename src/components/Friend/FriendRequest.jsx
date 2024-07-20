@@ -1,7 +1,15 @@
-import LazyLoad from "react-lazyload";
-import AccountRequest from "./FriendRequest/AccountRequest";
+import { lazy, Suspense } from "react";
 
-const FriendRequest = ({ showRequest, handleClick, statusFriends, status, statusAction }) => {
+const AccountRequest = lazy(() => import("./FriendRequest/AccountRequest"));
+
+const FriendRequest = ({
+  showRequest,
+  handleClick,
+  statusFriends,
+  status,
+  statusAction,
+  deleteAccount,
+}) => {
   return (
     <div
       className={
@@ -17,12 +25,15 @@ const FriendRequest = ({ showRequest, handleClick, statusFriends, status, status
         <h2 className="font-semibold">{status}</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
           {statusFriends.map((child) => (
-            <AccountRequest
-              key={child.id}
-              imageAccount={child.imageAccount}
-              nameAccount={child.nameAccount}
-              statusAction={statusAction}
-            />
+            <Suspense key={child.id} fallback={<div>Loading...</div>}>
+              <AccountRequest
+                key={child.id}
+                imageAccount={child.imageAccount}
+                nameAccount={child.nameAccount}
+                statusAction={statusAction}
+                deleteAccount={deleteAccount}
+              />
+            </Suspense>
           ))}
         </div>
         <button
