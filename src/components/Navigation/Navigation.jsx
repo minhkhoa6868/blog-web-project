@@ -5,6 +5,7 @@ import HomeSection from "./NavComponents/HomeSection.jsx";
 import FiendSection from "./NavComponents/FriendSection.jsx";
 import NotificationSection from "./NavComponents/NotificationSection.jsx";
 import AccountSection from "./NavComponents/AccountSection.jsx";
+import SearchSection from "./NavComponents/SearchSection.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
@@ -95,6 +96,12 @@ export default function Navigation({ isSelected, onSelect }) {
             hoverActive={hoverActive}
             hoverNotActive={hoverNotActive}
           />
+          <SearchSection
+            isSelected={isSelected}
+            onSelect={onSelect}
+            hoverActive={hoverActive}
+            hoverNotActive={hoverNotActive}
+          />
           <FiendSection
             isSelected={isSelected}
             onSelect={onSelect}
@@ -113,7 +120,6 @@ export default function Navigation({ isSelected, onSelect }) {
             hoverAccountActive={hoverAccountActive}
             hoverAccountNotActive={hoverAccountNotActive}
           />
-
           <details className="dropdown">
             <summary
               className={isOpen ? hoverMenuActive : hoverMenuNotActive}
@@ -155,6 +161,14 @@ export default function Navigation({ isSelected, onSelect }) {
                 />
               </li>
               <li>
+                <SearchSection
+                  isSelected={isSelected}
+                  onSelect={onSelect}
+                  hoverActive={hoverActiveResponsive}
+                  hoverNotActive={hoverNotActiveResponsive}
+                />
+              </li>
+              <li>
                 <FiendSection
                   isSelected={isSelected}
                   onSelect={onSelect}
@@ -180,34 +194,6 @@ export default function Navigation({ isSelected, onSelect }) {
               </li>
             </ul>
           </details>
-          <div>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-[200px] h-[36px] pl-[8px] md:w-[260px] xl:w-[320px]
-                        focus:border-violet-400 hover:border-violet-400 outline-none 
-                        rounded-xl border-[3px] border-gray-300 dark:border-gray-400 
-                        dark:text-black dark:focus:border-violet-400 dark:hover:border-violet-400
-                        translate-y-[8px] transition-all ease duration-200"
-            />
-            <button
-              className="flex absolute transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 
-                        w-[28px] h-[28px] justify-center rounded-full translate-y-[-24px] translate-x-[165px]
-                        md:translate-x-[225px] xl:translate-x-[285px]"
-              onClick={() => onSelect("search")}
-              key="search"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                height="50"
-                width="13"
-                className="translate-y-[-11px]"
-              >
-                <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 .1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
-              </svg>
-            </button>
-          </div>
         </div>
         <div className="px-6">
           <ThemeSwitcher />

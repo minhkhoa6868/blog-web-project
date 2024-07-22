@@ -58,7 +58,7 @@ export default function Account({ onSelect }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <Suspense fallback={<div className="text-center">Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <AccountInfo
           numberBlogs={accountPost.length}
           numberFollowers={followers.length}
