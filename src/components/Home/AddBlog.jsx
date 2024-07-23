@@ -4,7 +4,7 @@ export default function AddBlog({ onSelect }) {
   return (
     <>
       <div
-        className="flex mx-auto shadow-lg w-[500px] sm:w-[580px] md:w-[680px] xl:w-[720px] 
+        className="flex mx-auto shadow-lg w-[400px] sm:w-[580px] md:w-[680px] xl:w-[720px] 
         h-[90px] mt-[20px] p-[20px] border rounded-xl items-center justify-between
         dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300"
       >
@@ -22,7 +22,7 @@ export default function AddBlog({ onSelect }) {
           </Link>
           <Link
             to="/newBlog"
-            className="flex items-center bg-gray-200 text-gray-400 w-[320px] h-[40px] rounded-2xl 
+            className="flex items-center bg-gray-200 text-gray-400 w-[240px] h-[40px] rounded-2xl 
             text-left px-[15px] hover:bg-gray-300 dark:hover:border-violet-400 
             dark:border-gray-400 dark:border-[3px] dark:bg-white transition-all 
             ease-out duration-300 sm:w-[380px] md:w-[500px] xl:w-[540px]"

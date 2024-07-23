@@ -4,7 +4,7 @@ export default function BlogContentImage({ image }) {
             <img 
                 src={image} 
                 alt="image post" 
-                className="w-[450px] object-cover rounded-xl"
+                className="sm:w-[450px] w-[350px] object-cover rounded-xl"
                 loading="lazy"
             />
         </div>

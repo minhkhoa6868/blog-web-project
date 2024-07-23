@@ -22,9 +22,9 @@ export default function NewBlog() {
 
   return (
     <div
-      className="flex flex-col gap-5 w-[500px] h-fit sm:w-[600px] md:w-[720px] xl:w-[800px] border
-            mx-auto my-[20px] shadow-xl transition-all ease duration-300 dark:border-gray-500 dark:bg-gray-700
-            rounded-xl"
+      className="flex flex-col gap-5 w-[400px] h-fit sm:w-[600px] md:w-[720px] xl:w-[800px] border
+      mx-auto my-[20px] shadow-xl transition-all ease duration-300 dark:border-gray-500 dark:bg-gray-700
+      rounded-xl"
     >
       <div className="flex flex-row justify-between px-[20px]">
         <div className="flex flex-row gap-3 justify-center items-center mt-[10px]">

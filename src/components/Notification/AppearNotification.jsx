@@ -1,12 +1,10 @@
-import "./appearNotification.css";
-
 export default function AppearNotification({ noti, handleClick }) {
   return (
     <div className="px-3 pb-3">
       <a
         href="#"
-        className="flex justify-between items-center hover:bg-gray-200 hover:text-black px-3 py-2 border border-transparent
-                rounded-lg transition-all ease-out duration-300 h-[100px] dark:bg-gray-700 dark:hover:bg-gray-400"
+        className="flex justify-between items-center hover:bg-gray-200 px-3 py-2 border border-transparent
+        rounded-lg transition-all ease-out duration-300 h-[100px] dark:bg-gray-700 dark:hover:bg-gray-600"
         id="status-notification"
       >
         <div className="flex items-center gap-4 w-full">
@@ -23,9 +21,8 @@ export default function AppearNotification({ noti, handleClick }) {
         </div>
         <button
           onClick={handleClick}
-          className="flex justify-center items-center rounded-full hover:bg-gray-300 hover:fill-black 
-                    w-[30px] h-[30px] transition ease duration-300 text-[30px] 
-                    dark:fill-white dark:hover:fill-black"
+          className="flex justify-center items-center rounded-full hover:bg-gray-300 hover:fill-black dark:hover:bg-gray-500 
+          w-[30px] h-[30px] transition ease duration-300 text-[30px] dark:fill-white"
           id="status-checked"
         >
           <svg

@@ -7,7 +7,7 @@ import DeleteWarning from "../components/DeleteWarning";
 import post from "../utils/homePost";
 import countComments from "../utils/countComments";
 
-const BlogContent = lazy(() => import("../components/BlogContent"));
+const BlogContentHome = lazy(() => import("../components/BlogContentHome.jsx"));
 
 export default function Home({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -45,7 +45,7 @@ export default function Home({ onSelect }) {
           key={item.id}
           fallback={<div>Loading...</div>}
         >
-          <BlogContent
+          <BlogContentHome
             key={item.id}
             onSelect={onSelect}
             openLike={() => openLike(item.likes)}

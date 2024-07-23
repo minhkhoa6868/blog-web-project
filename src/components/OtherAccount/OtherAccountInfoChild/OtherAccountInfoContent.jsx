@@ -1,4 +1,4 @@
-import Statistic from "./Statistic";
+import Statistic from "../../Account/AccountInfoChild/Statistic";
 import ButtonRequest from "./ButtonRequest";
 
 export default function OtherAccountInfoContent({

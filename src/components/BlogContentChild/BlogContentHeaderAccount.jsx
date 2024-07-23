@@ -1,12 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
-import DeleteButton from "../DeleteButton";
+import OptionButton from "../OptionButton";
+import BlogOption from "../BlogOption";
 
-export default function BlogContentHeader({
+export default function BlogContentHeaderAccount({
   onSelect,
   accountImage,
   name,
   time,
-  deletePost,
+  showOption,
+  openOption,
 }) {
   return (
     <div className="flex flex-col gap-3 px-[20px]">
@@ -44,7 +46,10 @@ export default function BlogContentHeader({
             </div>
           </div>
         </div>
-        <DeleteButton deletePost={deletePost} />
+        <div>
+          <OptionButton openOption={openOption} />
+          <BlogOption showOption={showOption} />
+        </div>
       </div>
       <p className="text-justify text-[15px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam

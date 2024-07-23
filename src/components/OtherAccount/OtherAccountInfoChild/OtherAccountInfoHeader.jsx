@@ -1,4 +1,4 @@
-import BlogType from "./BlogType";
+import BlogType from "../../Account/AccountInfoChild/BlogType";
 
 export default function OtherAccountInfoHeader({ openBlogType }) {
   return (

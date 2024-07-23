@@ -3,7 +3,7 @@ export default function ChooseVisibility() {
     <select
       name="visibility"
       id="type-visibility"
-      className="h-[40px] w-[130px] border px-[5px] border-gray-300 rounded-[10px] focus:outline-none
+      className="h-[40px] w-[90px] sm:w-[130px] border px-[5px] border-gray-300 rounded-[10px] focus:outline-none
       text-[0.9rem] bg-transparent"
     >
       <option value="">Visibility</option>

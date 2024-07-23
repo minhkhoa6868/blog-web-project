@@ -5,8 +5,8 @@ const AccountFriend = lazy(() => import("./AccountFriend"))
 export default function FriendCategory({ category, status, statusFriends, openRelated, deleteAccount }) {
   return (
     <div
-      className="w-[500px] md:w-[730px] xl:w-[970px] border rounded-xl shadow-lg 
-    py-[20px] dark:bg-gray-800 dark:border-gray-700 transition-all ease duration-300"
+      className="w-[400px] sm:w-[500px] md:w-[730px] xl:w-[970px] border rounded-xl shadow-lg 
+      py-[20px] dark:bg-gray-800 dark:border-gray-700 transition-all ease duration-300"
     >
       <h1 className="pl-[20px] pb-[20px] font-bold text-2xl">{category}</h1>
       <div className="flex flex-wrap justify-center items-center gap-3">

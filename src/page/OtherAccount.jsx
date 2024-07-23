@@ -13,7 +13,7 @@ import followings from "../utils/following.js";
 const OtherAccountInfo = lazy(
   () => import("../components/OtherAccount/OtherAccountInfo.jsx")
 );
-const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
+const BlogContent = lazy(() => import("../components/BlogContentHome.jsx"));
 
 export default function OtherAccount({ onSelect, status, handleFollow }) {
   const [showLike, setShowLike] = useState(false);

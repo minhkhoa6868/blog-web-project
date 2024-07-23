@@ -48,9 +48,9 @@ export default function EditProfile() {
 
   return (
     <div
-      className="mx-auto my-[20px] py-[10px] px-[15px] border w-[500px] sm:w-[620px] 
-        md:w-[750px] xl:w-[870px] transition-all ease duration-300 dark:bg-gray-700
-        dark:border-gray-500 shadow-xl rounded-xl"
+      className="mx-auto my-[20px] py-[10px] px-[15px] border w-[400px] sm:w-[600px] 
+      md:w-[750px] xl:w-[870px] transition-all ease duration-300 dark:bg-gray-700
+      dark:border-gray-500 shadow-xl rounded-xl"
     >
       <ImageSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />

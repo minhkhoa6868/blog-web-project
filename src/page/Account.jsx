@@ -3,7 +3,6 @@ import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
 import ShowShare from "../components/ShowShare.jsx";
-import DeleteWarning from "../components/DeleteWarning";
 import Follow from "../components/Account/Follow.jsx";
 import accountPost from "../utils/accountPost.js";
 import countComments from "../utils/countComments.js";
@@ -11,7 +10,7 @@ import followers from "../utils/follower.js";
 import followings from "../utils/following.js";
 
 const AccountInfo = lazy(() => import("../components/Account/AccountInfo.jsx"));
-const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
+const BlogContentAccount = lazy(() => import("../components/BlogContentAccount.jsx"));
 
 export default function Account({ onSelect }) {
   const [showLike, setShowLike] = useState(false);
@@ -21,7 +20,8 @@ export default function Account({ onSelect }) {
   const [showShare, setShowShare] = useState(false);
   const [currentShare, setCurrentShare] = useState([]);
   const [showBlogType, setShowBlogType] = useState(false);
-  const [deleteWarning, setDeleteWarning] = useState(false);
+  // track active post of options
+  const [activeOptionId, setActiveOptionId] = useState(null);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
@@ -44,8 +44,8 @@ export default function Account({ onSelect }) {
     setCurrentShare(shares);
   };
 
-  const deletePost = () => {
-    setDeleteWarning((prevState) => !prevState);
+  const openOption = (postId) => {
+    setActiveOptionId((prevId) => prevId === postId ? null : postId)
   };
 
   const openFollowers = () => {
@@ -82,7 +82,7 @@ export default function Account({ onSelect }) {
       />
       {accountPost.map((item) => (
         <Suspense key={item.id} fallback={<div>Loading...</div>}>
-          <BlogContent
+          <BlogContentAccount
             key={item.id}
             onSelect={onSelect}
             openLike={() => openLike(item.likes)}
@@ -95,7 +95,8 @@ export default function Account({ onSelect }) {
             numberLikes={item.likes.length}
             numberComments={countComments(item.comments)}
             numberShares={item.shares.length}
-            deletePost={deletePost}
+            showOption={activeOptionId === item.id}
+            openOption={() => openOption(item.id)}
           />
         </Suspense>
       ))}
@@ -114,11 +115,6 @@ export default function Account({ onSelect }) {
         showShare={showShare}
         openShare={() => openShare(currentShare)}
         shares={currentShare}
-      />
-      <DeleteWarning
-        warning="Do you want to delete this post?"
-        deleteWarning={deleteWarning}
-        handleDelete={deletePost}
       />
     </div>
   );

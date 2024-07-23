@@ -9,23 +9,23 @@ import SearchSection from "./NavComponents/SearchSection.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
-    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:flex";
+    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300 mid:flex";
   const hoverActive =
     "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:flex";
   const hoverAccountNotActive =
-    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg mid:flex";
+    "hidden transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:hover:bg-gray-500 mid:flex";
   const hoverAccountActive =
     "hidden transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full opacity-100 hover:from-blue-500 hover:to-fuchsia-500 mid:flex";
   const hoverMenuNotActive =
-    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:hidden cursor-pointer";
+    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-20 justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300 mid:hidden cursor-pointer";
   const hoverMenuActive =
     "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-20 justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:hidden cursor-pointer";
   const hoverNotActiveResponsive =
-    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg dark:fill-gray-400 dark:hover:fill-gray-600 mid:hidden";
+    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300 mid:hidden";
   const hoverActiveResponsive =
     "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full hover:from-blue-500 hover:to-fuchsia-500 mid:hidden";
   const hoverAccountNotActiveResponsive =
-    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg mid:hidden";
+    "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-full justify-center rounded-lg dark:hover:bg-gray-500 mid:hidden";
   const hoverAccountActiveResponsive =
     "flex transition ease-out duration-300 bg-gradient-to-tr from-blue-400 to-fuchsia-400 fill-white w-full justify-center rounded-lg bottom-full opacity-100 hover:from-blue-500 hover:to-fuchsia-500 mid:hidden";
 
@@ -120,7 +120,7 @@ export default function Navigation({ isSelected, onSelect }) {
             hoverAccountActive={hoverAccountActive}
             hoverAccountNotActive={hoverAccountNotActive}
           />
-          <details className="dropdown">
+          <details className="dropdown flex">
             <summary
               className={isOpen ? hoverMenuActive : hoverMenuNotActive}
               onClick={() => {
@@ -150,7 +150,7 @@ export default function Navigation({ isSelected, onSelect }) {
             <ul
               id="dropdown"
               className="flex flex-col absolute border p-2 mt-4 shadow menu dropdown-content z-[1] rounded-[10px] w-[300px] md:w-[360px]
-              mid:hidden gap-2 bg-white dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300"
+              mid:hidden gap-2 bg-white dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300 translate-x-[-110px]"
             >
               <li>
                 <HomeSection
