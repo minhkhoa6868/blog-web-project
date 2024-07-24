@@ -11,7 +11,7 @@ import PasswordSection from "../components/EditProfile/PasswordSection";
 
 export default function EditProfile() {
   const [changeBtn, isChangeBtn] = useState(false);
-  const [privateGender, isPrivateGender] = useState(false);
+  const [otherGender, isOtherGender] = useState(false);
   const [countNickName, setCountNickName] = useState(0);
   const [countCaption, setCountCaption] = useState(0);
   const [countPassword, setCountPassword] = useState(0);
@@ -38,10 +38,6 @@ export default function EditProfile() {
     checkValidAgain(changeBtn);
   });
 
-  function changePrivateGender(stateGender) {
-    isPrivateGender(stateGender);
-  }
-
   function changeBtnHandler() {
     isChangeBtn((prevState) => !prevState);
   }
@@ -58,7 +54,7 @@ export default function EditProfile() {
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
       <CaptionSection countCaption={countCaption} />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <GenderSection changePrivateGender={changePrivateGender} privateGender={privateGender} />
+      <GenderSection isOtherGender={isOtherGender} otherGender={otherGender} />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
       <PasswordSection 
         changeBtn={changeBtn}

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import ThemeSwitcher from "./ThemeSwitcher.jsx";
+import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
 import FiendSection from "./NavComponents/FriendSection.jsx";
 import NotificationSection from "./NavComponents/NotificationSection.jsx";
 import AccountSection from "./NavComponents/AccountSection.jsx";
 import SearchSection from "./NavComponents/SearchSection.jsx";
+import SignupButton from "./NavComponents/SignupButton.jsx";
 
 export default function Navigation({ isSelected, onSelect }) {
   const hoverNotActive =
@@ -195,7 +196,8 @@ export default function Navigation({ isSelected, onSelect }) {
             </ul>
           </details>
         </div>
-        <div className="px-6">
+        <div className="flex items-center gap-2 px-6">
+          <SignupButton />
           <ThemeSwitcher />
         </div>
       </nav>

@@ -1,0 +1,104 @@
+#fname::placeholder{
+    color: transparent;
+}
+
+#fname:not(:placeholder-shown) ~ #fname-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#fname:focus ~ #fname-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#lname::placeholder{
+    color: transparent;
+}
+
+#lname:not(:placeholder-shown) ~ #lname-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#lname:focus ~ #lname-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#nickname::placeholder{
+    color: transparent;
+}
+
+#nickname:not(:placeholder-shown) ~ #nickname-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#nickname:focus ~ #nickname-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#gender::placeholder{
+    color: transparent;
+}
+
+#gender:not(:placeholder-shown) ~ #gender-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#gender:focus ~ #gender-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#email::placeholder{
+    color: transparent;
+}
+
+#email:not(:placeholder-shown) ~ #email-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#email:focus ~ #email-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#pw::placeholder{
+    color: transparent;
+}
+
+#pw:not(:placeholder-shown) ~ #pw-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#pw:focus ~ #pw-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#cpw::placeholder{
+    color: transparent;
+}
+
+#cpw:not(:placeholder-shown) ~ #cpw-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#cpw:focus ~ #cpw-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
