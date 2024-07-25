@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import InputSection from "./EditProfileChild/InputSection";
 
 export default function PasswordSection({
   changeBtn,
@@ -18,7 +19,7 @@ export default function PasswordSection({
   }
 
   function showPassword() {
-    const password = document.getElementById("password");
+    const password = document.getElementById("pw");
     if (password.type === "password") {
       password.type = "text";
     } else {
@@ -28,7 +29,7 @@ export default function PasswordSection({
   }
 
   function showAgain() {
-    const passwordAgain = document.getElementById("password-again");
+    const passwordAgain = document.getElementById("cpw");
     if (passwordAgain.type === "password") {
       passwordAgain.type = "text";
     } else {
@@ -58,23 +59,19 @@ export default function PasswordSection({
       )}
       <div className={changeBtn ? "flex flex-col gap-2" : "hidden"}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="password" className="font-semibold">
-            Change password
-          </label>
           <div className="relative">
-            <input
-              name="password"
-              id="password"
-              type="password"
-              placeholder="Enter your new password..."
-              maxLength={25}
-              className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
-              outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
-              rounded-[10px]"
-            />
+            <div className="flex flex-col gap-2">
+              <InputSection
+                name="pw"
+                type="password"
+                label="Change password"
+                placeholder="Enter your new password.."
+                maxLength={25}
+              />
+            </div>
             <button
               onClick={showPassword}
-              className="absolute right-2 top-[4px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
+              className="absolute right-2 top-[36px] p-[8px] rounded-full bg-gradient-to-tr from-blue-400 
                 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
             >
               {open ? (
@@ -119,23 +116,19 @@ export default function PasswordSection({
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="password-again" className="font-semibold">
-            Type again
-          </label>
           <div className="relative">
-            <input
-              name="password-again"
-              id="password-again"
-              type="password"
-              placeholder="Type password again..."
-              maxLength={25}
-              className="w-full h-fit pl-[10px] py-[4px] resize-none border border-gray-300 dark:border-gray-500
-              outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
-              rounded-[10px]"
-            />
+            <div className="flex flex-col gap-2">
+              <InputSection
+                name="cpw"
+                type="password"
+                label="Confirm password"
+                placeholder="Enter confirm password.."
+                maxLength={25}
+              />
+            </div>
             <button
               onClick={showAgain}
-              className="absolute right-2 top-[4px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
+              className="absolute right-2 top-[36px] p-[8px] rounded-full bg-gradient-to-tr from-blue-400 
                 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
             >
               {openAgain ? (

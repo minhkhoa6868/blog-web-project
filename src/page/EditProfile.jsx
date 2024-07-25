@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import checkWordLength from "../utils/checkWordLength";
 import checkValidNickName from "../utils/checkValidNickName";
 import checkValidPassword from "../utils/checkValidPassword";
 import checkValidAgain from "../utils/checkValidAgain";
@@ -20,22 +19,26 @@ export default function EditProfile() {
   useEffect(() => {
     const nickname = document.getElementById("nickname");
     const caption = document.getElementById("caption");
-    const password = document.getElementById("password");
-    const passwordAgain = document.getElementById("password-again");
-    checkWordLength(
-      changeBtn,
-      nickname,
-      caption,
-      password,
-      passwordAgain,
-      setCountNickName,
-      setCountCaption,
-      setCountPassword,
-      setCountPasswordAgain
-    );
+    nickname.addEventListener("keyup", () => {
+      setCountNickName(nickname.value.length);
+    });
+    caption.addEventListener("keyup", () => {
+      setCountCaption(caption.value.length);
+    });
     checkValidNickName(nickname);
-    checkValidPassword(changeBtn);
-    checkValidAgain(changeBtn);
+    console.log(changeBtn);
+    if (changeBtn){
+      const password = document.getElementById("pw");
+      const passwordAgain = document.getElementById("cpw");
+      password.addEventListener("keyup", () => {
+        setCountPassword(password.value.length);
+      });
+      passwordAgain.addEventListener("keyup", () => {
+        setCountPasswordAgain(passwordAgain.value.length);
+      });
+      checkValidPassword();
+      checkValidAgain();
+    }
   });
 
   function changeBtnHandler() {

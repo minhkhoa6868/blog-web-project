@@ -14,11 +14,11 @@ export default function ShowComment({ showComment, openComment, comments }) {
       }
     >
       <div
-        className="flex flex-col relative items-center gap-2 w-full h-[500px] bg-white
+        className="flex flex-col relative items-center gap-2 w-[400px] h-[430px] bg-white
         rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500
-        transition-all ease duration-300 md:w-[742px]"
+        transition-all ease duration-300 sm:w-[550px] md:w-[680px] sm:h-[500px]"
       >
-        <div className="flex flex-col gap-3 h-[390px] w-full">
+        <div className="flex flex-col gap-3 h-[320px] sm:h-[390px] w-full">
           <h2 className="font-semibold text-center">Comments</h2>
           <div className="flex flex-col gap-4 overflow-scroll">
             {comments.length > 0 &&
@@ -44,7 +44,7 @@ export default function ShowComment({ showComment, openComment, comments }) {
           <textarea
             id="comment"
             placeholder="Write your comment"
-            className="w-4/5 h-fit border border-gray-300 rounded-[15px] outline-none
+            className="w-3/4 h-fit sm:w-5/6 border border-gray-300 rounded-[15px] outline-none
             resize-none pl-[10px] pt-[5px] focus:border-gray-400 transition-all ease duration-300
             bg-transparent dark:border-gray-500 dark:focus:border-gray-400"
           />

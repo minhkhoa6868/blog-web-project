@@ -1,3 +1,9 @@
 input::-webkit-calendar-picker-indicator {
     opacity: 0;
 }
+
+select {
+    -webkit-appearance: none; /* For Chrome */
+    -moz-appearance: none; /* For Firefox */
+    appearance: none; /* Standard */    
+}

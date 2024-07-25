@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+import './NavStyle.css'
 import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
 import FiendSection from "./NavComponents/FriendSection.jsx";
@@ -121,7 +122,7 @@ export default function Navigation({ isSelected, onSelect }) {
             hoverAccountActive={hoverAccountActive}
             hoverAccountNotActive={hoverAccountNotActive}
           />
-          <details className="dropdown flex">
+          <details className="dropdown">
             <summary
               className={isOpen ? hoverMenuActive : hoverMenuNotActive}
               onClick={() => {

@@ -2,7 +2,7 @@ const notification = [
     {
         id: 1,
         imageAccount: './account.gif',
-        nameAccount: 'Khoa',
+        nameAccount: 'Khoa Tran',
         title: 'have uploaded a blog! Check out here!',
     },
     {

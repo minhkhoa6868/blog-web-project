@@ -1,4 +1,4 @@
-const InformationSection = ({ label, name, type, length, idInput, idLabel }) => {
+const InformationSection = ({ label, name, type, length, idInput, idLabel, maxLength }) => {
     return (
         <div
             className="flex items-end relative h-[45px]"
@@ -8,8 +8,9 @@ const InformationSection = ({ label, name, type, length, idInput, idLabel }) => 
                 type={type} 
                 id={idInput}
                 placeholder="form"
+                maxLength={maxLength}
                 className={`border-b ${length} outline-none border-gray-200 focus:border-gray-400 transition-all ease duration-300
-                bg-transparent dark:border-gray-500 dark:focus:border-gray-400 py-[3px] text-[0.9rem]`}
+                bg-transparent dark:border-gray-500 dark:focus:border-gray-400 py-[3px] text-[0.9rem] rounded-none`}
             />
             <label 
                 id={idLabel}

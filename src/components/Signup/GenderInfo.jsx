@@ -1,6 +1,9 @@
-import InformationSection from "./InformationSection";
+import { useState } from "react";
+import InformationSection from "./SignupChild/InformationSection";
 
-const GenderInfo = ({ otherGender, isOtherGender }) => {
+const GenderInfo = () => {
+  const [otherGender, isOtherGender] = useState(false);
+
   return (
     <div className="flex flex-col gap-2 mt-[10px]">
       <div className="flex items-center gap-3">
