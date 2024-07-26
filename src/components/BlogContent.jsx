@@ -1,8 +1,9 @@
-import BlogContentHeaderHome from "./BlogContentChild/BlogContentHeaderHome";
+import BlogContentHeader from "./BlogContentChild/BlogContentHeader";
 import BlogContentImage from "./BlogContentChild/BlogContentImage";
 import BlogContentFooter from "./BlogContentChild/BlogContentFooter";
 
-export default function BlogContentHome({
+export default function BlogContent({
+  isActive,
   onSelect,
   openLike,
   openComment,
@@ -15,6 +16,8 @@ export default function BlogContentHome({
   numberComments,
   numberShares,
   deletePost,
+  showOption,
+  openOption
 }) {
   return (
     <div
@@ -22,12 +25,15 @@ export default function BlogContentHome({
       py-[15px] h-fit border rounded-xl justify-between dark:bg-gray-700 dark:border-gray-500 
       transition-all ease duration-300"
     >
-      <BlogContentHeaderHome
+      <BlogContentHeader
+        isActive={isActive}
         onSelect={onSelect}
         accountImage={accountImage}
         name={name}
         time={time}
         deletePost={deletePost}
+        showOption={showOption}
+        openOption={openOption}
       />
       <BlogContentImage image={image} />
       <BlogContentFooter

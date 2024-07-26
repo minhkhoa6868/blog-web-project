@@ -10,7 +10,7 @@ const InputSection = ({ name, type, label, placeholder, maxLength }) => {
         type={type}
         placeholder={placeholder}
         maxLength={maxLength}
-        className="w-full h-fit pl-[10px] py-[4px] border border-gray-300 dark:border-gray-500
+        className="w-full h-[40px] pl-[10px] py-[4px] border border-gray-300 dark:border-gray-500
         outline-none bg-transparent focus:border-gray-400 dark:focus:border-gray-400 transition-all ease duration-300
         rounded-[10px]"
       />

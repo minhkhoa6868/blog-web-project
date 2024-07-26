@@ -28,16 +28,16 @@
     font-size: 0.8rem;
 }
 
-#nickname::placeholder{
+#username::placeholder{
     color: transparent;
 }
 
-#nickname:not(:placeholder-shown) ~ #nickname-label{
+#username:not(:placeholder-shown) ~ #username-label{
     transform: translateY(-25px);
     font-size: 0.8rem;
 }
 
-#nickname:focus ~ #nickname-label{
+#username:focus ~ #username-label{
     transform: translateY(-25px);
     color: rgb(107 114 128);
     font-size: 0.8rem;
@@ -98,6 +98,36 @@
 }
 
 #cpw:focus ~ #cpw-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#email-login::placeholder{
+    color: transparent;
+}
+
+#email-login:not(:placeholder-shown) ~ #email-login-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#email-login:focus ~ #email-login-label{
+    transform: translateY(-25px);
+    color: rgb(107 114 128);
+    font-size: 0.8rem;
+}
+
+#pw-login::placeholder{
+    color: transparent;
+}
+
+#pw-login:not(:placeholder-shown) ~ #pw-login-label{
+    transform: translateY(-25px);
+    font-size: 0.8rem;
+}
+
+#pw-login:focus ~ #pw-login-label{
     transform: translateY(-25px);
     color: rgb(107 114 128);
     font-size: 0.8rem;

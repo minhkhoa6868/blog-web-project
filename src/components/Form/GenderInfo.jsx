@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InformationSection from "./SignupChild/InformationSection";
+import InformationSection from "./FormChild/InformationSection";
 
 const GenderInfo = () => {
   const [otherGender, isOtherGender] = useState(false);

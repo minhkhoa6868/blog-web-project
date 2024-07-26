@@ -7,8 +7,10 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
+import NavigationResponsive from "./components/Navigation/NavigationResponsive";
 
 const Signup = lazy(() => import("./page/Signup"));
+const Login = lazy(() => import("./page/Login"));
 const Home = lazy(() => import("./page/Home"));
 const Search = lazy(() => import("./page/Search"));
 const Friend = lazy(() => import("./page/Friend"));
@@ -28,9 +30,6 @@ function App() {
     setIsFollow((prevState) => !prevState);
   };
 
-  console.log(window.location.pathname);
-  console.log(isActive);
-
   function handleActive(buttonActive) {
     setIsActive(buttonActive);
     localStorage.setItem("isActive", buttonActive);
@@ -40,11 +39,18 @@ function App() {
     createRoutesFromElements(
       <>
         <Route 
-          index 
           path="/signup" 
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <Signup />
+            </Suspense>
+          }
+        />
+        <Route 
+          path="/login" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Login />
             </Suspense>
           }
         />
@@ -58,6 +64,7 @@ function App() {
                 }}
               />
               <Navigation isSelected={isActive} onSelect={handleActive} />
+              <NavigationResponsive isSelected={isActive} onSelect={handleActive} />
             </>
           }
         >
@@ -65,7 +72,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Home onSelect={handleActive} />
+                <Home isActive={isActive} onSelect={handleActive} />
               </Suspense>
             }
           />
@@ -89,7 +96,7 @@ function App() {
             path="/account"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Account onSelect={handleActive} />
+                <Account isActive={isActive} onSelect={handleActive} />
               </Suspense>
             }
           />
@@ -122,7 +129,6 @@ function App() {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <OtherAccount
-                  onSelect={handleActive}
                   status={isFollow ? "Following" : "Follow"}
                   handleFollow={handleFollow}
                 />

@@ -13,7 +13,7 @@ import followings from "../utils/following.js";
 const OtherAccountInfo = lazy(
   () => import("../components/OtherAccount/OtherAccountInfo.jsx")
 );
-const BlogContent = lazy(() => import("../components/BlogContentHome.jsx"));
+const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
 export default function OtherAccount({ onSelect, status, handleFollow }) {
   const [showLike, setShowLike] = useState(false);
@@ -23,7 +23,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
   const [showShare, setShowShare] = useState(false);
   const [currentShare, setCurrentShare] = useState([]);
   const [showBlogType, setShowBlogType] = useState(false);
-  const [deleteWarning, setDeleteWarning] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
@@ -44,10 +43,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
   const openShare = (shares) => {
     setShowShare((prevState) => !prevState);
     setCurrentShare(shares);
-  };
-
-  const deletePost = () => {
-    setDeleteWarning((prevState) => !prevState);
   };
 
   const openFollowers = () => {
@@ -99,7 +94,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
             numberLikes={item.likes.length}
             numberComments={countComments(item.comments)}
             numberShares={item.shares.length}
-            deletePost={deletePost}
           />
         </Suspense>
       ))}
@@ -118,11 +112,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
         showShare={showShare}
         openShare={() => openShare(currentShare)}
         shares={currentShare}
-      />
-      <DeleteWarning
-        warning="Do you want to delete this post?"
-        deleteWarning={deleteWarning}
-        deletePost={deletePost}
       />
     </div>
   );

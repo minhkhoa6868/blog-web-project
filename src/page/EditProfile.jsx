@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import checkValidNickName from "../utils/checkValidNickName";
+import checkValidUserName from "../utils/checkValidUserName";
 import checkValidPassword from "../utils/checkValidPassword";
 import checkValidAgain from "../utils/checkValidAgain";
 import ImageSection from "../components/EditProfile/ImageSection";
-import NicknameSection from "../components/EditProfile/NicknameSection";
+import UsernameSection from "../components/EditProfile/UsernameSection";
 import CaptionSection from "../components/EditProfile/CaptionSection";
 import GenderSection from "../components/EditProfile/GenderSection";
 import PasswordSection from "../components/EditProfile/PasswordSection";
@@ -11,31 +11,21 @@ import PasswordSection from "../components/EditProfile/PasswordSection";
 export default function EditProfile() {
   const [changeBtn, isChangeBtn] = useState(false);
   const [otherGender, isOtherGender] = useState(false);
-  const [countNickName, setCountNickName] = useState(0);
+  const [countUserName, setCountUserName] = useState(0);
   const [countCaption, setCountCaption] = useState(0);
-  const [countPassword, setCountPassword] = useState(0);
-  const [countPasswordAgain, setCountPasswordAgain] = useState(0);
 
   useEffect(() => {
-    const nickname = document.getElementById("nickname");
+    const username = document.getElementById("username");
     const caption = document.getElementById("caption");
-    nickname.addEventListener("keyup", () => {
-      setCountNickName(nickname.value.length);
+    username.addEventListener("keyup", () => {
+      setCountUserName(username.value.length);
     });
     caption.addEventListener("keyup", () => {
       setCountCaption(caption.value.length);
     });
-    checkValidNickName(nickname);
+    checkValidUserName(username);
     console.log(changeBtn);
     if (changeBtn){
-      const password = document.getElementById("pw");
-      const passwordAgain = document.getElementById("cpw");
-      password.addEventListener("keyup", () => {
-        setCountPassword(password.value.length);
-      });
-      passwordAgain.addEventListener("keyup", () => {
-        setCountPasswordAgain(passwordAgain.value.length);
-      });
       checkValidPassword();
       checkValidAgain();
     }
@@ -53,7 +43,7 @@ export default function EditProfile() {
     >
       <ImageSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <NicknameSection countNickName={countNickName} />
+      <UsernameSection countUserName={countUserName} />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
       <CaptionSection countCaption={countCaption} />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
@@ -62,8 +52,6 @@ export default function EditProfile() {
       <PasswordSection 
         changeBtn={changeBtn}
         changeBtnHandler={changeBtnHandler}
-        countPassword={countPassword}
-        countPasswordAgain={countPasswordAgain} 
       />
       <div className="flex justify-end mt-[15px]">
         <button

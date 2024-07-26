@@ -1,4 +1,4 @@
-import InformationSection from "./SignupChild/InformationSection";
+import InformationSection from "./FormChild/InformationSection";
 
 const NameInfo = () => {
     return (
@@ -7,7 +7,7 @@ const NameInfo = () => {
             label="First Name"
             name="fname"
             type="text"
-            length="w-[170px]"
+            length="w-[160px]"
             idLabel="fname-label"
             idInput="fname"
           />
@@ -15,7 +15,7 @@ const NameInfo = () => {
             label="Last Name"
             name="lname"
             type="text"
-            length="w-[170px]"
+            length="w-[160px]"
             idLabel="lname-label"
             idInput="lname"
           />

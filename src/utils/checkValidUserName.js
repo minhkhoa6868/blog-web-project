@@ -1,4 +1,4 @@
-export default function checkValidNickName(nickname) {
+export default function checkValidUserName(nickname) {
     const containerValid = document.getElementById('container-valid');
     const checkValid = document.getElementById('check-valid');
     // if nickname have length > 0 we will apply function
