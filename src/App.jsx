@@ -11,6 +11,9 @@ import NavigationResponsive from "./components/Navigation/NavigationResponsive";
 
 const Signup = lazy(() => import("./page/Signup"));
 const Login = lazy(() => import("./page/Login"));
+const ForgotPassword = lazy(() => import("./page/ForgotPassword"));
+const Verify = lazy(() => import("./page/Verify"));
+const ResetPassword = lazy(() => import("./page/ResetPassword"));
 const Home = lazy(() => import("./page/Home"));
 const Search = lazy(() => import("./page/Search"));
 const Friend = lazy(() => import("./page/Friend"));
@@ -42,7 +45,7 @@ function App() {
           path="/signup" 
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <Signup />
+              <Signup onSelect={handleActive} />
             </Suspense>
           }
         />
@@ -50,7 +53,31 @@ function App() {
           path="/login" 
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <Login />
+              <Login onSelect={handleActive} />
+            </Suspense>
+          }
+        />
+        <Route 
+          path="/identify" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ForgotPassword />
+            </Suspense>
+          }
+        />
+        <Route 
+          path="/verify" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Verify />
+            </Suspense>
+          }
+        />
+        <Route 
+          path="/resetpassword" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ResetPassword />
             </Suspense>
           }
         />

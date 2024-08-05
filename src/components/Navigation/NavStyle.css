@@ -1,9 +1,0 @@
-/* Hide the default arrow */
-summary::-webkit-details-marker {
-    display: none;
-}
-
-/* For non-WebKit browsers */
-summary::marker {
-    display: none;
-}

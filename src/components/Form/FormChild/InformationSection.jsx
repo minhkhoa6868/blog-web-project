@@ -9,6 +9,7 @@ const InformationSection = ({ label, name, type, length, idInput, idLabel, maxLe
                 id={idInput}
                 placeholder="form"
                 maxLength={maxLength}
+                autoComplete="on"
                 className={`border-b ${length} outline-none border-gray-200 focus:border-gray-400 transition-all ease duration-300
                 bg-transparent dark:border-gray-500 dark:focus:border-gray-400 py-[3px] text-[0.9rem] rounded-none`}
             />

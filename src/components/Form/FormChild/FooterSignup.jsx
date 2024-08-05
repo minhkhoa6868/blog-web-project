@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FooterSignup = () => {
+const FooterSignup = ({ onSelect }) => {
   return (
     <>
       <Link
@@ -15,7 +15,7 @@ const FooterSignup = () => {
         <span
           className="text-blue-400 hover:text-blue-500 cursor-pointer ml-[4px] transition-all ease duration-300 font-semibold"
         >
-          <Link to="/login">Login here</Link>
+          <Link to="/login" onClick={() => onSelect('home')}>Login here</Link>
         </span>
       </p>
     </>

@@ -2,7 +2,7 @@ const EmailOption = () => {
   return (
     <button
       className="relative border py-[5px] rounded-md text-gray-500 hover:bg-gray-100 transition-all ease
-            duration-300"
+            duration-300 dark:text-gray-300 dark:border-gray-500 dark:hover:bg-gray-600"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

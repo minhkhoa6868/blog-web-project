@@ -10,7 +10,9 @@ export default function checkValidPassword() {
     digit: /\d/.test(password.value),
     specialChar: /[@$!%*?&]/.test(password.value),
   };
+  // check if password length > 0
   if (password.value.length > 0) {
+    // use criteria to check if password is valid
     if (criteria.length) {
       passOver8.classList.remove("text-gray-400");
       passOver8.classList.add("text-green-500");

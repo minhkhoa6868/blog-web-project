@@ -1,5 +1,4 @@
 import { Outlet, Link } from "react-router-dom";
-import "./NavStyle.css";
 import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
 import FiendSection from "./NavComponents/FriendSection.jsx";

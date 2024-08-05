@@ -8,14 +8,13 @@ import GenderInfo from "../components/Form/GenderInfo";
 import FooterSignup from "../components/Form/FormChild/FooterSignup";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
 
-const Signup = () => {
+const Signup = ({ onSelect }) => {
   return (
     <div className="flex justify-center items-center w-full h-[100vh]">
       <div
-        className="flex flex-col gap-2 px-[15px] py-[20px] w-[380px] border transition-all ease duration-300 rounded-[20px]
-        dark:bg-gray-700 dark:border-gray-500"
+        className="flex flex-col gap-2 px-[15px] py-[20px] w-[380px] border rounded-[20px] dark:bg-gray-700 dark:border-gray-500"
       >
-        <HeaderForm />
+        <HeaderForm header="Sign Up" message="Please fill in your information to create account" />
         <hr className="border-t dark:border-gray-500" />
         <NameInfo />
         <NicknameInfo />
@@ -29,7 +28,7 @@ const Signup = () => {
           idInput="email"
         />
         <PasswordInfo />
-        <FooterSignup />
+        <FooterSignup onSelect={onSelect} />
       </div>
       <div className="absolute top-[8px] right-[25px]">
         <ThemeSwitcher />

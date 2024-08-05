@@ -10,7 +10,7 @@ export default function ChooseType() {
         name="chooseBlog" 
         placeholder="Types..."
         className="h-[40px] w-[90px] sm:w-[130px] border px-[5px] border-gray-300 rounded-[10px] focus:outline-none
-        text-[0.9rem] bg-transparent "
+        text-[0.9rem] bg-transparent dark:border-gray-500"
       />
       <datalist id="type-blog">
         <option value="Sport"></option>

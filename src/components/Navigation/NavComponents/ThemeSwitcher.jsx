@@ -22,9 +22,9 @@ const ThemeSwitcher = () => {
   return (
     <button
       id="mode"
-      className="flex transition-all ease-out duration-200 justify-center items-center w-10 h-10 rounded-full 
-            bg-gradient-to-tr hover:from-blue-400 hover:to-fuchsia-400 fill-gray-600 hover:fill-white
-            dark:fill-gray-400 dark:hover:fill-white"
+      className="flex justify-center items-center w-10 h-10 rounded-full bg-gradient-to-tr 
+      hover:from-blue-400 hover:to-fuchsia-400 fill-gray-600 hover:fill-white
+      dark:fill-gray-400 dark:hover:fill-white"
       onClick={toggleDarkMode}
     >
       {!darkMode ? (

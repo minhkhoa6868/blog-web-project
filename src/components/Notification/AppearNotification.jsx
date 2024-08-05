@@ -4,7 +4,6 @@ export default function AppearNotification({ noti, handleClick }) {
   return (
     <div className="px-3 pb-3">
       <a
-        href="#"
         className="flex justify-between items-center hover:bg-gray-200 px-3 py-2 border border-transparent
         rounded-lg transition-all ease-out duration-300 h-[100px] dark:bg-gray-700 dark:hover:bg-gray-600"
         id="status-notification"
