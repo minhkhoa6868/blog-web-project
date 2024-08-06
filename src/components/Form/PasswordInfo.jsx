@@ -38,8 +38,17 @@ const PasswordInfo = () => {
   }
 
   useEffect(() => {
-    checkValidPassword();
-    checkValidAgain();
+    const password = document.getElementById("pw");
+    const passwordAgain = document.getElementById("cpw");
+
+    password.addEventListener('keyup', checkValidPassword);
+    passwordAgain.addEventListener('keyup', checkValidAgain);
+
+    // clean up side effect
+    return () => {
+      password.removeEventListener('keyup', checkValidPassword);
+      passwordAgain.removeEventListener('keyup', checkValidAgain);
+    };
   });
 
   return (

@@ -17,19 +17,29 @@ export default function EditProfile() {
   useEffect(() => {
     const username = document.getElementById("username");
     const caption = document.getElementById("caption");
-    username.addEventListener("keyup", () => {
+    const password = document.getElementById("pw");
+    const passwordAgain = document.getElementById("cpw");
+
+    const handleUsernameKeyup = () => {
       setCountUserName(username.value.length);
-    });
-    caption.addEventListener("keyup", () => {
-      setCountCaption(caption.value.length);
-    });
-    checkValidUserName(username);
-    console.log(changeBtn);
-    if (changeBtn){
-      checkValidPassword();
-      checkValidAgain();
+      checkValidUserName(username);
     }
-  });
+    const handleCaptionKeyup = () => setCountCaption(caption.value.length);
+    const handlePasswordKeyup = () => checkValidPassword();
+    const handleConfirmPasswordKeyup = () => checkValidAgain();
+
+    username.addEventListener("keyup", handleUsernameKeyup);
+    caption.addEventListener("keyup", handleCaptionKeyup);
+    password.addEventListener("keyup", handlePasswordKeyup);
+    passwordAgain.addEventListener("keyup", handleConfirmPasswordKeyup);
+
+    return () => {
+      username.removeEventListener("keyup", handleUsernameKeyup);
+      caption.removeEventListener("keyup", handleCaptionKeyup);
+      password.removeEventListener("keyup", handlePasswordKeyup);
+      passwordAgain.removeEventListener("keyup", handleConfirmPasswordKeyup);
+    };
+  }, [changeBtn]);
 
   function changeBtnHandler() {
     isChangeBtn((prevState) => !prevState);
@@ -49,7 +59,7 @@ export default function EditProfile() {
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
       <GenderSection isOtherGender={isOtherGender} otherGender={otherGender} />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <PasswordSection 
+      <PasswordSection
         changeBtn={changeBtn}
         changeBtnHandler={changeBtnHandler}
       />

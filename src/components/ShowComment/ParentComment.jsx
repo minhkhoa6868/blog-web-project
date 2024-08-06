@@ -6,6 +6,11 @@ import HeartIcon from "../../icons/HeartIcon";
 export default function ParentComment({ comment }) {
   const [editMode, setEditMode] = useState(false);
   const [replyMode, setReplyMode] = useState(false);
+  const [isLike, setIsLike] = useState(false);
+
+  const handleLike = () => {
+    setIsLike((prevState) => !prevState);
+  };
 
   return (
     <div className="flex flex-col gap-3">
@@ -51,7 +56,10 @@ export default function ParentComment({ comment }) {
                 />
                 <Action type="Delete" />
                 <div className="flex gap-1 w-fit h-fit">
-                  <button className="fill-red-400 hover:fill-red-500 transition-all ease duration-300">
+                  <button 
+                    onClick={handleLike}
+                    className={`${!isLike ? 'fill-red-400' : 'fill-red-500'} transition-all ease duration-300`}
+                  >
                     <HeartIcon height="15" width="15" />
                   </button>
                   <button className="text-[0.8rem] hover:underline">2</button>

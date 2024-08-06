@@ -7,46 +7,59 @@ import BackwardIcon from "../icons/BackwardIcon";
 import "../components/Form/FormStyle.css";
 
 const Verify = () => {
-    const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(60);
+  const [isSend, setIsSend] = useState(false);
+
+  useEffect(() => {
+    handleCountdown();
+  }, []);
+
+  const handleCountdown = () => {
     var count = 60;
-    useEffect(() => {
-        var timer = setInterval(() => {
-            if (count <= 0){
-                const send = document.getElementById('send');
-                const count = document.getElementById('count');
-                send.classList.add('text-blue-500 hover:text-blue-600');
-                count.classList.add('hidden');
-                clearInterval(timer);
-            }
-            else {
-                count = count - 1;
-                setCountdown(count);
-            }
-        }, 1000);
-    }, []);
+    var timer = setInterval(() => {
+      if (count <= 0) {
+        setIsSend(true);
+        clearInterval(timer);
+        setCountdown(60);
+      } else {
+        count = count - 1;
+        setCountdown(count);
+      }
+    }, 1000);
+  };
+
+  const handleSend = () => {
+    setIsSend((prevState) => !prevState);
+    handleCountdown();
+  };
 
   return (
     <div className="flex justify-center items-center w-full h-[100vh]">
       <div className="flex flex-col gap-2 px-[15px] py-[20px] w-[380px] border rounded-[20px] dark:bg-gray-700 dark:border-gray-500">
         <HeaderForm header="Verify" message="Please enter verify number" />
         <hr className="border-t dark:border-gray-500" />
-        <div
-            className="flex justify-center gap-[10px] my-[15px]"
-        >
-            <VerifyNumber />
-            <VerifyNumber />
-            <VerifyNumber />
-            <VerifyNumber />
-            <VerifyNumber />
-            <VerifyNumber />
+        <div className="flex justify-center gap-[10px] my-[15px]">
+          <VerifyNumber />
+          <VerifyNumber />
+          <VerifyNumber />
+          <VerifyNumber />
+          <VerifyNumber />
+          <VerifyNumber />
         </div>
-        <button className="flex justify-center gap-1 text-[0.9rem] text-gray-400">
-            <p id="send">
-                Send verify number again
-            </p>
-            <p id="count">
+        <button
+          className={`flex justify-center gap-1 text-[0.9rem] text-gray-400 ${isSend ? 'cursor-pointer' : 'cursor-no-drop'}`}
+          onClick={handleSend}
+          disabled={!isSend}
+        >
+          <p
+            id="send"
+            className={`${isSend ? "text-blue-500 hover:text-blue-600" : ""}`}
+          >
+            Send verify number again
+          </p>
+          <p id="countdown" className={`${isSend ? "hidden" : "block"}`}>
             ({countdown})
-            </p>
+          </p>
         </button>
         <Link to="/resetpassword">
           <button

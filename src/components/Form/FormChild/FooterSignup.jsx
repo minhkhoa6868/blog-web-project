@@ -5,6 +5,7 @@ const FooterSignup = ({ onSelect }) => {
     <>
       <Link
         to="/"
+        onClick={() => onSelect('home')}
         className="text-center py-[5px] mt-[5px] rounded-md bg-gradient-to-tr from-blue-400 to-fuchsia-400
             text-white hover:from-blue-500 hover:to-fuchsia-500 transition-all ease duration-300"
       >
@@ -15,7 +16,7 @@ const FooterSignup = ({ onSelect }) => {
         <span
           className="text-blue-400 hover:text-blue-500 cursor-pointer ml-[4px] transition-all ease duration-300 font-semibold"
         >
-          <Link to="/login" onClick={() => onSelect('home')}>Login here</Link>
+          <Link to="/login">Login here</Link>
         </span>
       </p>
     </>
