@@ -3,8 +3,6 @@ import BlogContentImage from "./BlogContentChild/BlogContentImage";
 import BlogContentFooter from "./BlogContentChild/BlogContentFooter";
 
 export default function BlogContent({
-  isActive,
-  onSelect,
   openLike,
   openComment,
   openShare,
@@ -17,7 +15,7 @@ export default function BlogContent({
   numberShares,
   deletePost,
   showOption,
-  openOption
+  openOption,
 }) {
   return (
     <div
@@ -26,8 +24,6 @@ export default function BlogContent({
       transition-all ease duration-300"
     >
       <BlogContentHeader
-        isActive={isActive}
-        onSelect={onSelect}
         accountImage={accountImage}
         name={name}
         time={time}

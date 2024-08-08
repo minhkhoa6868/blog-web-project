@@ -15,7 +15,7 @@ const OtherAccountInfo = lazy(
 );
 const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
-export default function OtherAccount({ onSelect, status, handleFollow }) {
+export default function OtherAccount() {
   const [showLike, setShowLike] = useState(false);
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
@@ -63,8 +63,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
           openBlogType={openBlogType}
           openFollowers={openFollowers}
           openFollowings={openFollowings}
-          status={status}
-          handleFollow={handleFollow}
         />
       </Suspense>
       <Follow
@@ -83,7 +81,6 @@ export default function OtherAccount({ onSelect, status, handleFollow }) {
         <Suspense key={item.id} fallback={<div>Loading...</div>}>
           <BlogContent
             key={item.id}
-            onSelect={onSelect}
             openLike={() => openLike(item.likes)}
             openComment={() => openComment(item.comments)}
             openShare={() => openShare(item.shares)}

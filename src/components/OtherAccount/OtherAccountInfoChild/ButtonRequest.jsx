@@ -1,8 +1,14 @@
-export default function ButtonRequest({ status, handleFollow }) {
+import { useContext } from "react";
+import { PageContext } from "../../../store/page-context";
+
+export default function ButtonRequest() {
+  const pageCtx = useContext(PageContext);
+  const status = pageCtx.follow ? "Following" : "Follow";
+
   return (
     <>
       <button
-        onClick={handleFollow}
+        onClick={pageCtx.updateFollow}
         className={
           status === "Follow"
             ? "flex justify-center items-center bg-gray-100 dark:bg-gray-500 border-gray-200 py-1 rounded-[50px] w-[180px] h-[40px] hover:bg-gray-500 hover:text-white transition ease-out duration-300 shadow-lg text-sm dark:border-0 dark:hover:bg-gray-400 hover:scale-110"

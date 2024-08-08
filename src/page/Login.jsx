@@ -5,7 +5,7 @@ import FooterLogin from "../components/Form/FormChild/FooterLogin";
 import EmailOption from "../components/Form/EmailOption";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
 
-const Login = ({ onSelect }) => {
+const Login = () => {
   return (
     <div className="flex justify-center items-center w-full h-[100vh]">
       <div
@@ -21,7 +21,7 @@ const Login = ({ onSelect }) => {
           idInput="username"
         />
         <PasswordLogin />
-        <FooterLogin onSelect={onSelect} />
+        <FooterLogin />
         <div className="relative my-[10px]">
           <hr className="border-t dark:border-gray-500" />
           <div className="absolute left-40 bottom-[-10px] w-[30px] bg-white dark:bg-gray-700">

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
@@ -7,8 +8,11 @@ import AccountSection from "./NavComponents/AccountSection.jsx";
 import SearchSection from "./NavComponents/SearchSection.jsx";
 import SignupButton from "./NavComponents/SignupButton.jsx";
 import LogoIcon from "../../icons/LogoIcon.jsx";
+import { PageContext } from "../../store/page-context.jsx";
 
-export default function Navigation({ isSelected, onSelect }) {
+export default function Navigation() {
+  const pageCtx = useContext(PageContext);
+
   const hoverNotActive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-[70px] md:w-[80px] justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300";
   const hoverActive =
@@ -20,45 +24,33 @@ export default function Navigation({ isSelected, onSelect }) {
 
   return (
     <>
-      <nav
-        className="py-2 flex justify-between w-full bg-transparent backdrop-blur-[12px] shadow-lg top-0 sticky z-[1]"
-      >
+      <nav className="py-2 flex justify-between w-full bg-transparent backdrop-blur-[12px] shadow-lg top-0 sticky z-[1]">
         <Link
           to="/"
           className="px-6"
-          onClick={() => onSelect("home")}
+          onClick={() => pageCtx.updateActive("home")}
           key="home"
         >
           <LogoIcon />
         </Link>
         <div className="mid:flex hidden gap-2 text-sm transition-all ease duration-300">
           <HomeSection
-            isSelected={isSelected}
-            onSelect={onSelect}
             hoverActive={hoverActive}
             hoverNotActive={hoverNotActive}
           />
           <SearchSection
-            isSelected={isSelected}
-            onSelect={onSelect}
             hoverActive={hoverActive}
             hoverNotActive={hoverNotActive}
           />
           <FiendSection
-            isSelected={isSelected}
-            onSelect={onSelect}
             hoverActive={hoverActive}
             hoverNotActive={hoverNotActive}
           />
           <NotificationSection
-            isSelected={isSelected}
-            onSelect={onSelect}
             hoverActive={hoverActive}
             hoverNotActive={hoverNotActive}
           />
           <AccountSection
-            isSelected={isSelected}
-            onSelect={onSelect}
             hoverAccountActive={hoverAccountActive}
             hoverAccountNotActive={hoverAccountNotActive}
           />

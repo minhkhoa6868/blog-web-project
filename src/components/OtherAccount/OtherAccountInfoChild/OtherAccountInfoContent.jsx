@@ -7,8 +7,6 @@ export default function OtherAccountInfoContent({
   numberFollowings,
   openFollowers,
   openFollowings,
-  status,
-  handleFollow,
 }) {
     
   return (
@@ -27,7 +25,7 @@ export default function OtherAccountInfoContent({
         />
       </div>
       <div className="flex justify-center gap-7">
-        <ButtonRequest status={status} handleFollow={handleFollow}  />
+        <ButtonRequest />
       </div>
     </div>
   );

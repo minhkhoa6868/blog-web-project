@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from "../../store/page-context";
 
-export default function AddBlog({ onSelect }) {
+export default function AddBlog() {
+  const pageCtx = useContext(PageContext);
+
   return (
     <>
       <div
@@ -9,10 +13,7 @@ export default function AddBlog({ onSelect }) {
         dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300"
       >
         <div className="flex items-center gap-5">
-          <Link 
-            to="/account"
-            onClick={() => onSelect('account')}
-          >
+          <Link to="/account" onClick={() => pageCtx.updateActive("account")}>
             <img
               src="account.gif"
               alt="account-img"

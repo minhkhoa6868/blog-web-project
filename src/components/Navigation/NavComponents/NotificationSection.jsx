@@ -1,17 +1,18 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from "../../../store/page-context";
 import NotificationIcon from "../../../icons/NotificationIcon";
 
-export default function NotificationSection({
-  isSelected,
-  onSelect,
-  hoverActive,
-  hoverNotActive,
-}) {
+export default function NotificationSection({ hoverActive, hoverNotActive }) {
+  const pageCtx = useContext(PageContext);
+
   return (
     <Link
       to="/notification"
-      className={isSelected === "notification" ? hoverActive : hoverNotActive}
-      onClick={() => onSelect("notification")}
+      className={
+        pageCtx.active === "notification" ? hoverActive : hoverNotActive
+      }
+      onClick={() => pageCtx.updateActive("notification")}
       key="notification"
     >
       <NotificationIcon />

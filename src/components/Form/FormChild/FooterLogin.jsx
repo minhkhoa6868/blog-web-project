@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from "../../../store/page-context";
 
-const FooterLogin = ({ onSelect }) => {
+const FooterLogin = () => {
+  const pageCtx = useContext(PageContext);
+
   return (
     <>
       <Link
@@ -11,7 +15,7 @@ const FooterLogin = ({ onSelect }) => {
       </Link>
       <Link
         to="/"
-        onClick={() => onSelect('home')}
+        onClick={() => pageCtx.updateActive('home')}
         className="text-center py-[5px] mt-[5px] rounded-md bg-gradient-to-tr from-blue-400 to-fuchsia-400
         text-white hover:from-blue-500 hover:to-fuchsia-500 transition-all ease duration-300"
       >

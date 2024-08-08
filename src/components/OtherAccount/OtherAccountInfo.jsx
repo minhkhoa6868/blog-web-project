@@ -8,8 +8,6 @@ export default function OtherAccountInfo({
   openBlogType,
   openFollowers,
   openFollowings,
-  status,
-  handleFollow,
 }) {
   return (
     <div className="flex justify-center mt-5">
@@ -27,8 +25,6 @@ export default function OtherAccountInfo({
             numberFollowings={numberFollowings}
             openFollowers={openFollowers}
             openFollowings={openFollowings}
-            status={status}
-            handleFollow={handleFollow}
           />
         </div>
       </div>

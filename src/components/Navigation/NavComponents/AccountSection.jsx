@@ -1,18 +1,22 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from "../../../store/page-context";
 
-export default function HomeSection({
-  isSelected,
-  onSelect,
+export default function AccountSection({
   hoverAccountActive,
   hoverAccountNotActive,
 }) {
+  const pageCtx = useContext(PageContext);
+
   return (
     <Link
       to="/account"
       className={
-        isSelected === "account" ? hoverAccountActive : hoverAccountNotActive
+        pageCtx.active === "account"
+          ? hoverAccountActive
+          : hoverAccountNotActive
       }
-      onClick={() => onSelect("account")}
+      onClick={() => pageCtx.updateActive("account")}
       key="account"
       id="account"
     >
@@ -20,7 +24,7 @@ export default function HomeSection({
         src="account.gif"
         alt="account"
         id="account-img"
-        className={`rounded-full w-[38px] h-[38px] object-cover m-auto border-[2px] ${isSelected === 'account' ? 'border-white' : 'border-gray-300'}`}
+        className={`rounded-full w-[38px] h-[38px] object-cover m-auto border-[2px] ${pageCtx.active === "account" ? "border-white" : "border-gray-300"}`}
         loading="lazy"
       />
     </Link>

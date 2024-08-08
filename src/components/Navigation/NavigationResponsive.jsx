@@ -4,7 +4,7 @@ import NotificationSection from "./NavComponents/NotificationSection.jsx";
 import AccountSection from "./NavComponents/AccountSection.jsx";
 import SearchSection from "./NavComponents/SearchSection.jsx";
 
-const NavigationResponsive = ({ isSelected, onSelect }) => {
+const NavigationResponsive = () => {
   const hoverNotActive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-[60px] justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300";
   const hoverActive =
@@ -19,32 +19,22 @@ const NavigationResponsive = ({ isSelected, onSelect }) => {
         className="flex justify-center gap-2 py-2 w-full bg-transparent backdrop-blur-[12px] shadow-lg bottom-0 sticky z-[1] mid:hidden"
     >
       <HomeSection
-        isSelected={isSelected}
-        onSelect={onSelect}
         hoverActive={hoverActive}
         hoverNotActive={hoverNotActive}
       />
       <SearchSection
-        isSelected={isSelected}
-        onSelect={onSelect}
         hoverActive={hoverActive}
         hoverNotActive={hoverNotActive}
       />
       <FiendSection
-        isSelected={isSelected}
-        onSelect={onSelect}
         hoverActive={hoverActive}
         hoverNotActive={hoverNotActive}
       />
       <NotificationSection
-        isSelected={isSelected}
-        onSelect={onSelect}
         hoverActive={hoverActive}
         hoverNotActive={hoverNotActive}
       />
       <AccountSection
-        isSelected={isSelected}
-        onSelect={onSelect}
         hoverAccountActive={hoverAccountActive}
         hoverAccountNotActive={hoverAccountNotActive}
       />

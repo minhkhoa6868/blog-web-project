@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -6,6 +6,7 @@ import {
   createRoutesFromElements,
   ScrollRestoration,
 } from "react-router-dom";
+import PageContextProvider from "./store/page-context";
 import Navigation from "./components/Navigation/Navigation";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive";
 
@@ -24,57 +25,43 @@ const EditProfile = lazy(() => import("./page/EditProfile"));
 const OtherAccount = lazy(() => import("./page/OtherAccount"));
 
 function App() {
-  const [isActive, setIsActive] = useState(
-    window.location.pathname == "/" ? "home" : localStorage.getItem("isActive")
-  );
-  const [isFollow, setIsFollow] = useState(false);
-
-  const handleFollow = () => {
-    setIsFollow((prevState) => !prevState);
-  };
-
-  function handleActive(buttonActive) {
-    setIsActive(buttonActive);
-    localStorage.setItem("isActive", buttonActive);
-  }
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route 
-          path="/signup" 
+        <Route
+          path="/signup"
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <Signup onSelect={handleActive} />
+              <Signup />
             </Suspense>
           }
         />
-        <Route 
-          path="/login" 
+        <Route
+          path="/login"
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <Login onSelect={handleActive} />
+              <Login />
             </Suspense>
           }
         />
-        <Route 
-          path="/identify" 
+        <Route
+          path="/identify"
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <ForgotPassword />
             </Suspense>
           }
         />
-        <Route 
-          path="/verify" 
+        <Route
+          path="/verify"
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <Verify />
             </Suspense>
           }
         />
-        <Route 
-          path="/resetpassword" 
+        <Route
+          path="/resetpassword"
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <ResetPassword />
@@ -87,11 +74,14 @@ function App() {
             <>
               <ScrollRestoration
                 getKey={(location, matches) => {
-                  return location.pathname;
+                  const paths = ["/otheraccount"];
+                  return paths.includes(location.pathname)
+                    ? location.key
+                    : location.pathname;
                 }}
               />
-              <Navigation isSelected={isActive} onSelect={handleActive} />
-              <NavigationResponsive isSelected={isActive} onSelect={handleActive} />
+              <Navigation />
+              <NavigationResponsive />
             </>
           }
         >
@@ -99,7 +89,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Home isActive={isActive} onSelect={handleActive} />
+                <Home />
               </Suspense>
             }
           />
@@ -123,7 +113,7 @@ function App() {
             path="/account"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Account isActive={isActive} onSelect={handleActive} />
+                <Account />
               </Suspense>
             }
           />
@@ -155,10 +145,7 @@ function App() {
             path="/otheraccount"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <OtherAccount
-                  status={isFollow ? "Following" : "Follow"}
-                  handleFollow={handleFollow}
-                />
+                <OtherAccount />
               </Suspense>
             }
           />
@@ -167,7 +154,11 @@ function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <PageContextProvider>
+      <RouterProvider router={router} />
+    </PageContextProvider>
+  );
 }
 
 export default App;

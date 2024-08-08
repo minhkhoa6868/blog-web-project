@@ -12,7 +12,7 @@ import followings from "../utils/following.js";
 const AccountInfo = lazy(() => import("../components/Account/AccountInfo.jsx"));
 const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
-export default function Account({ isActive, onSelect }) {
+export default function Account() {
   const [showLike, setShowLike] = useState(false);
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
@@ -84,8 +84,6 @@ export default function Account({ isActive, onSelect }) {
         <Suspense key={item.id} fallback={<div>Loading...</div>}>
           <BlogContent
             key={item.id}
-            isActive={isActive}
-            onSelect={onSelect}
             openLike={() => openLike(item.likes)}
             openComment={() => openComment(item.comments)}
             openShare={() => openShare(item.shares)}

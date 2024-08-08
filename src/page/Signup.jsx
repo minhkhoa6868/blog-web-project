@@ -8,7 +8,7 @@ import GenderInfo from "../components/Form/GenderInfo";
 import FooterSignup from "../components/Form/FormChild/FooterSignup";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
 
-const Signup = ({ onSelect }) => {
+const Signup = () => {
   return (
     <div className="flex justify-center items-center w-full h-[100vh]">
       <div
@@ -28,7 +28,7 @@ const Signup = ({ onSelect }) => {
           idInput="email"
         />
         <PasswordInfo />
-        <FooterSignup onSelect={onSelect} />
+        <FooterSignup />
       </div>
       <div className="absolute top-[8px] right-[25px]">
         <ThemeSwitcher />

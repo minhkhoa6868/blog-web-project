@@ -1,24 +1,30 @@
+import { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import DeleteButton from "../DeleteButton";
 import OptionButton from "../OptionButton";
 import BlogOption from "../BlogOption";
 import PublicIcon from "../../icons/PublicIcon";
+import { PageContext } from "../../store/page-context";
 
 export default function BlogContentHeader({
-  isActive,
-  onSelect,
   accountImage,
   name,
   time,
   deletePost,
   showOption,
-  openOption
+  openOption,
 }) {
+  const pageCtx = useContext(PageContext);
+
   return (
     <div className="flex flex-col gap-3 px-[20px]">
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
-          <Link to="/account" onClick={() => onSelect("account")} key="account">
+          <Link
+            to="/account"
+            onClick={() => pageCtx.updateActive("account")}
+            key="account"
+          >
             <img
               src={accountImage}
               alt="account-img"
@@ -30,7 +36,7 @@ export default function BlogContentHeader({
             <Link
               className="font-semibold"
               to="/account"
-              onClick={() => onSelect("account")}
+              onClick={() => pageCtx.updateActive("account")}
               key="account"
             >
               <span>{name}</span>
@@ -43,9 +49,9 @@ export default function BlogContentHeader({
             </div>
           </div>
         </div>
-        {isActive === "home" ? (
+        {pageCtx.active === "home" ? (
           <DeleteButton deletePost={deletePost} />
-        ) : isActive === "account" ? (
+        ) : pageCtx.active === "account" ? (
           <div>
             <OptionButton openOption={openOption} />
             <BlogOption showOption={showOption} />

@@ -9,7 +9,7 @@ import countComments from "../utils/countComments";
 
 const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
-export default function Home({ isActive, onSelect }) {
+export default function Home() {
   const [showLike, setShowLike] = useState(false);
   const [currentLike, setCurrentLike] = useState([]);
   const [showComment, setShowComment] = useState(false);
@@ -39,7 +39,7 @@ export default function Home({ isActive, onSelect }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <AddBlog onSelect={onSelect} />
+      <AddBlog />
       {post.map((item) => (
         <Suspense
           key={item.id}
@@ -47,8 +47,6 @@ export default function Home({ isActive, onSelect }) {
         >
           <BlogContent
             key={item.id}
-            isActive={isActive}
-            onSelect={onSelect}
             openLike={() => openLike(item.likes)}
             openComment={() => openComment(item.comments)}
             openShare={() => openShare(item.shares)}
