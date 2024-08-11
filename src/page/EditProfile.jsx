@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import checkValidUserName from "../utils/checkValidUserName";
 import checkValidPassword from "../utils/checkValidPassword";
 import checkValidAgain from "../utils/checkValidAgain";
@@ -64,12 +65,13 @@ export default function EditProfile() {
         changeBtnHandler={changeBtnHandler}
       />
       <div className="flex justify-end mt-[15px]">
-        <button
+        <Link
+          to="/account"
           className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
           hover:from-blue-500 hover:to-fuchsia-500 rounded-[20px] font-semibold"
         >
           Save
-        </button>
+        </Link>
       </div>
     </div>
   );

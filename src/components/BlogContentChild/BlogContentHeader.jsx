@@ -10,7 +10,6 @@ export default function BlogContentHeader({
   accountImage,
   name,
   time,
-  deletePost,
   showOption,
   openOption,
 }) {
@@ -50,7 +49,7 @@ export default function BlogContentHeader({
           </div>
         </div>
         {pageCtx.active === "home" ? (
-          <DeleteButton deletePost={deletePost} />
+          <DeleteButton />
         ) : pageCtx.active === "account" ? (
           <div>
             <OptionButton openOption={openOption} />

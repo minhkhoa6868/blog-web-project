@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import BlogType from "./AccountInfoChild/BlogType";
+import { BlogContext } from "../../store/blog-context";
 
-export default function ShowBlogType({ showBlogType, openBlogType }) {
+export default function ShowBlogType() {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div
       className={
-        showBlogType
+        blogCtx.blogType
           ? "flex justify-center items-center fixed inset-0 bg-black bg-opacity-60 z-[1000]"
           : "hidden"
       }
@@ -30,7 +34,7 @@ export default function ShowBlogType({ showBlogType, openBlogType }) {
         </div>
         <button 
           className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-          onClick={openBlogType}
+          onClick={blogCtx.handleBlogType}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

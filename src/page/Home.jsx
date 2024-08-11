@@ -16,7 +16,6 @@ export default function Home() {
   const [currentComment, setCurrentComment] = useState([]);
   const [showShare, setShowShare] = useState(false);
   const [currentShare, setCurrentShare] = useState([]);
-  const [deleteWarning, setDeleteWarning] = useState(false);
 
   function openLike(likes) {
     setShowLike((prevState) => !prevState);
@@ -33,18 +32,11 @@ export default function Home() {
     setCurrentShare(shares);
   };
 
-  const deletePost = () => {
-    setDeleteWarning((prevState) => !prevState);
-  };
-
   return (
     <div className="flex flex-col gap-6">
       <AddBlog />
       {post.map((item) => (
-        <Suspense
-          key={item.id}
-          fallback={<div>Loading...</div>}
-        >
+        <Suspense key={item.id} fallback={<div>Loading...</div>}>
           <BlogContent
             key={item.id}
             openLike={() => openLike(item.likes)}
@@ -57,7 +49,6 @@ export default function Home() {
             numberLikes={item.likes.length}
             numberComments={countComments(item.comments)}
             numberShares={item.shares.length}
-            deletePost={deletePost}
           />
         </Suspense>
       ))}
@@ -76,11 +67,7 @@ export default function Home() {
         openShare={() => openShare(currentShare)}
         shares={currentShare}
       />
-      <DeleteWarning
-        warning="Do you want to delete this post?"
-        deleteWarning={deleteWarning}
-        handleDelete={deletePost}
-      />
+      <DeleteWarning warning="Do you want to delete this post?" />
     </div>
   );
 }

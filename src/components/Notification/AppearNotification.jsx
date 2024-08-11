@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import XIcon from "../../icons/XIcon";
+import { BlogContext } from "../../store/blog-context";
 
-export default function AppearNotification({ noti, handleClick }) {
+export default function AppearNotification({ noti }) {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div className="px-3 pb-3">
       <a
@@ -21,7 +25,7 @@ export default function AppearNotification({ noti, handleClick }) {
           </p>
         </div>
         <button
-          onClick={handleClick}
+          onClick={blogCtx.handleDelete}
           className="flex justify-center items-center rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 w-[26px] h-[26px] 
           sm:w-[30px] sm:h-[30px] transition ease duration-300 dark:fill-white"
           id="status-checked"

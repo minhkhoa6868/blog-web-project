@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FriendCategory from "../components/Friend/FriendCategory";
 import FriendRequest from "../components/Friend/FriendRequest";
 import DeleteWarning from "../components/DeleteWarning";
 import relatedFriends from "../utils/relatedFriend";
+import { BlogContext } from "../store/blog-context";
 
 export default function Friend() {
+  const blogCtx = useContext(BlogContext);
+
   const [showRelated, setShowRelated] = useState(false);
-  const [deleteWarning, setDeleteWarning] = useState(false);
 
   const openRelated = () => {
     setShowRelated((prevState) => !prevState);
-  };
-
-  const deleteAccount = () => {
-    setDeleteWarning((prevState) => !prevState);
   };
 
   return (
@@ -23,7 +21,7 @@ export default function Friend() {
         status="Follow"
         statusFriends={relatedFriends}
         openRelated={openRelated}
-        deleteAccount={deleteAccount}
+        deleteAccount={blogCtx.handleDelete}
       />
       <FriendRequest
         showRequest={showRelated}
@@ -31,13 +29,9 @@ export default function Friend() {
         status="Related Friends"
         statusFriends={relatedFriends}
         statusAction="Follow"
-        deleteAccount={deleteAccount}
+        deleteAccount={blogCtx.handleDelete}
       />
-      <DeleteWarning
-        warning="Do you want to delete this account?"
-        deleteWarning={deleteWarning}
-        handleDelete={deleteAccount}
-      />
+      <DeleteWarning warning="Do you want to delete this account?" />
     </div>
   );
 }

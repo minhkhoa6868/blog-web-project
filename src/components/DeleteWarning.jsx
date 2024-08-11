@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import ActionButton from "./DeleteWarning/ActionButton";
+import { BlogContext } from "../store/blog-context";
 
-const DeleteWarning = ({ warning, deleteWarning, handleDelete }) => {
+const DeleteWarning = ({ warning }) => {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div
       className={
-        deleteWarning
+        blogCtx.delete
           ? "flex justify-center items-center fixed top-0 left-0 h-[100vh] w-full bg-black bg-opacity-50 z-[1000]"
           : "hidden"
       }
@@ -16,8 +20,8 @@ const DeleteWarning = ({ warning, deleteWarning, handleDelete }) => {
       >
         <p>{warning}</p>
         <div className="flex gap-4">
-          <ActionButton status="Delete" handleClick={handleDelete} />
-          <ActionButton status="Cancel" handleClick={handleDelete} />
+          <ActionButton status="Delete" handleClick={blogCtx.handleDelete} />
+          <ActionButton status="Cancel" handleClick={blogCtx.handleDelete} />
         </div>
       </div>
     </div>

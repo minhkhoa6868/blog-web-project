@@ -13,7 +13,6 @@ export default function BlogContent({
   numberLikes,
   numberComments,
   numberShares,
-  deletePost,
   showOption,
   openOption,
 }) {
@@ -27,7 +26,6 @@ export default function BlogContent({
         accountImage={accountImage}
         name={name}
         time={time}
-        deletePost={deletePost}
         showOption={showOption}
         openOption={openOption}
       />

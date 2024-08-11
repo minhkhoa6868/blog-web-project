@@ -5,9 +5,6 @@ export default function AccountInfo({
   numberBlogs,
   numberFollowers,
   numberFollowings,
-  openBlogType,
-  openFollowers,
-  openFollowings,
 }) {
   return (
     <div className="flex justify-center mt-5">
@@ -18,13 +15,11 @@ export default function AccountInfo({
       >
         <div className="w-full rounded-t-lg h-[150px] bg-gradient-to-tr from-blue-400 to-fuchsia-400"></div>
         <div className="flex flex-col xl:flex-row xl:justify-between">
-          <AccountInfoHeader openBlogType={openBlogType} />
+          <AccountInfoHeader />
           <AccountInfoContent
             numberBlogs={numberBlogs}
             numberFollowers={numberFollowers}
             numberFollowings={numberFollowings}
-            openFollowers={openFollowers}
-            openFollowings={openFollowings}
           />
         </div>
       </div>

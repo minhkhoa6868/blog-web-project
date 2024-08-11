@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import PageContextProvider from "./store/page-context";
+import BlogContextProvider from "./store/blog-context";
 import Navigation from "./components/Navigation/Navigation";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive";
 
@@ -89,7 +90,9 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Home />
+                <BlogContextProvider>
+                  <Home />
+                </BlogContextProvider>
               </Suspense>
             }
           />
@@ -105,7 +108,9 @@ function App() {
             path="/notification"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Notification />
+                <BlogContextProvider>
+                  <Notification />
+                </BlogContextProvider>
               </Suspense>
             }
           />
@@ -113,7 +118,9 @@ function App() {
             path="/account"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Account />
+                <BlogContextProvider>
+                  <Account />
+                </BlogContextProvider>
               </Suspense>
             }
           />
@@ -121,7 +128,9 @@ function App() {
             path="/friend"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Friend />
+                <BlogContextProvider>
+                  <Friend />
+                </BlogContextProvider>
               </Suspense>
             }
           />
@@ -145,7 +154,9 @@ function App() {
             path="/otheraccount"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <OtherAccount />
+                <BlogContextProvider>
+                  <OtherAccount />
+                </BlogContextProvider>
               </Suspense>
             }
           />

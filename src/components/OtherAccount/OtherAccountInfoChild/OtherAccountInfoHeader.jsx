@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import BlogType from "../../Account/AccountInfoChild/BlogType";
+import { BlogContext } from "../../../store/blog-context";
 
-export default function OtherAccountInfoHeader({ openBlogType }) {
+export default function OtherAccountInfoHeader() {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div 
         className="flex flex-col items-center gap-3 translate-y-[-90px] 
@@ -27,7 +31,7 @@ export default function OtherAccountInfoHeader({ openBlogType }) {
             <BlogType children="Fashion" />
             <BlogType children="Nature" />
             <BlogType children="Entertainment" />
-            <BlogType children="..." openBlogType={openBlogType} />
+            <BlogType children="..." openBlogType={blogCtx.handleBlogType} />
         </div>
     </div>
   );

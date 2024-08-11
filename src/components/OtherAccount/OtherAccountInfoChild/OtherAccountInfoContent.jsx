@@ -1,13 +1,14 @@
+import { useContext } from "react";
 import Statistic from "../../Account/AccountInfoChild/Statistic";
 import ButtonRequest from "./ButtonRequest";
+import { BlogContext } from "../../../store/blog-context";
 
 export default function OtherAccountInfoContent({
   numberBlogs,
   numberFollowers,
   numberFollowings,
-  openFollowers,
-  openFollowings,
 }) {
+  const blogCtx = useContext(BlogContext);
     
   return (
     <div className="flex flex-col gap-6 translate-y-[-70px] xl:translate-y-0 xl:pt-[80px] xl:pb-7 xl:pr-8">
@@ -16,12 +17,12 @@ export default function OtherAccountInfoContent({
         <Statistic
           number={numberFollowers}
           content="Followers"
-          handleClick={openFollowers}
+          handleClick={blogCtx.handleFollowings}
         />
         <Statistic
           number={numberFollowings}
           content="Following"
-          handleClick={openFollowings}
+          handleClick={blogCtx.handleFollowings}
         />
       </div>
       <div className="flex justify-center gap-7">
