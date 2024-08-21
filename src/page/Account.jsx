@@ -1,4 +1,4 @@
-import { useState, useContext, lazy, Suspense } from "react";
+import { useState, useContext, useCallback, lazy, Suspense } from "react";
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
@@ -25,24 +25,28 @@ export default function Account() {
   // track active post of options
   const [activeOptionId, setActiveOptionId] = useState(null);
 
-  const openLike = (likes) => {
+  // show like of each post
+  const openLike = useCallback((likes) => {
     setShowLike((prevState) => !prevState);
     setCurrentLike(likes);
-  };
+  }, []);
 
-  const openComment = (comments) => {
+  // show comment of each post
+  const openComment = useCallback((comments) => {
     setShowComment((prevState) => !prevState);
     setCurrentComment(comments);
-  };
+  }, []);
 
-  const openShare = (shares) => {
+  // show share of each post
+  const openShare = useCallback((shares) => {
     setShowShare((prevState) => !prevState);
     setCurrentShare(shares);
-  };
+  }, []);
 
-  const openOption = (postId) => {
+  // show option of each post
+  const openOption = useCallback((postId) => {
     setActiveOptionId((prevId) => (prevId === postId ? null : postId));
-  };
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">

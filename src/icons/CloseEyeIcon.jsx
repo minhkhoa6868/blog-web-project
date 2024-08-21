@@ -1,3 +1,4 @@
+// million-ignore
 const CloseEyeIcon = ({ height, width }) => {
   return (
     <svg

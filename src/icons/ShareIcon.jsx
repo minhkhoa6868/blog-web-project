@@ -1,3 +1,4 @@
+// million-ignore
 const ShareIcon = ({ height, width }) => {
   return (
     <svg

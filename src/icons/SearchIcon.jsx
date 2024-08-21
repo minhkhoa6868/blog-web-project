@@ -1,3 +1,4 @@
+// million-ignore
 const SeachIcon = ({ height, width }) => {
   return (
     <svg

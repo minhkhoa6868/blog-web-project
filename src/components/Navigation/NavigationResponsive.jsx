@@ -1,10 +1,11 @@
+import { memo } from "react";
 import HomeSection from "./NavComponents/HomeSection.jsx";
 import FiendSection from "./NavComponents/FriendSection.jsx";
 import NotificationSection from "./NavComponents/NotificationSection.jsx";
 import AccountSection from "./NavComponents/AccountSection.jsx";
 import SearchSection from "./NavComponents/SearchSection.jsx";
 
-const NavigationResponsive = () => {
+const NavigationResponsive = memo(function NavigationResponsive () {
   const hoverNotActive =
     "flex transition ease-out duration-300 hover:bg-gray-200 fill-gray-600 w-[60px] justify-center rounded-lg dark:hover:bg-gray-500 dark:fill-gray-300";
   const hoverActive =
@@ -40,6 +41,6 @@ const NavigationResponsive = () => {
       />
     </nav>
   );
-};
+});
 
 export default NavigationResponsive;

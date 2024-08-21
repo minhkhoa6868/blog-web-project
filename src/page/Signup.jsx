@@ -7,6 +7,7 @@ import InformationSection from "../components/Form/FormChild/InformationSection"
 import GenderInfo from "../components/Form/GenderInfo";
 import FooterSignup from "../components/Form/FormChild/FooterSignup";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
+import PasswordContextProvider from "../store/password-context";
 
 const Signup = () => {
   return (
@@ -27,7 +28,9 @@ const Signup = () => {
           idLabel="email-label"
           idInput="email"
         />
-        <PasswordInfo />
+        <PasswordContextProvider >
+          <PasswordInfo />
+        </PasswordContextProvider>
         <FooterSignup />
       </div>
       <div className="absolute top-[8px] right-[25px]">

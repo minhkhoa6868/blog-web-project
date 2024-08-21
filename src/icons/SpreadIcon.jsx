@@ -1,3 +1,4 @@
+// million-ignore
 const SpreadIcon = ({ height, width }) => {
   return (
     <svg

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import PageContextProvider from "./store/page-context";
 import BlogContextProvider from "./store/blog-context";
+import EditProfileContextProvider from "./store/edit-profile-context";
 import Navigation from "./components/Navigation/Navigation";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive";
 
@@ -146,7 +147,9 @@ function App() {
             path="/editProfile"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <EditProfile />
+                <EditProfileContextProvider>
+                  <EditProfile />
+                </EditProfileContextProvider>
               </Suspense>
             }
           />

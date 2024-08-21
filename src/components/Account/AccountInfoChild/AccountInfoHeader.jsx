@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import BlogType from "./BlogType";
+import blogType from "../../../utils/blogType";
 import { BlogContext } from "../../../store/blog-context";
 
 export default function AccountInfoHeader() {
@@ -31,13 +32,10 @@ export default function AccountInfoHeader() {
         </p>
       </div>
       <p className="text-sm">Blog type:</p>
-      <div className="flex justify-center gap-2 w-[350px] flex-wrap text-sm xl:justify-start">
-        <BlogType children="Life" />
-        <BlogType children="Sport" />
-        <BlogType children="Travel" />
-        <BlogType children="Fashion" />
-        <BlogType children="Nature" />
-        <BlogType children="Entertainment" />
+      <div className="flex justify-center gap-2 w-[320px] sm:w-[350px] flex-wrap text-sm xl:justify-start">
+        {blogType.slice(0, 6).map((type) => (
+          <BlogType key={type.id} children={type.type} />
+        ))}
         <BlogType children="..." openBlogType={blogCtx.handleBlogType} />
       </div>
     </div>

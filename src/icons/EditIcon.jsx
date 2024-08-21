@@ -1,3 +1,4 @@
+// million-ignore
 const EditIcon = ({ height, width }) => {
   return (
     <svg

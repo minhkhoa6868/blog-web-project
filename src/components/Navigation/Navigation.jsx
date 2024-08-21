@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { Outlet, Link } from "react-router-dom";
 import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
@@ -10,7 +10,7 @@ import SignupButton from "./NavComponents/SignupButton.jsx";
 import LogoIcon from "../../icons/LogoIcon.jsx";
 import { PageContext } from "../../store/page-context.jsx";
 
-export default function Navigation() {
+const Navigation = memo(function Navigation() {
   const pageCtx = useContext(PageContext);
 
   const hoverNotActive =
@@ -63,4 +63,6 @@ export default function Navigation() {
       <Outlet />
     </>
   );
-}
+});
+
+export default Navigation;

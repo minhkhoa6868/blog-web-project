@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 
 const AccountFriend = lazy(() => import("./AccountFriend"))
 
-export default function FriendCategory({ category, status, statusFriends, openRelated, deleteAccount }) {
+export default function FriendCategory({ category, status, statusFriends, openRelated }) {
   return (
     <div
       className="w-[400px] sm:w-[500px] md:w-[730px] xl:w-[970px] border rounded-xl shadow-lg 
@@ -20,7 +20,6 @@ export default function FriendCategory({ category, status, statusFriends, openRe
               image={friend.imageAccount}
               name={friend.nameAccount}
               status={status}
-              deleteAccount={deleteAccount}
             />
           </Suspense>
         ))}

@@ -1,3 +1,4 @@
+// million-ignore
 const LightModeIcon = () => {
   return (
     <svg

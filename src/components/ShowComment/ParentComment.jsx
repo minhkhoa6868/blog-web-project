@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Action from "./ParentComment/Action";
 import Reply from "./ParentComment/Reply";
 import HeartIcon from "../../icons/HeartIcon";
@@ -8,9 +8,9 @@ export default function ParentComment({ comment }) {
   const [replyMode, setReplyMode] = useState(false);
   const [isLike, setIsLike] = useState(false);
 
-  const handleLike = () => {
+  const handleLike = useCallback(() => {
     setIsLike((prevState) => !prevState);
-  };
+  });
 
   return (
     <div className="flex flex-col gap-3">

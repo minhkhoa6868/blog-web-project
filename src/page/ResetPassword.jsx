@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import HeaderForm from "../components/Form/FormChild/HeaderForm";
 import PasswordInfo from "../components/Form/PasswordInfo";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
+import PasswordContextProvider from "../store/password-context";
 import BackwardIcon from "../icons/BackwardIcon";
 import "../components/Form/FormStyle.css";
 
@@ -11,7 +12,9 @@ const ResetPassword = () => {
       <div className="flex flex-col gap-2 px-[15px] py-[20px] w-[380px] border rounded-[20px] dark:bg-gray-700 dark:border-gray-500">
         <HeaderForm header="Reset Password" message="Please enter your new password" />
         <hr className="border-t dark:border-gray-500" />
-        <PasswordInfo />
+        <PasswordContextProvider>
+          <PasswordInfo />
+        </PasswordContextProvider>
         <Link to="/login">
           <button
             className="py-[5px] mt-[5px] rounded-md bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white hover:from-blue-500 

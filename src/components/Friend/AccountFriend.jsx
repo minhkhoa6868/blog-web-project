@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BlogContext } from "../../store/blog-context";
 
-export default function AccountFriend({ image, name, status, deleteAccount }) {
+export default function AccountFriend({ image, name, status }) {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div
       className="flex flex-col text-center gap-2 border rounded-xl pb-[10px] shadow-md
@@ -23,7 +27,7 @@ export default function AccountFriend({ image, name, status, deleteAccount }) {
         {status}
       </button>
       <button
-        onClick={deleteAccount}
+        onClick={blogCtx.handleDelete}
         className="mx-[10px] py-[5px] rounded-lg bg-gray-200 hover:bg-gray-300 
         dark:bg-gray-400 dark:hover:bg-gray-500 transition-all ease duration-300
         text-[0.9rem]"

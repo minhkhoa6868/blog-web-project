@@ -4,6 +4,7 @@ import PasswordLogin from "../components/Form/PasswordLogin";
 import FooterLogin from "../components/Form/FormChild/FooterLogin";
 import EmailOption from "../components/Form/EmailOption";
 import ThemeSwitcher from "../components/Navigation/NavComponents/ThemeSwitcher";
+import PasswordContextProvider from "../store/password-context";
 
 const Login = () => {
   return (
@@ -11,7 +12,7 @@ const Login = () => {
       <div
         className="flex flex-col gap-2 px-[15px] py-[20px] w-[380px] border rounded-[20px] dark:bg-gray-700 dark:border-gray-500"
       >
-        <h1 className="text-center font-semibold text-[1.4rem]">Sign Up</h1>
+        <h1 className="text-center font-semibold text-[1.4rem]">Login</h1>
         <InformationSection
           label="User Name"
           name="username"
@@ -20,7 +21,9 @@ const Login = () => {
           idLabel="username-label"
           idInput="username"
         />
-        <PasswordLogin />
+        <PasswordContextProvider>
+          <PasswordLogin />
+        </PasswordContextProvider>
         <FooterLogin />
         <div className="relative my-[10px]">
           <hr className="border-t dark:border-gray-500" />

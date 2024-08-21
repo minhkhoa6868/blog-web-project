@@ -1,3 +1,4 @@
+// million-ignore
 const PublicIcon = ({ height, width }) => {
   return (
     <svg

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import Statistic from "./Statistic";
-import ButtonEdit from "./ButtonEdit";
-import ButtonNewBlog from "./ButtonNewBlog";
+import FunctionButton from "./FunctionButton";
 import { BlogContext } from "../../../store/blog-context";
 
 export default function AccountInfoContent({
@@ -26,8 +25,8 @@ export default function AccountInfoContent({
         />
       </div>
       <div className="flex justify-center gap-7">
-        <ButtonEdit />
-        <ButtonNewBlog />
+        <FunctionButton status="Edit Profile" navigate="/editProfile" />
+        <FunctionButton status="Add New Blog" navigate="/newBlog" />
       </div>
     </div>
   );

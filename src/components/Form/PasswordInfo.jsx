@@ -1,53 +1,25 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import InformationSection from "./FormChild/InformationSection";
+import { PasswordContext } from "../../store/password-context";
 import checkValidPassword from "../../utils/checkValidPassword";
 import checkValidAgain from "../../utils/checkValidAgain";
 import OpenEyeIcon from "../../icons/OpenEyeIcon";
 import CloseEyeIcon from "../../icons/CloseEyeIcon";
 
 const PasswordInfo = () => {
-  const [open, isOpen] = useState(false);
-  const [openAgain, isOpenAgain] = useState(false);
-
-  function changeOpen() {
-    isOpen((prevState) => !prevState);
-  }
-
-  function changeOpenAgain() {
-    isOpenAgain((prevState) => !prevState);
-  }
-
-  function showPassword() {
-    const password = document.getElementById("pw");
-    if (password.type === "password") {
-      password.type = "text";
-    } else {
-      password.type = "password";
-    }
-    changeOpen();
-  }
-
-  function showAgain() {
-    const passwordAgain = document.getElementById("cpw");
-    if (passwordAgain.type === "password") {
-      passwordAgain.type = "text";
-    } else {
-      passwordAgain.type = "password";
-    }
-    changeOpenAgain();
-  }
+  const passwordCtx = useContext(PasswordContext);
 
   useEffect(() => {
     const password = document.getElementById("pw");
-    const passwordAgain = document.getElementById("cpw");
+    const confirmPassword = document.getElementById("cpw");
 
     password.addEventListener('keyup', checkValidPassword);
-    passwordAgain.addEventListener('keyup', checkValidAgain);
+    confirmPassword.addEventListener('keyup', checkValidAgain);
 
     // clean up side effect
     return () => {
       password.removeEventListener('keyup', checkValidPassword);
-      passwordAgain.removeEventListener('keyup', checkValidAgain);
+      confirmPassword.removeEventListener('keyup', checkValidAgain);
     };
   });
 
@@ -65,11 +37,14 @@ const PasswordInfo = () => {
             maxLength={25}
           />
           <button
-            onClick={showPassword}
+            onClick={() => {
+              const password = document.getElementById("pw");
+              passwordCtx.showPassword(password)
+            }}
             className="absolute right-2 top-[15px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
                 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
           >
-            {open ? (
+            {passwordCtx.openPassword ? (
               <OpenEyeIcon width="14" height="14" />
             ) : (
               <CloseEyeIcon width="14" height="14" />
@@ -103,11 +78,14 @@ const PasswordInfo = () => {
             maxLength={25}
           />
           <button
-            onClick={showAgain}
+            onClick={() => {
+              const confirmPassword = document.getElementById("cpw");
+              passwordCtx.showConfirmPassword(confirmPassword)
+            }}
             className="absolute right-2 top-[15px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
             to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
           >
-            {openAgain ? (
+            {passwordCtx.openConfirmPassword ? (
               <OpenEyeIcon width="14" height="14" />
             ) : (
               <CloseEyeIcon width="14" height="14" />

@@ -1,3 +1,4 @@
+// million-ignore
 const CommentIcon = ({ height, width }) => {
   return (
     <svg

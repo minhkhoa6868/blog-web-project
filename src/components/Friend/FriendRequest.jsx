@@ -6,10 +6,9 @@ const AccountRequest = lazy(() => import("./FriendRequest/AccountRequest"));
 const FriendRequest = ({
   showRequest,
   handleClick,
-  statusFriends,
+  category,
   status,
-  statusAction,
-  deleteAccount,
+  statusFriends,
 }) => {
   return (
     <div
@@ -23,7 +22,7 @@ const FriendRequest = ({
         className="flex flex-col relative items-center gap-3 w-[350px] h-[400px] bg-white
         rounded-[20px] p-[20px] border dark:bg-gray-700 dark:border-gray-500"
       >
-        <h2 className="font-semibold">{status}</h2>
+        <h2 className="font-semibold">{category}</h2>
         <div className="flex flex-col w-full gap-3 overflow-scroll">
           {statusFriends.map((child) => (
             <Suspense key={child.id} fallback={<div>Loading...</div>}>
@@ -31,8 +30,7 @@ const FriendRequest = ({
                 key={child.id}
                 imageAccount={child.imageAccount}
                 nameAccount={child.nameAccount}
-                statusAction={statusAction}
-                deleteAccount={deleteAccount}
+                statusAction={status}
               />
             </Suspense>
           ))}

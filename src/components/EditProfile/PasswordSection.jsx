@@ -1,45 +1,19 @@
-import { useState } from "react";
+import { useContext } from "react";
 import InputSection from "./EditProfileChild/InputSection";
+import { EditProfileContext } from "../../store/edit-profile-context";
+import { PasswordContext } from "../../store/password-context";
 import OpenEyeIcon from "../../icons/OpenEyeIcon";
 import CloseEyeIcon from "../../icons/CloseEyeIcon";
 
-export default function PasswordSection({ changeBtn, changeBtnHandler }) {
-  const [open, isOpen] = useState(false);
-  const [openAgain, isOpenAgain] = useState(false);
-
-  function changeOpen() {
-    isOpen((prevState) => !prevState);
-  }
-
-  function changeOpenAgain() {
-    isOpenAgain((prevState) => !prevState);
-  }
-
-  function showPassword() {
-    const password = document.getElementById("pw");
-    if (password.type === "password") {
-      password.type = "text";
-    } else {
-      password.type = "password";
-    }
-    changeOpen();
-  }
-
-  function showAgain() {
-    const passwordAgain = document.getElementById("cpw");
-    if (passwordAgain.type === "password") {
-      passwordAgain.type = "text";
-    } else {
-      passwordAgain.type = "password";
-    }
-    changeOpenAgain();
-  }
+export default function PasswordSection() {
+  const editCtx = useContext(EditProfileContext);
+  const passwordCtx = useContext(PasswordContext);
 
   return (
     <>
-      {!changeBtn ? (
+      {!editCtx.btn ? (
         <button
-          onClick={changeBtnHandler}
+          onClick={editCtx.handleBtnChange}
           className="px-[20px] py-[5px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
           hover:from-blue-500 hover:to-fuchsia-500 rounded-[20px] font-semibold text-[0.9rem]"
         >
@@ -47,14 +21,14 @@ export default function PasswordSection({ changeBtn, changeBtnHandler }) {
         </button>
       ) : (
         <button
-          onClick={changeBtnHandler}
+          onClick={editCtx.handleBtnChange}
           className="px-[20px] py-[5px] mb-[10px] bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white
           hover:from-blue-500 hover:to-fuchsia-500 rounded-[20px] font-semibold text-[0.9rem]"
         >
           Unchange Password
         </button>
       )}
-      <div className={changeBtn ? "flex flex-col gap-2" : "hidden"}>
+      <div className={editCtx.btn ? "flex flex-col gap-2" : "hidden"}>
         <div className="flex flex-col gap-2">
           <div className="relative">
             <div className="flex flex-col gap-2">
@@ -67,11 +41,14 @@ export default function PasswordSection({ changeBtn, changeBtnHandler }) {
               />
             </div>
             <button
-              onClick={showPassword}
+              onClick={() => {
+                const password = document.getElementById("pw");
+                passwordCtx.showPassword(password);
+              }}
               className="absolute right-2 top-[40px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
             to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
             >
-              {open ? (
+              {passwordCtx.openPassword ? (
                 <OpenEyeIcon width="14" height="14" />
               ) : (
                 <CloseEyeIcon width="14" height="14" />
@@ -105,11 +82,14 @@ export default function PasswordSection({ changeBtn, changeBtnHandler }) {
               />
             </div>
             <button
-              onClick={showAgain}
+              onClick={() => {
+                const confirmPassword = document.getElementById("cpw");
+                passwordCtx.showConfirmPassword(confirmPassword);
+              }}
               className="absolute right-2 top-[40px] p-[5px] rounded-full bg-gradient-to-tr from-blue-400 
             to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 fill-white z-[1]"
             >
-              {openAgain ? (
+              {passwordCtx.openConfirmPassword ? (
                 <OpenEyeIcon width="14" height="14" />
               ) : (
                 <CloseEyeIcon width="14" height="14" />

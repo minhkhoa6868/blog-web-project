@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BlogContext } from "../../../store/blog-context";
 
 const AccountRequest = ({
   imageAccount,
   nameAccount,
   statusAction,
-  deleteAccount,
 }) => {
+  const blogCtx = useContext(BlogContext);
+
   return (
     <div
       className="flex items-center gap-2 p-[5px] hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500
@@ -35,7 +38,7 @@ const AccountRequest = ({
             {statusAction}
           </button>
           <button
-            onClick={deleteAccount}
+            onClick={blogCtx.handleDelete}
             className="px-[10px] rounded-[7px] bg-gray-300 hover:bg-gray-400 dark:bg-gray-400 dark:hover:bg-gray-600
             transition-all ease duration-300"
           >

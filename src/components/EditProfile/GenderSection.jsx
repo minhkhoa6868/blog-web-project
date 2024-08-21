@@ -1,4 +1,9 @@
-export default function GenderSection({ isOtherGender, otherGender }) {
+import { useContext } from "react";
+import { EditProfileContext } from "../../store/edit-profile-context";
+
+export default function GenderSection() {
+  const editCtx = useContext(EditProfileContext);
+
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="gender" className="font-semibold">
@@ -11,8 +16,8 @@ export default function GenderSection({ isOtherGender, otherGender }) {
             rounded-[8px]"
         onChange={(e) =>
           e.target.value == "others"
-            ? isOtherGender(true)
-            : isOtherGender(false)
+            ? editCtx.handleOtherGender(true)
+            : editCtx.handleOtherGender(false)
         }
       >
         <option value="">Choose your gender</option>
@@ -21,7 +26,7 @@ export default function GenderSection({ isOtherGender, otherGender }) {
         <option value="others">Others</option>
         <option value="private">Private information</option>
       </select>
-      {otherGender && (
+      {editCtx.oherGender && (
         <input
           name="otherGender"
           id="other-gender"

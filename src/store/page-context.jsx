@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback } from "react";
 
 export const PageContext = createContext({
   active: false,
@@ -13,14 +13,14 @@ const PageContextProvider = ({ children }) => {
   );
   const [isFollow, setIsFollow] = useState(false);
 
-  const handleFollow = () => {
+  const handleFollow = useCallback(() => {
     setIsFollow((prevState) => !prevState);
-  };
+  });
 
-  function handleActive(buttonActive) {
+  const handleActive = useCallback((buttonActive) => {
     setIsActive(buttonActive);
     localStorage.setItem("isActive", buttonActive);
-  }
+  });
 
   const ctxPage = {
     active: isActive,

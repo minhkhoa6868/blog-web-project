@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import LightModeIcon from "../../../icons/LightModeIcon";
 import DarkModeIcon from "../../../icons/DarkModeIcon";
 
@@ -15,9 +15,9 @@ const ThemeSwitcher = () => {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  const toggleDarkMode = () => {
+  const toggleDarkMode = useCallback(() => {
     setDarkMode((prevMode) => !prevMode);
-  };
+  });
 
   return (
     <button

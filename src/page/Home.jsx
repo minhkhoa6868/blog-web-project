@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, useCallback, lazy, Suspense } from "react";
 import AddBlog from "../components/Home/AddBlog";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
@@ -17,20 +17,20 @@ export default function Home() {
   const [showShare, setShowShare] = useState(false);
   const [currentShare, setCurrentShare] = useState([]);
 
-  function openLike(likes) {
+  const openLike = useCallback((likes) => {
     setShowLike((prevState) => !prevState);
     setCurrentLike(likes);
-  }
+  });
 
-  function openComment(comments) {
+  const openComment = useCallback((comments) => {
     setShowComment((prevState) => !prevState);
     setCurrentComment(comments);
-  }
+  });
 
-  const openShare = (shares) => {
+  const openShare = useCallback((shares) => {
     setShowShare((prevState) => !prevState);
     setCurrentShare(shares);
-  };
+  });
 
   return (
     <div className="flex flex-col gap-6">

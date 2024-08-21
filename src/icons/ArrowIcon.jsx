@@ -1,3 +1,4 @@
+// million-ignore
 const ArrowIcon = ({ height, width }) => {
   return (
     <svg

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ChooseType from "../components/NewBlog/ChooseType";
 import ChooseVisibility from "../components/NewBlog/ChooseVisibility";
 import ButtonUpload from "../components/NewBlog/ButtonUpload";
@@ -16,9 +16,9 @@ export default function NewBlog() {
     });
   })
 
-  function handleChange(e) {
+  const handleChange = useCallback((e) => {
     setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  });
 
   return (
     <div

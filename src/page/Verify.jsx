@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import HeaderForm from "../components/Form/FormChild/HeaderForm";
 import VerifyNumber from "../components/Form/VerifyNumber";
@@ -14,7 +14,7 @@ const Verify = () => {
     handleCountdown();
   }, []);
 
-  const handleCountdown = () => {
+  const handleCountdown = useCallback(() => {
     var count = 60;
     var timer = setInterval(() => {
       if (count <= 0) {
@@ -26,12 +26,12 @@ const Verify = () => {
         setCountdown(count);
       }
     }, 1000);
-  };
+  });
 
-  const handleSend = () => {
+  const handleSend = useCallback(() => {
     setIsSend((prevState) => !prevState);
     handleCountdown();
-  };
+  });
 
   return (
     <div className="flex justify-center items-center w-full h-[100vh]">

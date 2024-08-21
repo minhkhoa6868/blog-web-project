@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import BlogType from "./AccountInfoChild/BlogType";
+import blogType from "../../utils/blogType";
 import { BlogContext } from "../../store/blog-context";
 
 export default function ShowBlogType() {
@@ -19,18 +20,9 @@ export default function ShowBlogType() {
       >
         <h2 className="font-semibold">Blog Type</h2>
         <div className="flex justify-center gap-2  flex-wrap text-sm">
-          <BlogType children="Life" />
-          <BlogType children="Sport" />
-          <BlogType children="Travel" />
-          <BlogType children="Fashion" />
-          <BlogType children="Nature" />
-          <BlogType children="Entertainment" />
-          <BlogType children="Movie" />
-          <BlogType children="Food" />
-          <BlogType children="Music" />
-          <BlogType children="Game" />
-          <BlogType children="Technology" />
-          <BlogType children="Book" />
+          {blogType.map((type) => (
+            <BlogType key={type.id} children={type.type} />
+          ))}
         </div>
         <button 
           className="absolute right-[25px] top-[8px] fill-black dark:fill-white"

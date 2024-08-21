@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import checkValidUserName from "../utils/checkValidUserName";
 import checkValidPassword from "../utils/checkValidPassword";
@@ -8,12 +8,11 @@ import UsernameSection from "../components/EditProfile/UsernameSection";
 import CaptionSection from "../components/EditProfile/CaptionSection";
 import GenderSection from "../components/EditProfile/GenderSection";
 import PasswordSection from "../components/EditProfile/PasswordSection";
+import { EditProfileContext } from "../store/edit-profile-context";
+import PasswordContextProvider from "../store/password-context";
 
 export default function EditProfile() {
-  const [changeBtn, isChangeBtn] = useState(false);
-  const [otherGender, isOtherGender] = useState(false);
-  const [countUserName, setCountUserName] = useState(0);
-  const [countCaption, setCountCaption] = useState(0);
+  const editCtx = useContext(EditProfileContext);
 
   useEffect(() => {
     const username = document.getElementById("username");
@@ -22,10 +21,11 @@ export default function EditProfile() {
     const passwordAgain = document.getElementById("cpw");
 
     const handleUsernameKeyup = () => {
-      setCountUserName(username.value.length);
+      editCtx.handleNameLength(username.value.length);
       checkValidUserName(username);
-    }
-    const handleCaptionKeyup = () => setCountCaption(caption.value.length);
+    };
+    const handleCaptionKeyup = () =>
+      editCtx.handleCaptionLength(caption.value.length);
     const handlePasswordKeyup = () => checkValidPassword();
     const handleConfirmPasswordKeyup = () => checkValidAgain();
 
@@ -40,11 +40,7 @@ export default function EditProfile() {
       password.removeEventListener("keyup", handlePasswordKeyup);
       passwordAgain.removeEventListener("keyup", handleConfirmPasswordKeyup);
     };
-  }, [changeBtn]);
-
-  function changeBtnHandler() {
-    isChangeBtn((prevState) => !prevState);
-  }
+  }, [editCtx.btn]);
 
   return (
     <div
@@ -54,16 +50,15 @@ export default function EditProfile() {
     >
       <ImageSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <UsernameSection countUserName={countUserName} />
+      <UsernameSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <CaptionSection countCaption={countCaption} />
+      <CaptionSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <GenderSection isOtherGender={isOtherGender} otherGender={otherGender} />
+      <GenderSection />
       <hr className="h-px my-[15px] border-0 bg-gray-400" />
-      <PasswordSection
-        changeBtn={changeBtn}
-        changeBtnHandler={changeBtnHandler}
-      />
+      <PasswordContextProvider>
+        <PasswordSection />
+      </PasswordContextProvider>
       <div className="flex justify-end mt-[15px]">
         <Link
           to="/account"

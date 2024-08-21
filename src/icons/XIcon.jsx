@@ -1,3 +1,4 @@
+// million-ignore
 const XIcon = ({ height, width }) => {
   return (
     <svg

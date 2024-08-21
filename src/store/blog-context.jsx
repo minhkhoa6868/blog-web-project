@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback } from "react";
 
 export const BlogContext = createContext({
   blogType: false,
@@ -17,21 +17,21 @@ const BlogContextProvider = ({ children }) => {
   const [showFollowings, setShowFollowings] = useState(false);
   const [deleteWarning, setDeleteWarning] = useState(false);
 
-  const openBlogType = () => {
+  const openBlogType = useCallback(() => {
     setShowBlogType((prevState) => !prevState);
-  };
+  });
 
-  const openFollowers = () => {
+  const openFollowers = useCallback(() => {
     setShowFollowers((prevState) => !prevState);
-  };
+  });
 
-  const openFollowings = () => {
+  const openFollowings = useCallback(() => {
     setShowFollowings((prevState) => !prevState);
-  };
+  });
 
-  const deletePost = () => {
+  const deletePost = useCallback(() => {
     setDeleteWarning((prevState) => !prevState);
-  };
+  });
 
   const blogCtx = {
     blogType: showBlogType,

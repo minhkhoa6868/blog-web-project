@@ -1,3 +1,4 @@
+// million-ignore
 const HeartIcon = ({ height, width }) => {
   return (
     <svg
