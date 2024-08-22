@@ -1,11 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 import PostButton from "./ShowComment/PostButton";
 import XIcon from "../icons/XIcon";
 
 const ParentComment = lazy(() =>
   import("./ShowComment/ParentComment"));
 
-export default function ShowComment({ showComment, openComment, comments }) {
+const ShowComment = memo(({ showComment, openComment, comments }) => {
   return (
     <div
       className={
@@ -60,4 +60,6 @@ export default function ShowComment({ showComment, openComment, comments }) {
       </div>
     </div>
   );
-}
+});
+
+export default ShowComment;

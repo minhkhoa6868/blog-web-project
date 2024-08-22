@@ -7,10 +7,18 @@ const UsernameInfo = () => {
 
   useEffect(() => {
     const username = document.getElementById("username");
+
     username.addEventListener("keyup", () => {
       setCountUserName(username.value.length);
     });
+
     checkValidUserName(username);
+    
+    return () => {
+      username.removeEventListener("keyup", () => {
+        setCountUserName(username.value.length);
+      });
+    };
   });
 
   return (

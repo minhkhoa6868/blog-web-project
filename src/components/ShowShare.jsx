@@ -1,9 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 import XIcon from "../icons/XIcon";
 
 const ShareAccount = lazy(() => import("./ShowShare/ShareAccount"));
 
-const ShowShare = ({ showShare, openShare, shares }) => {
+const ShowShare = memo(({ showShare, openShare, shares }) => {
   return (
     <div
       className={
@@ -40,6 +40,6 @@ const ShowShare = ({ showShare, openShare, shares }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ShowShare;

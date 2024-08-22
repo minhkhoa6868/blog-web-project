@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PageContext } from "../../../store/page-context";
 
-const FooterSignup = ({ onSelect }) => {
+const FooterSignup = () => {
   const pageCtx = useContext(PageContext);
 
   return (

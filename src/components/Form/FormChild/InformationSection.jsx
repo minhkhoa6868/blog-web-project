@@ -1,4 +1,6 @@
-const InformationSection = ({ label, name, type, length, idInput, idLabel, maxLength }) => {
+import { memo } from "react";
+
+const InformationSection = memo(({ label, name, type, length, idInput, idLabel, maxLength }) => {
     return (
         <div
             className="flex items-end relative h-[45px]"
@@ -22,6 +24,6 @@ const InformationSection = ({ label, name, type, length, idInput, idLabel, maxLe
             </label>
         </div>
     );
-}
+});
 
 export default InformationSection;

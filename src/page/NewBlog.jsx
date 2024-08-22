@@ -11,9 +11,16 @@ export default function NewBlog() {
 
   useEffect(() => {
     const post = document.getElementById("post");
+
     post.addEventListener("keyup", () => {
       setCountPost(post.value.length);
     });
+    
+    return () => {
+      post.removeEventListener("keyup", () => {
+        setCountPost(post.value.length);
+      });
+    };
   })
 
   const handleChange = useCallback((e) => {

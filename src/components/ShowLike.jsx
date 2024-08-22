@@ -1,9 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 import XIcon from "../icons/XIcon";
 
 const LikeAccount = lazy(() => import("./ShowLike/LikeAccount"));
 
-export default function ShowLike({ showLike, openLike, likes }) {
+const ShowLike = memo(({ showLike, openLike, likes }) => {
   return (
     <div
       className={
@@ -40,4 +40,6 @@ export default function ShowLike({ showLike, openLike, likes }) {
       </div>
     </div>
   );
-}
+});
+
+export default ShowLike;

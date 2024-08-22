@@ -28,7 +28,7 @@ const Signup = () => {
           idLabel="email-label"
           idInput="email"
         />
-        <PasswordContextProvider >
+        <PasswordContextProvider>
           <PasswordInfo />
         </PasswordContextProvider>
         <FooterSignup />

@@ -1,9 +1,4 @@
-import { useContext } from "react";
-import { BlogContext } from "../../store/blog-context";
-
 const AddCommentSection = ({ openComment }) => {
-  const blogCtx = useContext(BlogContext);
-
   return (
     <div className="flex items-center gap-5">
       <button>

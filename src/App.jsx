@@ -76,7 +76,7 @@ function App() {
             <>
               <ScrollRestoration
                 getKey={(location, matches) => {
-                  const paths = ["/otheraccount"];
+                  const paths = ["/friend", "/otheraccount"];
                   return paths.includes(location.pathname)
                     ? location.key
                     : location.pathname;

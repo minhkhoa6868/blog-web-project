@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import ActionButton from "./DeleteWarning/ActionButton";
 import { BlogContext } from "../store/blog-context";
 
-const DeleteWarning = ({ warning }) => {
+const DeleteWarning = memo(({ warning }) => {
   const blogCtx = useContext(BlogContext);
 
   return (
@@ -26,6 +26,6 @@ const DeleteWarning = ({ warning }) => {
       </div>
     </div>
   );
-};
+});
 
 export default DeleteWarning;
