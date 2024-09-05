@@ -1,15 +1,26 @@
 import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { PageContext } from "../../../store/page-context";
+import { signupActions } from "../../../store/signup-slice";
 
 const FooterSignup = () => {
   const pageCtx = useContext(PageContext);
+  const dispatch = useDispatch();
+  const showWarning = useSelector((state) => state.signup.showWarning);
+
+  const navigateHome = () => {
+    pageCtx.updateActive("home");
+    dispatch(signupActions.hasSignup());
+    if (showWarning) dispatch(signupActions.toggleShow());
+  }
 
   return (
     <>
       <Link
         to="/"
-        onClick={() => pageCtx.updateActive('home')}
+        onClick={navigateHome}
         className="text-center py-[5px] mt-[5px] rounded-md bg-gradient-to-tr from-blue-400 to-fuchsia-400
             text-white hover:from-blue-500 hover:to-fuchsia-500 transition-all ease duration-300"
       >

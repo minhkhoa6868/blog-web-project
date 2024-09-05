@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import ShowNumber from "./ShowNumber";
 import AddCommentSection from "./AddCommentSection";
 import HeartIcon from "../../icons/HeartIcon";
 import CommentIcon from "../../icons/CommentIcon";
 import ShareIcon from "../../icons/ShareIcon";
+import { signupActions } from "../../store/signup-slice";
 
 export default function BlogContentFooter({
   numberLikes,
@@ -14,9 +17,16 @@ export default function BlogContentFooter({
   openShare,
 }) {
   const [like, setLike] = useState(false);
+  const dispatch = useDispatch();
+
+  const isSignup = useSelector((state) => state.signup.isSignup);
 
   const likeHandler = () => {
     setLike((prevState) => !prevState);
+  };
+
+  const toggleWarningHandler = () => {
+    dispatch(signupActions.toggleShow());
   };
 
   return (
@@ -34,7 +44,7 @@ export default function BlogContentFooter({
         <button
           className="fill-gray-700 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-300
                 transition-all ease duration-300"
-          onClick={openComment}
+          onClick={() => isSignup ? openComment() : toggleWarningHandler()}
         >
           <CommentIcon height="50" width="30" />
         </button>
@@ -46,22 +56,22 @@ export default function BlogContentFooter({
         <ShowNumber
           number={numberLikes}
           status="likes"
-          handleClick={openLike}
+          handleClick={() => isSignup ? openLike() : toggleWarningHandler()}
         />
         <div className="flex gap-3">
           <ShowNumber
             number={numberComments}
             status="comments"
-            handleClick={openComment}
+            handleClick={() => isSignup ? openComment() : toggleWarningHandler()}
           />
           <ShowNumber
             number={numberShares}
             status="shares"
-            handleClick={openShare}
+            handleClick={() => isSignup ? openShare() : toggleWarningHandler()}
           />
         </div>
       </div>
-      <AddCommentSection openComment={openComment} />
+      <AddCommentSection openComment={() => isSignup ? openComment() : toggleWarningHandler()} />
     </div>
   );
 }

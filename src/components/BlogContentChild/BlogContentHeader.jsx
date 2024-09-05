@@ -1,5 +1,7 @@
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Outlet, Link } from "react-router-dom";
+
 import DeleteButton from "../DeleteButton";
 import OptionButton from "../OptionButton";
 import BlogOption from "../BlogOption";
@@ -14,16 +16,13 @@ export default function BlogContentHeader({
   openOption,
 }) {
   const pageCtx = useContext(PageContext);
+  const isSignup = useSelector((state) => state.signup.isSignup);
 
   return (
     <div className="flex flex-col gap-3 px-[20px]">
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
-          <Link
-            to="/account"
-            onClick={() => pageCtx.updateActive("account")}
-            key="account"
-          >
+          <Link to="/otheraccount" key="otheraccount">
             <img
               src={accountImage}
               alt="account-img"
@@ -34,9 +33,8 @@ export default function BlogContentHeader({
           <div>
             <Link
               className="font-semibold"
-              to="/account"
-              onClick={() => pageCtx.updateActive("account")}
-              key="account"
+              to="/otheraccount"
+              key="otheraccount"
             >
               <span>{name}</span>
             </Link>
@@ -49,7 +47,7 @@ export default function BlogContentHeader({
           </div>
         </div>
         {pageCtx.active === "home" ? (
-          <DeleteButton />
+          isSignup && <DeleteButton />
         ) : pageCtx.active === "account" ? (
           <div>
             <OptionButton openOption={openOption} />
