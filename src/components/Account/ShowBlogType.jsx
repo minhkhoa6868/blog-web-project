@@ -1,15 +1,17 @@
-import { useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import BlogType from "./AccountInfoChild/BlogType";
 import blogType from "../../utils/blogType";
-import { BlogContext } from "../../store/blog-context";
+import { blogActions } from "../../store/blog-slice";
 
 export default function ShowBlogType() {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
+  const showBlogType = useSelector((state) => state.blog.showBlogType);
 
   return (
     <div
       className={
-        blogCtx.blogType
+        showBlogType
           ? "flex justify-center items-center fixed inset-0 bg-black bg-opacity-60 z-[1000]"
           : "hidden"
       }
@@ -26,7 +28,7 @@ export default function ShowBlogType() {
         </div>
         <button 
           className="absolute right-[25px] top-[8px] fill-black dark:fill-white"
-          onClick={blogCtx.handleBlogType}
+          onClick={() => dispatch(blogActions.toggleBlogType())}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

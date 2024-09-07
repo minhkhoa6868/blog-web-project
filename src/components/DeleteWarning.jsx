@@ -1,14 +1,16 @@
-import { useContext, memo } from "react";
-import ActionButton from "./DeleteWarning/ActionButton";
-import { BlogContext } from "../store/blog-context";
+import { useSelector, useDispatch } from "react-redux";
 
-const DeleteWarning = memo(({ warning }) => {
-  const blogCtx = useContext(BlogContext);
+import ActionButton from "./DeleteWarning/ActionButton";
+import { blogActions } from "../store/blog-slice";
+
+const DeleteWarning = ({ warning }) => {
+  const dispatch = useDispatch();
+  const showDelete = useSelector((state) => state.blog.showDelete);
 
   return (
     <div
       className={
-        blogCtx.delete
+        showDelete
           ? "flex justify-center items-center fixed top-0 left-0 h-[100vh] w-full bg-black bg-opacity-50 z-[1000]"
           : "hidden"
       }
@@ -20,12 +22,12 @@ const DeleteWarning = memo(({ warning }) => {
       >
         <p>{warning}</p>
         <div className="flex gap-4">
-          <ActionButton status="Delete" handleClick={blogCtx.handleDelete} />
-          <ActionButton status="Cancel" handleClick={blogCtx.handleDelete} />
+          <ActionButton status="Delete" handleClick={() => dispatch(blogActions.toggleDelete())} />
+          <ActionButton status="Cancel" handleClick={() => dispatch(blogActions.toggleDelete())} />
         </div>
       </div>
     </div>
   );
-});
+};
 
 export default DeleteWarning;

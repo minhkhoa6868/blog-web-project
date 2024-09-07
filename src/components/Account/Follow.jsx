@@ -1,8 +1,7 @@
-import { memo } from "react";
 import FollowAccount from "./FollowAccount";
 import XIcon from "../../icons/XIcon";
 
-const Follow = memo(({ follow, status, showFollow, openFollow }) => {
+const Follow = ({ follow, status, showFollow, openFollow }) => {
   return (
     <div
       className={
@@ -34,6 +33,6 @@ const Follow = memo(({ follow, status, showFollow, openFollow }) => {
       </div>
     </div>
   );
-});
+};
 
 export default Follow;

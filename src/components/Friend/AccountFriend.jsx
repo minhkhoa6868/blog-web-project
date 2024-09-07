@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
-import { BlogContext } from "../../store/blog-context";
+import { blogActions } from "../../store/blog-slice";
 
 export default function AccountFriend({ image, name, status }) {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -27,7 +28,7 @@ export default function AccountFriend({ image, name, status }) {
         {status}
       </button>
       <button
-        onClick={blogCtx.handleDelete}
+        onClick={() => dispatch(blogActions.toggleDelete())}
         className="mx-[10px] py-[5px] rounded-lg bg-gray-200 hover:bg-gray-300 
         dark:bg-gray-400 dark:hover:bg-gray-500 transition-all ease duration-300
         text-[0.9rem]"

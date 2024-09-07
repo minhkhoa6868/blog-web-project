@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+
 import BlogType from "./BlogType";
 import blogType from "../../../utils/blogType";
-import { BlogContext } from "../../../store/blog-context";
+import { blogActions } from "../../../store/blog-slice";
 
 export default function AccountInfoHeader() {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -36,7 +37,7 @@ export default function AccountInfoHeader() {
         {blogType.slice(0, 6).map((type) => (
           <BlogType key={type.id} children={type.type} />
         ))}
-        <BlogType children="..." openBlogType={blogCtx.handleBlogType} />
+        <BlogType children="..." openBlogType={() => dispatch(blogActions.toggleBlogType())} />
       </div>
     </div>
   );

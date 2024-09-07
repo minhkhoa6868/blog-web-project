@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+
 import XIcon from "../../icons/XIcon";
-import { BlogContext } from "../../store/blog-context";
+import { blogActions } from "../../store/blog-slice";
 
 export default function AppearNotification({ noti }) {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
 
   return (
     <div className="px-3 pb-3">
@@ -25,7 +26,7 @@ export default function AppearNotification({ noti }) {
           </p>
         </div>
         <button
-          onClick={blogCtx.handleDelete}
+          onClick={() => dispatch(blogActions.toggleDelete())}
           className="flex justify-center items-center rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 w-[26px] h-[26px] 
           sm:w-[30px] sm:h-[30px] transition ease duration-300 dark:fill-white"
           id="status-checked"

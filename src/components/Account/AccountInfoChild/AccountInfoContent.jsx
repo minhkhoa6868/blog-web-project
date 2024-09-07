@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+
 import Statistic from "./Statistic";
 import FunctionButton from "./FunctionButton";
-import { BlogContext } from "../../../store/blog-context";
+import { blogActions } from "../../../store/blog-slice";
 
 export default function AccountInfoContent({
   numberBlogs,
   numberFollowers,
   numberFollowings,
 }) {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
+
   return (
     <div className="flex flex-col gap-6 translate-y-[-70px] xl:translate-y-0 xl:pt-[80px] xl:pb-7 xl:pr-8">
       <div className="flex justify-center gap-4">
@@ -16,12 +18,12 @@ export default function AccountInfoContent({
         <Statistic
           number={numberFollowers}
           content="Followers"
-          handleClick={blogCtx.hanldeFollowers}
+          handleClick={() => dispatch(blogActions.toggleFollowers())}
         />
         <Statistic
           number={numberFollowings}
           content="Following"
-          handleClick={blogCtx.handleFollowings}
+          handleClick={() => dispatch(blogActions.toggleFollowings())}
         />
       </div>
       <div className="flex justify-center gap-7">

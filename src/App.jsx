@@ -7,7 +7,6 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import PageContextProvider from "./store/page-context";
-import BlogContextProvider from "./store/blog-context";
 import EditProfileContextProvider from "./store/edit-profile-context";
 import Navigation from "./components/Navigation/Navigation";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive";
@@ -91,9 +90,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <BlogContextProvider>
-                  <Home />
-                </BlogContextProvider>
+                <Home />
               </Suspense>
             }
           />
@@ -109,9 +106,7 @@ function App() {
             path="/notification"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <BlogContextProvider>
-                  <Notification />
-                </BlogContextProvider>
+                <Notification />
               </Suspense>
             }
           />
@@ -119,9 +114,7 @@ function App() {
             path="/account"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <BlogContextProvider>
-                  <Account />
-                </BlogContextProvider>
+                <Account />
               </Suspense>
             }
           />
@@ -129,9 +122,7 @@ function App() {
             path="/friend"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <BlogContextProvider>
-                  <Friend />
-                </BlogContextProvider>
+                <Friend />
               </Suspense>
             }
           />
@@ -157,9 +148,7 @@ function App() {
             path="/otheraccount"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <BlogContextProvider>
-                  <OtherAccount />
-                </BlogContextProvider>
+                <OtherAccount />
               </Suspense>
             }
           />

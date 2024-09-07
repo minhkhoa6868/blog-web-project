@@ -1,4 +1,6 @@
-import { useState, useContext, useCallback, lazy, Suspense } from "react";
+import { useState, useCallback, lazy, Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import ShowBlogType from "../components/Account/ShowBlogType.jsx";
 import ShowLike from "../components/ShowLike";
 import ShowComment from "../components/ShowComment";
@@ -8,7 +10,7 @@ import otherAccountPost from "../utils/otherAccountPost.js";
 import countComments from "../utils/countComments.js";
 import followers from "../utils/follower.js";
 import followings from "../utils/following.js";
-import { BlogContext } from "../store/blog-context.jsx";
+import { blogActions } from "../store/blog-slice.js";
 
 const OtherAccountInfo = lazy(
   () => import("../components/OtherAccount/OtherAccountInfo.jsx")
@@ -16,7 +18,9 @@ const OtherAccountInfo = lazy(
 const BlogContent = lazy(() => import("../components/BlogContent.jsx"));
 
 export default function OtherAccount() {
-  const blogCtx = useContext(BlogContext);
+  const dispatch = useDispatch();
+  const showFollowers = useSelector(state => state.blog.showFollowers);
+  const showFollowings = useSelector(state => state.blog.showFollowings);
 
   const [showLike, setShowLike] = useState(false);
   const [currentLike, setCurrentLike] = useState([]);
@@ -52,14 +56,14 @@ export default function OtherAccount() {
       <Follow
         follow={followers}
         status="Followers"
-        showFollow={blogCtx.followers}
-        openFollow={blogCtx.hanldeFollowers}
+        showFollow={showFollowers}
+        openFollow={() => dispatch(blogActions.toggleFollowers())}
       />
       <Follow
         follow={followings}
         status="Followings"
-        showFollow={blogCtx.followings}
-        openFollow={blogCtx.handleFollowings}
+        showFollow={showFollowings}
+        openFollow={() => dispatch(blogActions.toggleFollowings())}
       />
       {otherAccountPost.map((item) => (
         <Suspense key={item.id} fallback={<div>Loading...</div>}>
