@@ -1,30 +1,25 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { PageContext } from "../../../store/page-context";
 import NotificationIcon from "../../../icons/NotificationIcon";
 
 export default function NotificationSection({
   isSignup,
   hoverActive,
   hoverNotActive,
-  toggleWarningHandler
+  toggleWarningHandler,
 }) {
-  const pageCtx = useContext(PageContext);
-
   return (
     <>
       {isSignup ? (
-        <Link
+        <NavLink
           to="/notification"
-          className={
-            pageCtx.active === "notification" ? hoverActive : hoverNotActive
+          className={({ isActive }) =>
+            isActive ? hoverActive : hoverNotActive
           }
-          onClick={() => pageCtx.updateActive("notification")}
           key="notification"
         >
           <NotificationIcon />
-        </Link>
+        </NavLink>
       ) : (
         <button className={hoverNotActive} onClick={toggleWarningHandler}>
           <NotificationIcon />

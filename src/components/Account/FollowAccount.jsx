@@ -8,7 +8,7 @@ const FollowAccount = ({ imageAccount, nameAccount }) => {
             <img 
                 src={imageAccount} 
                 alt="image-account" 
-                className="w-[50px] h-[50px] object-cover rounded-full bg-white"
+                className="w-[50px] h-[50px] object-cover rounded-full bg-white border"
             />
             <p>{nameAccount}</p>
         </a>

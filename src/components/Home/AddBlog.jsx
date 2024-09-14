@@ -1,9 +1,10 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { PageContext } from "../../store/page-context";
+import { useDispatch } from "react-redux";
+
+import { pageActions } from "../../store/page-slice";
 
 export default function AddBlog() {
-  const pageCtx = useContext(PageContext);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -13,7 +14,10 @@ export default function AddBlog() {
         dark:bg-gray-700 dark:border-gray-500 transition-all ease duration-300"
       >
         <div className="flex items-center gap-5">
-          <Link to="/account" onClick={() => pageCtx.updateActive("account")}>
+          <Link
+            to="/account"
+            onClick={() => dispatch(pageActions.setActive("account"))}
+          >
             <img
               src="account.gif"
               alt="account-img"
@@ -23,10 +27,10 @@ export default function AddBlog() {
           </Link>
           <Link
             to="/newBlog"
-            className="flex items-center bg-gray-200 text-gray-400 w-[240px] h-[40px] rounded-2xl 
-            text-left px-[15px] hover:bg-gray-300 dark:hover:border-violet-400 
-            dark:border-gray-400 dark:border-[3px] dark:bg-white transition-all 
-            ease-out duration-300 sm:w-[380px] md:w-[500px] xl:w-[540px]"
+            className="flex items-center bg-gray-200 text-gray-500 w-[240px] h-[40px] rounded-2xl 
+            text-left px-[15px] hover:bg-gray-300 dark:hover:border-violet-300 
+            dark:border-gray-400 dark:border-[2px] dark:bg-gray-600 dark:text-gray-300 
+            transition-all ease-out duration-300 sm:w-[380px] md:w-[500px] xl:w-[540px]"
           >
             Add a new blog here!
           </Link>

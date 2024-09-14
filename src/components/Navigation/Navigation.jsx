@@ -1,6 +1,6 @@
-import { useContext, memo } from "react";
+import { memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 import ThemeSwitcher from "./NavComponents/ThemeSwitcher.jsx";
 import HomeSection from "./NavComponents/HomeSection.jsx";
@@ -10,12 +10,10 @@ import AccountSection from "./NavComponents/AccountSection.jsx";
 import SearchSection from "./NavComponents/SearchSection.jsx";
 import RequireButton from "./NavComponents/RequireButton.jsx";
 import LogoIcon from "../../icons/LogoIcon.jsx";
-import { PageContext } from "../../store/page-context.jsx";
 import { signupActions } from "../../store/signup-slice.js";
-
+import { pageActions } from "../../store/page-slice.js";
 
 const Navigation = memo(function Navigation() {
-  const pageCtx = useContext(PageContext);
   const dispatch = useDispatch();
   const isSignup = useSelector(state => state.signup.isSignup);
 
@@ -31,18 +29,18 @@ const Navigation = memo(function Navigation() {
   const toggleWarningHandler = () => {
     dispatch(signupActions.toggleShow());
   }
+  // bg-transparent backdrop-blur-[12px]
 
   return (
     <>
-      <nav className="py-2 flex justify-between w-full bg-transparent backdrop-blur-[12px] shadow-lg top-0 sticky z-[1]">
-        <Link
+      <nav className="py-2 flex justify-between w-full bg-white dark:bg-[#212121]  shadow-lg top-0 sticky z-[1]">
+        <NavLink
           to="/"
           className="px-6"
-          onClick={() => pageCtx.updateActive("home")}
-          key="home"
+          onClick={() => dispatch(pageActions.setActive('home'))}
         >
           <LogoIcon />
-        </Link>
+        </NavLink>
         <div className="mid:flex hidden gap-2 text-sm transition-all ease duration-300">
           <HomeSection
             hoverActive={hoverActive}

@@ -27,7 +27,7 @@ const NavigationResponsive = memo(function NavigationResponsive () {
 
   return (
     <nav 
-        className="flex justify-center gap-2 py-2 w-full bg-transparent backdrop-blur-[12px] shadow-lg bottom-0 sticky z-[1] mid:hidden"
+        className="flex justify-center gap-2 py-2 w-full bg-white dark:bg-[#212121] shadow-lg bottom-0 sticky z-[1] mid:hidden"
     >
       <HomeSection
         hoverActive={hoverActive}

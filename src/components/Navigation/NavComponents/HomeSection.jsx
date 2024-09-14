@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { PageContext } from "../../../store/page-context";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import HomeIcon from "../../../icons/HomeIcon";
+import { pageActions } from "../../../store/page-slice";
 
 export default function HomeSection({ hoverActive, hoverNotActive }) {
-  const pageCtx = useContext(PageContext);
+  const dispatch = useDispatch();
 
   return (
-    <Link
+    <NavLink
       to="/"
-      className={pageCtx.active === "home" ? hoverActive : hoverNotActive}
-      onClick={() => pageCtx.updateActive("home")}
+      className={({ isActive }) => (isActive ? hoverActive : hoverNotActive)}
+      onClick={() => dispatch(pageActions.setActive("home"))}
       key="home"
     >
       <HomeIcon />
-    </Link>
+    </NavLink>
   );
 }

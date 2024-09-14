@@ -1,15 +1,14 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  createRoutesFromElements,
   ScrollRestoration,
 } from "react-router-dom";
-import PageContextProvider from "./store/page-context";
 import EditProfileContextProvider from "./store/edit-profile-context";
 import Navigation from "./components/Navigation/Navigation";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive";
+import LoginRoot from "./page/LoginRoot";
+import AccountRoot from "./page/AccountRoot";
 
 const Signup = lazy(() => import("./page/Signup"));
 const Login = lazy(() => import("./page/Login"));
@@ -26,142 +25,151 @@ const EditProfile = lazy(() => import("./page/EditProfile"));
 const OtherAccount = lazy(() => import("./page/OtherAccount"));
 
 function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route
-          path="/signup"
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <Signup />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/login"
-          element={
+  useEffect(() => {
+    console.log(window.location.pathname);
+  }, []);
+
+  const router = createBrowserRouter([
+    {
+      path: "signup",
+      element: (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Signup />
+        </Suspense>
+      ),
+    },
+    {
+      path: "login",
+      element: <LoginRoot />,
+      children: [
+        {
+          index: true,
+          element: (
             <Suspense fallback={<div>Loading...</div>}>
               <Login />
             </Suspense>
-          }
-        />
-        <Route
-          path="/identify"
-          element={
+          ),
+        },
+        {
+          path: "identify",
+          element: (
             <Suspense fallback={<div>Loading...</div>}>
               <ForgotPassword />
             </Suspense>
-          }
-        />
-        <Route
-          path="/verify"
-          element={
+          ),
+        },
+        {
+          path: "verify",
+          element: (
             <Suspense fallback={<div>Loading...</div>}>
               <Verify />
             </Suspense>
-          }
-        />
-        <Route
-          path="/resetpassword"
-          element={
+          ),
+        },
+        {
+          path: "resetpassword",
+          element: (
             <Suspense fallback={<div>Loading...</div>}>
               <ResetPassword />
             </Suspense>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <>
-              <ScrollRestoration
-                getKey={(location, matches) => {
-                  const paths = ["/friend", "/otheraccount"];
-                  return paths.includes(location.pathname)
-                    ? location.key
-                    : location.pathname;
-                }}
-              />
-              <Navigation />
-              <NavigationResponsive />
-            </>
-          }
-        >
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Home />
-              </Suspense>
-            }
+          ),
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: (
+        <>
+          <ScrollRestoration
+            getKey={(location, matches) => {
+              const paths = ["/friend", "/otheraccount"];
+              return paths.includes(location.pathname)
+                ? location.key
+                : location.pathname;
+            }}
           />
-          <Route
-            path="/search"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Search />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/notification"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Notification />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/account"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Account />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/friend"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Friend />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/newBlog"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NewBlog />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/editProfile"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <EditProfileContextProvider>
-                  <EditProfile />
-                </EditProfileContextProvider>
-              </Suspense>
-            }
-          />
-          <Route
-            path="/otheraccount"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <OtherAccount />
-              </Suspense>
-            }
-          />
-        </Route>
-      </>
-    )
-  );
+          <Navigation />
+          <NavigationResponsive />
+        </>
+      ),
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home />
+            </Suspense>
+          ),
+        },
+        {
+          path: "search",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Search />
+            </Suspense>
+          ),
+        },
+        {
+          path: "notification",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Notification />
+            </Suspense>
+          ),
+        },
+        {
+          path: "account",
+          element: <AccountRoot />,
+          children: [
+            {
+              index: true,
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Account />
+                </Suspense>
+              ),
+            },
+            {
+              path: "editProfile",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <EditProfileContextProvider>
+                    <EditProfile />
+                  </EditProfileContextProvider>
+                </Suspense>
+              ),
+            },
+          ],
+        },
+        {
+          path: "friend",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Friend />
+            </Suspense>
+          ),
+        },
+        {
+          path: "newBlog",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <NewBlog />
+            </Suspense>
+          ),
+        },
+        {
+          path: "otheraccount",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <OtherAccount />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+  ]);
 
-  return (
-    <PageContextProvider>
-      <RouterProvider router={router} />
-    </PageContextProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

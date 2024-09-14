@@ -1,17 +1,13 @@
-import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { PageContext } from "../../../store/page-context";
 import { signupActions } from "../../../store/signup-slice";
 
 const FooterSignup = () => {
-  const pageCtx = useContext(PageContext);
   const dispatch = useDispatch();
   const showWarning = useSelector((state) => state.signup.showWarning);
 
   const navigateHome = () => {
-    pageCtx.updateActive("home");
     dispatch(signupActions.hasSignup());
     if (showWarning) dispatch(signupActions.toggleShow());
   }

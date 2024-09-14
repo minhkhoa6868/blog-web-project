@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ImageSection() {
-  const [imageAccount, setImageAccount] = useState("account.gif");
+  const [imageAccount, setImageAccount] = useState("/account.gif");
 
   function changeImageAccount(e) {
     setImageAccount(URL.createObjectURL(e.target.files[0]));

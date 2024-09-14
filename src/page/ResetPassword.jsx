@@ -28,7 +28,7 @@ const ResetPassword = () => {
         <ThemeSwitcher />
       </div>
       <div className="absolute top-[8px] left-[25px]">
-        <Link to="/identify">
+        <Link to="/login/identify">
           <button
             className="flex justify-center items-center w-10 h-10 rounded-full hover:bg-gray-200 fill-gray-600
             dark:fill-gray-400 dark:hover:bg-gray-700 transition-all ease duration-300"

@@ -1,32 +1,30 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { PageContext } from "../../../store/page-context";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { pageActions } from "../../../store/page-slice";
 
 export default function AccountSection({
   hoverAccountActive,
   hoverAccountNotActive,
 }) {
-  const pageCtx = useContext(PageContext);
+  const dispatch = useDispatch();
 
   return (
-    <Link
+    <NavLink
       to="/account"
-      className={
-        pageCtx.active === "account"
-          ? hoverAccountActive
-          : hoverAccountNotActive
+      className={({ isActive }) =>
+        isActive ? hoverAccountActive : hoverAccountNotActive
       }
-      onClick={() => pageCtx.updateActive("account")}
+      onClick={() => dispatch(pageActions.setActive("account"))}
       key="account"
-      id="account"
     >
       <img
         src="account.gif"
         alt="account"
         id="account-img"
-        className={`rounded-full w-[38px] h-[38px] object-cover m-auto border-[2px] ${pageCtx.active === "account" ? "border-white" : "border-gray-300"}`}
+        className="rounded-full w-[38px] h-[38px] object-cover m-auto border-[2px] border-gray-300"
         loading="lazy"
       />
-    </Link>
+    </NavLink>
   );
 }

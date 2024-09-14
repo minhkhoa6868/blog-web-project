@@ -1,19 +1,15 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { PageContext } from "../../../store/page-context";
+import { NavLink } from "react-router-dom";
+
 import SeachIcon from "../../../icons/SearchIcon";
 
 export default function SearchSection({ hoverActive, hoverNotActive }) {
-  const pageCtx = useContext(PageContext);
-
   return (
-    <Link
+    <NavLink
       to="/search"
-      className={pageCtx.active === "search" ? hoverActive : hoverNotActive}
-      onClick={() => pageCtx.updateActive("search")}
+      className={({ isActive }) => isActive ? hoverActive : hoverNotActive}
       key="search"
     >
       <SeachIcon height="50" width="18" />
-    </Link>
+    </NavLink>
   );
 }

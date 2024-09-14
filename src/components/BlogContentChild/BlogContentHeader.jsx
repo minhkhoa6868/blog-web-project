@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, Link } from "react-router-dom";
 
@@ -6,7 +5,6 @@ import DeleteButton from "../DeleteButton";
 import OptionButton from "../OptionButton";
 import BlogOption from "../BlogOption";
 import PublicIcon from "../../icons/PublicIcon";
-import { PageContext } from "../../store/page-context";
 
 export default function BlogContentHeader({
   accountImage,
@@ -15,8 +13,8 @@ export default function BlogContentHeader({
   showOption,
   openOption,
 }) {
-  const pageCtx = useContext(PageContext);
   const isSignup = useSelector((state) => state.signup.isSignup);
+  const active = useSelector((state) => state.page.active);
 
   return (
     <div className="flex flex-col gap-3 px-[20px]">
@@ -46,9 +44,9 @@ export default function BlogContentHeader({
             </div>
           </div>
         </div>
-        {pageCtx.active === "home" ? (
+        {active === "home" ? (
           isSignup && <DeleteButton />
-        ) : pageCtx.active === "account" ? (
+        ) : active === "account" ? (
           <div>
             <OptionButton openOption={openOption} />
             <BlogOption showOption={showOption} />

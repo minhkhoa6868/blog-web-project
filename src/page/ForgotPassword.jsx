@@ -19,7 +19,7 @@ const ForgotPassword = () => {
           idLabel="email-label"
           idInput="email"
         />
-        <Link to="/verify">
+        <Link to="/login/verify">
           <button
             className="py-[5px] mt-[5px] rounded-md bg-gradient-to-tr from-blue-400 to-fuchsia-400 text-white hover:from-blue-500 
           hover:to-fuchsia-500 w-full"

@@ -27,7 +27,7 @@ export default function AccountInfoContent({
         />
       </div>
       <div className="flex justify-center gap-7">
-        <FunctionButton status="Edit Profile" navigate="/editProfile" />
+        <FunctionButton status="Edit Profile" navigate="/account/editProfile" />
         <FunctionButton status="Add New Blog" navigate="/newBlog" />
       </div>
     </div>

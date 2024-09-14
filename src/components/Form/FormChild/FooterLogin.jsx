@@ -1,17 +1,13 @@
-import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { PageContext } from "../../../store/page-context";
 import { signupActions } from "../../../store/signup-slice";
 
 const FooterLogin = () => {
-  const pageCtx = useContext(PageContext);
   const dispatch = useDispatch();
   const showWarning = useSelector((state) => state.signup.showWarning);
 
   const navigateHome = () => {
-    pageCtx.updateActive("home");
     dispatch(signupActions.hasSignup());
     if (showWarning) dispatch(signupActions.toggleShow());
   };
@@ -19,7 +15,7 @@ const FooterLogin = () => {
   return (
     <>
       <Link
-        to='/identify'
+        to='/login/identify'
         className="text-[0.9rem] text-center text-blue-400 hover:text-blue-500 cursor-pointer transition-all ease duration-300 font-semibold mt-[10px]"
       >
         Forgot password?
