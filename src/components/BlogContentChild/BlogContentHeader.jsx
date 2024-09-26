@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
-import { Outlet, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import DeleteButton from "../DeleteButton";
 import OptionButton from "../OptionButton";
 import BlogOption from "../BlogOption";
 import PublicIcon from "../../icons/PublicIcon";
+import { pageActions } from "../../store/page-slice";
 
 export default function BlogContentHeader({
   accountImage,
@@ -13,6 +14,7 @@ export default function BlogContentHeader({
   showOption,
   openOption,
 }) {
+  const dispatch = useDispatch();
   const isSignup = useSelector((state) => state.signup.isSignup);
   const active = useSelector((state) => state.page.active);
 
@@ -20,7 +22,7 @@ export default function BlogContentHeader({
     <div className="flex flex-col gap-3 px-[20px]">
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
-          <Link to="/otheraccount" key="otheraccount">
+          <Link to="/otheraccount" key="otheraccount" onClick={() => dispatch(pageActions.setActive(''))}>
             <img
               src={accountImage}
               alt="account-img"
@@ -33,6 +35,7 @@ export default function BlogContentHeader({
               className="font-semibold"
               to="/otheraccount"
               key="otheraccount"
+              onClick={() => dispatch(pageActions.setActive(''))}
             >
               <span>{name}</span>
             </Link>
@@ -62,7 +65,6 @@ export default function BlogContentHeader({
         voluptates, quod quaerat quae quasi quisquam voluptates, quod quaerat
         quae quasi quisquam voluptates, quod quaerat quae quasi quisquam
       </p>
-      <Outlet />
     </div>
   );
 }

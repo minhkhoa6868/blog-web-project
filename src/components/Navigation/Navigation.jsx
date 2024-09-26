@@ -29,7 +29,6 @@ const Navigation = memo(function Navigation() {
   const toggleWarningHandler = () => {
     dispatch(signupActions.toggleShow());
   }
-  // bg-transparent backdrop-blur-[12px]
 
   return (
     <>

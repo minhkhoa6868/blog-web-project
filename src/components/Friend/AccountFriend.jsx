@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { blogActions } from "../../store/blog-slice";
+import { pageActions } from "../../store/page-slice";
 
 export default function AccountFriend({ image, name, status }) {
   const dispatch = useDispatch();
@@ -11,7 +12,10 @@ export default function AccountFriend({ image, name, status }) {
       className="flex flex-col text-center gap-2 border rounded-xl pb-[10px] shadow-md
       dark:bg-gray-700 dark:border-none"
     >
-      <Link to="/otheraccount" >
+      <Link
+        to="/otheraccount"
+        onClick={() => dispatch(pageActions.setActive(""))}
+      >
         <img
           src={image}
           alt="image account"
@@ -19,7 +23,13 @@ export default function AccountFriend({ image, name, status }) {
           loading="lazy"
         />
       </Link>
-      <Link to="/otheraccount" className="font-semibold">{name}</Link>
+      <Link
+        to="/otheraccount"
+        onClick={() => dispatch(pageActions.setActive(""))}
+        className="font-semibold"
+      >
+        {name}
+      </Link>
       <button
         className="mx-[10px] py-[5px] rounded-lg bg-gradient-to-tr text-white
         from-blue-400 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500

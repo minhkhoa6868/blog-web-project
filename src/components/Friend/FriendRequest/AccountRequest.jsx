@@ -2,12 +2,9 @@ import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { blogActions } from "../../../store/blog-slice";
+import { pageActions } from "../../../store/page-slice";
 
-const AccountRequest = ({
-  imageAccount,
-  nameAccount,
-  statusAction,
-}) => {
+const AccountRequest = ({ imageAccount, nameAccount, statusAction }) => {
   const dispatch = useDispatch();
 
   return (
@@ -16,7 +13,10 @@ const AccountRequest = ({
       rounded-[12px] transition-all ease duration-300"
       id="account-request"
     >
-      <Link to="/otheraccount">
+      <Link
+        to="/otheraccount"
+        onClick={() => dispatch(pageActions.setActive(""))}
+      >
         <img
           src={imageAccount}
           alt="image-account"
@@ -25,7 +25,10 @@ const AccountRequest = ({
         />
       </Link>
       <div className="flex flex-col items-start gap-1">
-        <Link to="/otheraccount">
+        <Link
+          to="/otheraccount"
+          onClick={() => dispatch(pageActions.setActive(""))}
+        >
           <p className="font-semibold text-[0.9rem]" id="name-account">
             {nameAccount}
           </p>
